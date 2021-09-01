@@ -7,10 +7,6 @@ tstylesheet {
     ||
     #include <pEp/«@name».h>
 
-    #ifdef __cplusplus
-    extern "C" {
-    #endif
-
     const char *«@name»_label(PEP_«@name» value)
     {
         switch (value) {
@@ -19,11 +15,7 @@ tstylesheet {
         default:
             return "unknown";
         }
-    } PEP_«@name»;
-
-    #ifdef __cplusplus
     }
-    #endif
     ||
 
     template "item"
