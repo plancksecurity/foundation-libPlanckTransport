@@ -8,7 +8,9 @@
 namespace pEp {
     class Transport {
         const PEP_transport_id id;
-        PEP_transport_status_code actual_status;
+
+        protected:
+            PEP_transport_status_code actual_status;
  
         public:
             struct TransportError : std::runtime_error {
