@@ -1,0 +1,42 @@
+include yslt.yml2
+
+tstylesheet {
+    include standardlib.ysl2
+
+    template "/enum"
+    ||
+    #include <pEp/«@name».h>
+
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+
+    const char *«@name»_label(PEP_«@name» value)
+    {
+        switch (value) {
+        `` apply "item|doc"
+
+        default:
+            return "unknown";
+        }
+    } PEP_«@name»;
+
+    #ifdef __cplusplus
+    }
+    #endif
+    ||
+
+    template "item"
+    ||
+    case PEP_«yml:abbr(../@name)»_«@name»:
+        return "«translate(@name,'_',' ')»";
+    ||
+
+    template "doc"
+    ||
+
+    // «.»
+
+    ||
+}
+

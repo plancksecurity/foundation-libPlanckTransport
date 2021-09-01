@@ -163,4 +163,5 @@ ws
 # generated files
 src/PEPTransportStatusCode.h
 src/transport_status_code.h
+src/transport_status_code.c
 
