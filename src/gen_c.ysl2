@@ -28,9 +28,9 @@ tstylesheet {
         indent 0;
         choose {
             when "@output='hex'"
-                > PEP_«../@abbr»_«@name» = 0x«yml:dec2hex(.,$hexdigits)»
+                > PEP_«yml:abbr(../@name)»_«@name» = 0x«yml:dec2hex(.,$hexdigits)»
             otherwise
-                > PEP_«../@abbr»_«@name» = «.»
+                > PEP_«yml:abbr(../@name)»_«@name» = «.»
         }
         if "position()!=last()" > ,
         if "@doc" >  // «@doc»

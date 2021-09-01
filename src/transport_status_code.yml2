@@ -8,7 +8,7 @@ decl hex is item (output=hex);
 // the first octet is the transport id; for general values it is 0x00
 // the first bit of the second octet is set if this is an error state
 
-enum transport_status_code abbr=tsc {
+enum transport_status_code {
     hex ready                           0x00000000;
 
     doc > non error states
