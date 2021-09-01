@@ -3,7 +3,6 @@
 @import PEPObjCTypes_macOS;
 
 @class PEPTransportConfig;
-@class PEPSession;
 @class PEPTransport;
 @class PEPMessage;
 
@@ -68,13 +67,11 @@ transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
            error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)sendMessage:(PEPMessage *)msg
-         pEpSession:(PEPSession * _Nullable)pEpSession
 transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
               error:(NSError * _Nullable * _Nullable)error;
 
-- (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
-                                transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
-                                              error:(NSError * _Nullable * _Nullable)error;
+- (PEPMessage * _Nullable)nextMessageWithTransportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
+                                                       error:(NSError * _Nullable * _Nullable)error;
 @end
 
 NS_ASSUME_NONNULL_END
