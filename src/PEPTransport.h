@@ -9,26 +9,26 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol PEPCCSendResultDelegate <NSObject>
+@protocol PEPSendResultDelegate <NSObject>
 
-- (BOOL)signalSendMessageResultWithTransportID:(PEPCCTransportID)transportID
+- (BOOL)signalSendMessageResultWithTransportID:(PEPTransportID)transportID
                                      messageID:(NSString *)messageID
                                        address:(NSString *)address
-                                    statusCode:(PEPCCTransportStatusCode *)statusCode
+                                    statusCode:(PEPTransportStatusCode *)statusCode
                                          error:(NSError * _Nullable * _Nullable)error;
 @end
 
-@protocol PEPCCIncomingMessageDelegate <NSObject>
+@protocol PEPIncomingMessageDelegate <NSObject>
 
-- (BOOL)signalNewIncomingMessageWithTransportID:(PEPCCTransportID)transportID
-                                     statusCode:(PEPCCTransportStatusCode *)statusCode
+- (BOOL)signalNewIncomingMessageWithTransportID:(PEPTransportID)transportID
+                                     statusCode:(PEPTransportStatusCode *)statusCode
                                           error:(NSError * _Nullable * _Nullable)error;
 @end
 
-@protocol PEPCCStatusChangeDelegate <NSObject>
+@protocol PEPStatusChangeDelegate <NSObject>
 
-- (BOOL)statusChangedWithTransportID:(PEPCCTransportID)transportID
-                          statusCode:(PEPCCTransportStatusCode *)statusCode
+- (BOOL)statusChangedWithTransportID:(PEPTransportID)transportID
+                          statusCode:(PEPTransportStatusCode *)statusCode
                                error:(NSError * _Nullable * _Nullable)error;
 @end
 
@@ -36,10 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// - Init with callbacks and callbackExecutionType
 /// - configure
 /// - startup
-/// - listen to status changes (e.g. connected aka "PEPCCTransportStatusCodeReady"
+/// - listen to status changes (e.g. connected aka "PEPTransportStatusCodeReady"
 /// - use it:
 ///     - send message
-///     - listen to- and handle sendMessageResult (e.g. done sending aka "PEPCCTransportStatusCodeMessageDelivered")
+///     - listen to- and handle sendMessageResult (e.g. done sending aka "PEPTransportStatusCodeMessageDelivered")
 ///     - listen to newIncommingMessage delegate
 ///         - call nextMessage to get it
 /// shutdown
@@ -48,32 +48,32 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init;
 
 /// Convenience initializer.
-- (_Nullable instancetype)initWithChangeDelegate:(id<PEPCCStatusChangeDelegate> _Nullable)statusChangeDelegate
-                        signalSendResultDelegate:(id<PEPCCSendResultDelegate> _Nullable)signalSendResultDelegate
-                   signalIncomingMessageDelegate:(id<PEPCCIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
-                           callbackExecutionType:(PEPCCCallbackExcecutionType)callbackExecutionType
+- (_Nullable instancetype)initWithChangeDelegate:(id<PEPStatusChangeDelegate> _Nullable)statusChangeDelegate
+                        signalSendResultDelegate:(id<PEPSendResultDelegate> _Nullable)signalSendResultDelegate
+                   signalIncomingMessageDelegate:(id<PEPIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
+                           callbackExecutionType:(PEPCallbackExcecutionType)callbackExecutionType
                                            error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)configure:(PEPTransport * _Nullable)pEptransport
        withConfig:(PEPTransportConfig *)config
-transportStatusCode:(out PEPCCTransportStatusCode * _Nullable)tsc
+transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
             error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)startup:(PEPTransport * _Nullable)pEptransport
-transportStatusCode:(out PEPCCTransportStatusCode*)tsc
+transportStatusCode:(out PEPTransportStatusCode*)tsc
           error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)shutdown:(PEPTransport * _Nullable)pEptransport
-transportStatusCode:(out PEPCCTransportStatusCode * _Nullable)tsc
+transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
            error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)sendMessage:(PEPMessage *)msg
          pEpSession:(PEPSession * _Nullable)pEpSession
-transportStatusCode:(out PEPCCTransportStatusCode * _Nullable)tsc
+transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
               error:(NSError * _Nullable * _Nullable)error;
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
-                                transportStatusCode:(out PEPCCTransportStatusCode * _Nullable)tsc
+                                transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
                                               error:(NSError * _Nullable * _Nullable)error;
 @end
 
