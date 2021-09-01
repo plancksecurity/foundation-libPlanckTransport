@@ -53,6 +53,12 @@ NS_ASSUME_NONNULL_BEGIN
                            callbackExecutionType:(PEPCallbackExcecutionType)callbackExecutionType
                                            error:(NSError * _Nullable * _Nullable)error;
 
+- (BOOL)notifyWithChangeDelegate:(id<PEPStatusChangeDelegate> _Nullable)statusChangeDelegate
+        signalSendResultDelegate:(id<PEPSendResultDelegate> _Nullable)signalSendResultDelegate
+   signalIncomingMessageDelegate:(id<PEPIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
+           callbackExecutionType:(PEPCallbackExcecutionType)callbackExecutionType
+                           error:(NSError * _Nullable * _Nullable)error;
+
 - (BOOL)configure:(PEPTransport * _Nullable)pEptransport
        withConfig:(PEPTransportConfig *)config
 transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
