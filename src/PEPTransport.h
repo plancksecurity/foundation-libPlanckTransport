@@ -67,7 +67,8 @@ transportStatusCode:(out PEPCCTransportStatusCode*)tsc
 transportStatusCode:(out PEPCCTransportStatusCode * _Nullable)tsc
            error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)sendMessage:(PEPMessage *)msg pEpSession:(PEPSession * _Nullable)pEpSession
+- (BOOL)sendMessage:(PEPMessage *)msg
+         pEpSession:(PEPSession * _Nullable)pEpSession
 transportStatusCode:(out PEPCCTransportStatusCode * _Nullable)tsc
               error:(NSError * _Nullable * _Nullable)error;
 
