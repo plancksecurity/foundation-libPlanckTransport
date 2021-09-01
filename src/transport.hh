@@ -43,6 +43,10 @@ namespace pEp {
             virtual void sendto(pEp::Message& msg);
             virtual Message recvnext();
 
+            // the signal_ function register signal handlers
+            // they must be called while a transport is running, otherwise they
+            // throw std::logic_error in case the transport is shut down
+
             virtual void
                 signal_statuschange(std::function(void(PEP_transport_status_code)));
 
