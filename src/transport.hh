@@ -8,7 +8,8 @@
 namespace pEp {
     class Transport {
         const PEP_transport_id id;
-        
+        PEP_transport_status_code actual_status;
+ 
         public:
             struct TransportError : std::runtime_error {
                 const PEP_transport_status_code tsc;
@@ -28,7 +29,7 @@ namespace pEp {
                     virtual ~Config() { }
             };
 
-            Transport(PEP_transport_id id) : id(id) { }
+            Transport(PEP_transport_id id) : id(id), actual_status(0x00ffffff) { }
             Transport(const Transport&) = delete;
             Transport& operator=(const Transport&) = delete;
 
