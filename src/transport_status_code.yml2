@@ -1,0 +1,44 @@
+// this is the mandatory source for general TSCs
+// to compile set YML_PATH to pEpEngine/api
+
+decl enum @name;
+decl item @name;
+decl hex is item (output=hex);
+
+// the first octet is the transport id; for general values it is 0x00
+// the first bit of the second octet is set if this is an error state
+
+enum transport_status_code abbr=tsc {
+    hex ready                           0x00000000;
+
+    doc > non error states
+
+    hex connection_up                   0x00000002;
+    hex message_delivered               0x00100000;
+    hex message_on_the_way              0x00100001;
+    hex could_not_deliver_resending     0x00100002;
+
+    doc > error states
+
+    hex connection_down                 0x00700001 doc="sent by connection based transports";
+    hex some_recipients_unreachable     0x00700002;
+    hex no_recipients_reachable         0x00700003;
+    hex no_config                       0x00700004;
+    hex config_incomplete_or_wrong      0x00700005;
+    hex no_send_config                  0x00700006;
+    hex no_recv_config                  0x00700007;
+    hex send_config_incomplete_or_wrong 0x00700008;
+    hex recv_config_incomplete_or_wrong 0x00700009;
+    hex network_timeout                 0x0070000a;
+    hex could_not_deliver_giving_up     0x0070000b;
+
+    doc > transport is shut down
+
+    hex shut_down                       0x00ffffff;
+
+    include ./email.tsc
+    include ./rce.tsc
+    include ./pdl.tsc
+    include ./cc.tsc
+}
+

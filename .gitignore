@@ -160,3 +160,7 @@ dkms.conf
 ws
 .??*.swp
 
+# generated files
+src/PEPTransportStatusCode.h
+src/transport_status_code.h
+

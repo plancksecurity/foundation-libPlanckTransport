@@ -1,0 +1,5 @@
+doc > transport status codes for RCE (0x02)
+
+hex torrent_has_no_seeders          0x02ff0001;
+hex unknown_torrent_error           0x02ffffff;
+

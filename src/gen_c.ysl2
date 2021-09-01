@@ -1,0 +1,47 @@
+include yslt.yml2
+
+tstylesheet {
+    include standardlib.ysl2
+
+    template "/enum"
+    ||
+    #ifndef __«yml:ucase(@name)»_H__
+    #define __«yml:ucase(@name)»_H__
+
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+
+    typedef enum PEP_«@name» {
+    `` apply "item|doc"
+    } PEP_«@name»;
+
+    #ifdef __cplusplus
+    }
+    #endif
+
+    #endif // __«yml:ucase(@name)»_H__
+    ||
+
+    template "item" {
+        param "hexdigits", 8;
+        indent 0;
+        choose {
+            when "@output='hex'"
+                > PEP_«../@abbr»_«@name» = 0x«yml:dec2hex(.,$hexdigits)»
+            otherwise
+                > PEP_«../@abbr»_«@name» = «.»
+        }
+        if "position()!=last()" > ,
+        if "@doc" >  // «@doc»
+        > \n
+    }
+
+    template "doc"
+    ||
+
+    // «.»
+
+    ||
+}
+

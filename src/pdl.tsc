@@ -1,0 +1,3 @@
+doc > transport status codes for PDL (0x03)
+
+hex unknown_eth_error           0x03ffffff;

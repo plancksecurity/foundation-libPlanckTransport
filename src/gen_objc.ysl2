@@ -1,0 +1,41 @@
+include yslt.yml2
+
+tstylesheet {
+    include standardlib.ysl2
+
+    template "/enum"
+    ||
+    #ifndef __PEP«yml:CamelCase(@name)»_H__
+    #define __PEP«yml:CamelCase(@name)»_H__
+
+    #import <Foundation/Foundation.h>
+
+    typedef NS_CLOSED_ENUM(NSUInteger, PEP«yml:CamelCase(@name)») {
+    `` apply "item|doc"
+    };
+
+    #endif // __PEP«yml:CamelCase(@name)»_H__
+    ||
+
+    template "item" {
+        param "hexdigits", 8;
+        indent 0;
+        choose {
+            when "@output='hex'"
+                > PEP«yml:CamelCase(../@name)»«yml:CamelCase(@name)» = 0x«yml:dec2hex(.,$hexdigits)»
+            otherwise
+                > PEP«CamelCase(../@name)»«CamelCase(@name)» = «.»
+        }
+        if "position()!=last()" > ,
+        if "@doc" >  // «@doc»
+        > \n
+    }
+
+    template "doc"
+    ||
+
+    // «.»
+
+    ||
+}
+

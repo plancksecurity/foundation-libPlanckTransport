@@ -1,0 +1,4 @@
+doc > transport status codes for Control Channel (0xfe)
+
+hex unkown_sctp_error               0xfeffffff;
+
