@@ -156,3 +156,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# editor
+ws
+.??*.swp
+
