@@ -1,4 +1,3 @@
-doc > transport status codes for Control Channel (0xfe)
-
-hex unkown_sctp_error               0xfeffffff;
+// uncomment this line when there are codes to add:
+// doc > transport status codes for Control Channel (0xfe)
 
