@@ -3,7 +3,7 @@
 
 #include <exception>
 #include <functional>
-#include <pEp/transport.h>
+#include <pEp/transport_status_code.h>
 
 namespace pEp {
     class Transport {
@@ -27,14 +27,14 @@ namespace pEp {
             class Config {
                 public:
                     Config() { }
-                    virtual Config(const Config& second) { }
+                    virtual Config& operator=(const Config& second) = 0;
+                    Config(const Config& second) { *this = second; }
                     virtual ~Config() { }
             };
 
             Transport(PEP_transport_id id) : id(id), actual_status(0x00ffffff) { }
             Transport(const Transport&) = delete;
             Transport& operator=(const Transport&) = delete;
-
             virtual ~Transport() { }
 
             PEP_transport_id get_id() { return id; }
@@ -44,26 +44,26 @@ namespace pEp {
             // throw std::logic_error in case the transport is shut down
 
             void
-                signal_statuschange(std::function(void(PEP_transport_status_code)));
+                signal_statuschange(std::function(void(PEP_transport_status_code))) = 0;
 
             void
                 signal_sendto_result(std::function(void(std::string,
-                                std::string, PEP_transport_status_code)));
+                                std::string, PEP_transport_status_code))) = 0;
 
             void
-                signal_incoming_message(std::function(void(PEP_transport_status_code)));
+                signal_incoming_message(std::function(void(PEP_transport_status_code))) = 0;
 
-            virtual void configure(const Config& config);
-            virtual void startup(callback_execution cbe = PEP_cbe_polling);
-            virtual void shutdown();
+            virtual void configure(const Config& config) = 0;
+            virtual void startup(callback_execution cbe = PEP_cbe_polling) = 0;
+            virtual void shutdown() = 0;
 
-            virtual void sendto(pEp::Message& msg);
-            virtual Message recvnext();
+            virtual void sendto(pEp::Message& msg) = 0;
+            virtual Message recvnext() = 0;
 
-            virtual bool shortmsg_supported();
-            virtual bool longmsg_supported();
-            virtual bool longmsg_formatted_supported();
-            virtual PEP_text_format native_text_format();
+            virtual bool shortmsg_supported() = 0;
+            virtual bool longmsg_supported() = 0;
+            virtual bool longmsg_formatted_supported() = 0;
+            virtual PEP_text_format native_text_format() = 0;
     };
 }
 
