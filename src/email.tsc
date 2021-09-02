@@ -2,11 +2,11 @@ doc > transport status codes for email (0x01)
 
 // smtp
 
-hex cannot_reach_smtp_server        0x01100001;
-hex unknown_smtp_error              0x0110ffff;
+hex cannot_reach_smtp_server        0x01801001;
+hex unknown_smtp_error              0x01801fff;
 
 // imap
 
-hex cannot_reach_imap_server        0x01110001;
-hex unknown_imap_error              0x0111ffff;
+hex cannot_reach_imap_server        0x01802001;
+hex unknown_imap_error              0x01802fff;
 
