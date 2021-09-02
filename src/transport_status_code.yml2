@@ -1,5 +1,4 @@
 // this is the mandatory source for general TSCs
-// to compile set YML_PATH to pEpEngine/api
 
 decl enum @name;
 decl item @name;
