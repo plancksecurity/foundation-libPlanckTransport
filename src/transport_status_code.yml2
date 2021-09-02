@@ -12,10 +12,10 @@ enum transport_status_code {
 
     doc > non error states
 
-    hex connection_up                   0x00000002;
-    hex message_delivered               0x00000003;
-    hex message_on_the_way              0x00000004;
-    hex could_not_deliver_resending     0x00000005;
+    hex connection_up                   0x00000001;
+    hex message_delivered               0x00000002;
+    hex message_on_the_way              0x00000003;
+    hex could_not_deliver_resending     0x00000004;
 
     doc > error states
 
