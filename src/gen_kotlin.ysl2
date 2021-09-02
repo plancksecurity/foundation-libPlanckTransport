@@ -1,0 +1,36 @@
+include yslt.yml2
+
+tstylesheet {
+    include standardlib.ysl2
+
+    template "/enum"
+    ||
+    package foundation.pEp
+
+    enum class «yml:CamelCase(@name)»(val «yml:abbr(@name)»: Int) {
+    `` apply "item|doc"
+    }
+    ||
+
+    template "item" {
+        param "hexdigits", 8;
+        indent 0;
+        choose {
+            when "@output='hex'"
+                > «yml:ucase(@name)»(0x«yml:ucase(yml:dec2hex(.,$hexdigits))»)
+            otherwise
+                > «yml:ucase(@name)»(.)
+        }
+        if "position()!=last()" > ,
+        if "@doc" >  // «@doc»
+        > \n
+    }
+
+    template "doc"
+    ||
+
+    // «.»
+
+    ||
+}
+
