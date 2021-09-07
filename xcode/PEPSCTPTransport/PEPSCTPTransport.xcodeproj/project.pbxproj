@@ -9,12 +9,24 @@
 /* Begin PBXBuildFile section */
 		431964FE26E7A8EF00232A6E /* PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */; };
 		4319650026E7A8EF00232A6E /* PEPSCTPTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */; };
+		4319650926E7A93F00232A6E /* PEPMessage+ASN1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319650726E7A93F00232A6E /* PEPMessage+ASN1.m */; };
+		4319650A26E7A93F00232A6E /* PEPMessage+ASN1.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650826E7A93F00232A6E /* PEPMessage+ASN1.h */; };
+		4319651026E7A94E00232A6E /* NSError+PEPSCTPTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319650C26E7A94E00232A6E /* NSError+PEPSCTPTransport.m */; };
+		4319651126E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */; };
+		4319651226E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */; };
+		4319651326E7A94E00232A6E /* NSError+PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPSCTPTransport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPSCTPTransport.h; sourceTree = "<group>"; };
 		431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPSCTPTransport.m; sourceTree = "<group>"; };
+		4319650726E7A93F00232A6E /* PEPMessage+ASN1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PEPMessage+ASN1.m"; sourceTree = "<group>"; };
+		4319650826E7A93F00232A6E /* PEPMessage+ASN1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PEPMessage+ASN1.h"; sourceTree = "<group>"; };
+		4319650C26E7A94E00232A6E /* NSError+PEPSCTPTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+PEPSCTPTransport.m"; sourceTree = "<group>"; };
+		4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+internal.h"; sourceTree = "<group>"; };
+		4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+ErrorCode.h"; sourceTree = "<group>"; };
+		4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,10 +59,32 @@
 		431964FC26E7A8EF00232A6E /* PEPSCTPTransport */ = {
 			isa = PBXGroup;
 			children = (
+				4319650626E7A93F00232A6E /* Util */,
+				4319650B26E7A94E00232A6E /* Error */,
 				431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */,
 				431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */,
 			);
 			path = PEPSCTPTransport;
+			sourceTree = "<group>";
+		};
+		4319650626E7A93F00232A6E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4319650726E7A93F00232A6E /* PEPMessage+ASN1.m */,
+				4319650826E7A93F00232A6E /* PEPMessage+ASN1.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4319650B26E7A94E00232A6E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				4319650C26E7A94E00232A6E /* NSError+PEPSCTPTransport.m */,
+				4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */,
+				4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */,
+				4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,7 +94,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4319651226E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h in Headers */,
+				4319651126E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h in Headers */,
 				431964FE26E7A8EF00232A6E /* PEPSCTPTransport.h in Headers */,
+				4319651326E7A94E00232A6E /* NSError+PEPSCTPTransport.h in Headers */,
+				4319650A26E7A93F00232A6E /* PEPMessage+ASN1.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4319650926E7A93F00232A6E /* PEPMessage+ASN1.m in Sources */,
+				4319651026E7A94E00232A6E /* NSError+PEPSCTPTransport.m in Sources */,
 				4319650026E7A8EF00232A6E /* PEPSCTPTransport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
