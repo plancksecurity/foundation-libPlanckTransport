@@ -10,13 +10,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Domain for errors indicated by the pEp engine.
-extern NSString *const _Nonnull PEPCCEngineStatusErrorDomain;
+extern NSString *const _Nonnull PEPEngineStatusErrorDomain;
 
 /// Domain for errors indicated by the SCTP transport (see transport.h)
-extern NSString *const _Nonnull PEPCCTransportStatusStatusErrorDomain;
+extern NSString *const _Nonnull PEPTransportStatusStatusErrorDomain;
 
 /// Domain for errors indicated by the PEPCC itself.
-extern NSString *const _Nonnull PEPCCErrorDomain;
+extern NSString *const _Nonnull PEPErrorDomain;
 
 /**
  Extension for creating `NSError`s from `PEP_STATUS`

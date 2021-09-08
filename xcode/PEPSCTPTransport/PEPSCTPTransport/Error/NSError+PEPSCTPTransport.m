@@ -9,9 +9,9 @@
 #import "NSError+PEPSCTPTransport+internal.h"
 #import "NSError+PEPStatus.h"
 
-NSString *const _Nonnull PEPCCEngineStatusErrorDomain = @"PEPCCEngineStatusErrorDomain";
-NSString *const _Nonnull PEPCCTransportStatusStatusErrorDomain = @"PEPCCTransportStatusStatusErrorDomain";
-NSString *const _Nonnull PEPCCErrorDomain = @"PEPCCErrorDomain";
+NSString *const _Nonnull PEPEngineStatusErrorDomain = @"PEPCCEngineStatusErrorDomain";
+NSString *const _Nonnull PEPTransportStatusStatusErrorDomain = @"PEPCCTransportStatusStatusErrorDomain";
+NSString *const _Nonnull PEPErrorDomain = @"PEPCCErrorDomain";
 
 @implementation NSError (PEPSCTPTransport)
 
@@ -37,7 +37,7 @@ NSString *const _Nonnull PEPCCErrorDomain = @"PEPCCErrorDomain";
         NSDictionary *dict = [NSDictionary
                               dictionaryWithObjectsAndKeys:localizedErrorStringFromPEPStatus(status),
                               NSLocalizedDescriptionKey, nil];
-        return [NSError errorWithDomain:PEPCCEngineStatusErrorDomain
+        return [NSError errorWithDomain:PEPEngineStatusErrorDomain
                                    code:status
                                userInfo:dict];
     } else {
@@ -45,7 +45,7 @@ NSString *const _Nonnull PEPCCErrorDomain = @"PEPCCErrorDomain";
     }
 }
 
-+ (BOOL)isErrorCCTransportStatusCode:(PEPTransportStatusCode)statusCode {
++ (BOOL)isErrorTransportStatusCode:(PEPTransportStatusCode)statusCode {
     switch (statusCode) {
             // Status that are not an error
         case PEPTransportStatusCodeReady:
@@ -63,14 +63,14 @@ NSString *const _Nonnull PEPCCErrorDomain = @"PEPCCErrorDomain";
     }
 }
 
-+ (NSError * _Nullable)errorWithPEPCCTransportStatusCode:(PEPTransportStatusCode)statusCode
++ (NSError * _Nullable)errorWithPEPTransportStatusCode:(PEPTransportStatusCode)statusCode
 {
     if ([self isErrorCCTransportStatusCode:statusCode]) {
         NSDictionary *dict = [NSDictionary
-                              dictionaryWithObjectsAndKeys:localizedErrorStringFromPEPCCTransportStatusCode(statusCode),
+                              dictionaryWithObjectsAndKeys:localizedErrorStringFromPEPTransportStatusCode(statusCode),
                               NSLocalizedDescriptionKey, nil];
         return [NSError
-                errorWithDomain:PEPCCTransportStatusStatusErrorDomain
+                errorWithDomain:PEPTransportStatusStatusErrorDomain
                 code:statusCode
                 userInfo:dict];
     } else {
@@ -96,10 +96,10 @@ NSString *const _Nonnull PEPCCErrorDomain = @"PEPCCErrorDomain";
     }
 }
 
-+ (BOOL)setError:(NSError * _Nullable * _Nullable)error fromPEPCCStatusCode:(PEPTransportStatusCode)statusCode
++ (BOOL)setError:(NSError * _Nullable * _Nullable)error fromPEPStatusCode:(PEPTransportStatusCode)statusCode
 {
     // Determine if the given status is an error.
-    NSError *errorFromStatusCode = [self errorWithPEPCCTransportStatusCode:statusCode];
+    NSError *errorFromStatusCode = [self errorWithPEPTransportStatusCode:statusCode];
 
     // Set caller's error, if given
     if (error) {
@@ -111,17 +111,17 @@ NSString *const _Nonnull PEPCCErrorDomain = @"PEPCCErrorDomain";
 }
 
 /// Could in theory return a fully localized version of the underlying error.
-NSString * _Nonnull localizedErrorStringFromPEPCCTransportStatusCode(PEPTransportStatusCode status) {
-    return stringFromPEPCCTransportStatusCode(status);
+NSString * _Nonnull localizedErrorStringFromPEPTransportStatusCode(PEPTransportStatusCode status) {
+    return stringFromPEPTransportStatusCode(status);
 }
 
-NSString * _Nonnull stringFromPEPCCTransportStatusCode(PEPTransportStatusCode status) {
+NSString * _Nonnull stringFromPEPTransportStatusCode(PEPTransportStatusCode status) {
     return [NSString stringWithFormat:@"PEPCCTransportStatusCode: %ld", (long)status];
 }
 
 - (NSString * _Nullable)pEpErrorString
 {
-    if ([self.domain isEqualToString:PEPCCEngineStatusErrorDomain]) {
+    if ([self.domain isEqualToString:PEPEngineStatusErrorDomain]) {
         return stringFromPEPStatus((PEP_STATUS) self.code);
     } else {
         return nil;
