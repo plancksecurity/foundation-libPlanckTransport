@@ -5,6 +5,8 @@
 //  Created by Andreas Buff on 19.08.21.
 //
 
-@interface PEPSCTPTransport
+#import <Foundation/Foundation.h>
+
+@interface PEPSCTPTransport : NSObject
 
 @end
