@@ -10,6 +10,7 @@
 		431316B726E8A335006EA5B6 /* PEPSCTPTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 431316B626E8A335006EA5B6 /* PEPSCTPTransportTests.m */; };
 		431316B926E8A335006EA5B6 /* libPEPSCTPTransport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */; };
 		431316C126E8A44D006EA5B6 /* PEPMessageASN1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 431316C026E8A44D006EA5B6 /* PEPMessageASN1Tests.m */; };
+		4313177626E8C88A006EA5B6 /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 4313177526E8C88A006EA5B6 /* PEPTransportProtocol.h */; };
 		431964FE26E7A8EF00232A6E /* PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */; };
 		4319650026E7A8EF00232A6E /* PEPSCTPTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */; };
 		4319650926E7A93F00232A6E /* PEPMessage+ASN1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319650726E7A93F00232A6E /* PEPMessage+ASN1.m */; };
@@ -35,6 +36,7 @@
 		431316B626E8A335006EA5B6 /* PEPSCTPTransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPSCTPTransportTests.m; sourceTree = "<group>"; };
 		431316B826E8A335006EA5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		431316C026E8A44D006EA5B6 /* PEPMessageASN1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPMessageASN1Tests.m; sourceTree = "<group>"; };
+		4313177526E8C88A006EA5B6 /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportProtocol.h; sourceTree = "<group>"; };
 		431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPSCTPTransport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPSCTPTransport.h; sourceTree = "<group>"; };
 		431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPSCTPTransport.m; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				4319650B26E7A94E00232A6E /* Error */,
 				431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */,
 				431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */,
+				4313177526E8C88A006EA5B6 /* PEPTransportProtocol.h */,
 			);
 			path = PEPSCTPTransport;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4313177626E8C88A006EA5B6 /* PEPTransportProtocol.h in Headers */,
 				4319651226E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h in Headers */,
 				4319651126E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h in Headers */,
 				431964FE26E7A8EF00232A6E /* PEPSCTPTransport.h in Headers */,
