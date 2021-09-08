@@ -7,30 +7,31 @@
 
 #import <XCTest/XCTest.h>
 
-@interface PEPMessageASN1Tests : XCTestCase
+#import "PEPSCTPTransport.h"
+#import "TestConstants.h"
+
+@interface PEPSCTPTransportTests : XCTestCase
 
 @end
 
-@implementation PEPMessageASN1Tests
+@implementation PEPSCTPTransportTests
 
-- (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
+- (void)testStartupWithoutConfigLeadsToError
+{
+    NSError *error = nil;
+    PEPSCTPTransport *transport = [[PEPSCTPTransport alloc]
+                                   initWithSignalStatusChangeDelegate:nil
+                                   signalSendToResultDelegate:nil
+                                   signalIncomingMessageDelegate:nil
+                                   callbackExecutionType:PEPTransportCallbackExcecutionTypePolling
+                                   error:&error];
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-}
+    XCTAssertNil(error);
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    PEPTransportStatusCode statusCode = 0;
+    [transport startup:NULL transportStatusCode:&statusCode error:&error];
+    XCTAssertNotNil(error);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionNoConfig);
 }
 
 @end
