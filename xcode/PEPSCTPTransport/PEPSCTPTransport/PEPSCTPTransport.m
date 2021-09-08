@@ -57,9 +57,9 @@ BOOL setTransportStatusCodeError(PEPTransportStatusCode transportStatusCode,
                                  PEPTransportStatusCode * _Nonnull targetTransportStatusCode,
                                  NSError * _Nullable __autoreleasing * _Nullable error)
 {
-    if ([NSError isErrorCCTransportStatusCode:transportStatusCode]) {
+    if ([NSError isErrorTransportStatusCode:transportStatusCode]) {
         if (error != nil) {
-            *error = [NSError errorWithPEPCCTransportStatusCode:transportStatusCode];
+            *error = [NSError errorWithPEPTransportStatusCode:transportStatusCode];
         }
 
         *targetTransportStatusCode = transportStatusCode;

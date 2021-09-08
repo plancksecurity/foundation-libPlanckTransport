@@ -65,7 +65,7 @@ NSString *const _Nonnull PEPErrorDomain = @"PEPCCErrorDomain";
 
 + (NSError * _Nullable)errorWithPEPTransportStatusCode:(PEPTransportStatusCode)statusCode
 {
-    if ([self isErrorCCTransportStatusCode:statusCode]) {
+    if ([self isErrorTransportStatusCode:statusCode]) {
         NSDictionary *dict = [NSDictionary
                               dictionaryWithObjectsAndKeys:localizedErrorStringFromPEPTransportStatusCode(statusCode),
                               NSLocalizedDescriptionKey, nil];
