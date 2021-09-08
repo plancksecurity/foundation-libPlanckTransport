@@ -10,11 +10,11 @@
 #import "PEPSCTPTransport.h"
 #import "TestConstants.h"
 
-@interface PEPSCTPTransportTests : XCTestCase
+@interface PEPMessageASN1Tests : XCTestCase
 
 @end
 
-@implementation PEPSCTPTransportTests
+@implementation PEPMessageASN1Tests
 
 - (void)testStartupWithoutConfigLeadsToError
 {
