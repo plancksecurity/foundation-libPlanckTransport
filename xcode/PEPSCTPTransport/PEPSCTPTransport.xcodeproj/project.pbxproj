@@ -130,9 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				4319650C26E7A94E00232A6E /* NSError+PEPSCTPTransport.m */,
+				4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */,
 				4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */,
 				4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */,
-				4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */,
 			);
 			path = Error;
 			sourceTree = "<group>";
