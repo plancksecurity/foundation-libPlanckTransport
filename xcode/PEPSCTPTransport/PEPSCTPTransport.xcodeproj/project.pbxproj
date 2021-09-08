@@ -37,6 +37,7 @@
 		431316B826E8A335006EA5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		431316C026E8A44D006EA5B6 /* PEPMessageASN1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPMessageASN1Tests.m; sourceTree = "<group>"; };
 		4313177526E8C88A006EA5B6 /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportProtocol.h; sourceTree = "<group>"; };
+		4313177726E8C8E9006EA5B6 /* TestConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestConstants.h; sourceTree = "<group>"; };
 		431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPSCTPTransport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPSCTPTransport.h; sourceTree = "<group>"; };
 		431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPSCTPTransport.m; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		4319650626E7A93F00232A6E /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				4313177726E8C8E9006EA5B6 /* TestConstants.h */,
 				4319650726E7A93F00232A6E /* PEPMessage+ASN1.m */,
 				4319650826E7A93F00232A6E /* PEPMessage+ASN1.h */,
 			);
