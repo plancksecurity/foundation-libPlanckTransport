@@ -45,7 +45,8 @@ NSString *const _Nonnull PEPErrorDomain = @"PEPCCErrorDomain";
     }
 }
 
-+ (BOOL)isErrorTransportStatusCode:(PEPTransportStatusCode)statusCode {
++ (BOOL)isErrorTransportStatusCode:(PEPTransportStatusCode)statusCode
+{
     switch (statusCode) {
             // Status that are not an error
         case PEPTransportStatusCodeReady:
@@ -56,7 +57,8 @@ NSString *const _Nonnull PEPErrorDomain = @"PEPCCErrorDomain";
             return NO;
             break;
         }
-        default: {
+        default:
+        {
             return YES;
             break;
         }
