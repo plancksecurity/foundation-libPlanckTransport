@@ -17,14 +17,17 @@ NSString *const _Nonnull PEPErrorDomain = @"PEPCCErrorDomain";
 
 // MARK: - API
 
-+ (BOOL)isErrorPEPStatus:(PEP_STATUS)status {
++ (BOOL)isErrorPEPStatus:(PEP_STATUS)status
+{
     switch (status) {
         case PEP_ILLEGAL_VALUE:
-        case PEP_OUT_OF_MEMORY: {
+        case PEP_OUT_OF_MEMORY:
+        {
             return YES;
             break;
         }
-        default: {
+        default:
+        {
             return NO;
             break;
         }
@@ -113,11 +116,13 @@ NSString *const _Nonnull PEPErrorDomain = @"PEPCCErrorDomain";
 }
 
 /// Could in theory return a fully localized version of the underlying error.
-NSString * _Nonnull localizedErrorStringFromPEPTransportStatusCode(PEPTransportStatusCode status) {
+NSString * _Nonnull localizedErrorStringFromPEPTransportStatusCode(PEPTransportStatusCode status)
+{
     return stringFromPEPTransportStatusCode(status);
 }
 
-NSString * _Nonnull stringFromPEPTransportStatusCode(PEPTransportStatusCode status) {
+NSString * _Nonnull stringFromPEPTransportStatusCode(PEPTransportStatusCode status)
+{
     return [NSString stringWithFormat:@"PEPCCTransportStatusCode: %ld", (long)status];
 }
 
