@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		431316B726E8A335006EA5B6 /* PEPSCTPTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 431316B626E8A335006EA5B6 /* PEPSCTPTransportTests.m */; };
+		431316B926E8A335006EA5B6 /* libPEPSCTPTransport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */; };
 		431964FE26E7A8EF00232A6E /* PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */; };
 		4319650026E7A8EF00232A6E /* PEPSCTPTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */; };
 		4319650926E7A93F00232A6E /* PEPMessage+ASN1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319650726E7A93F00232A6E /* PEPMessage+ASN1.m */; };
@@ -17,7 +19,20 @@
 		4319651326E7A94E00232A6E /* NSError+PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		431316BA26E8A335006EA5B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 431964F226E7A8EF00232A6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 431964F926E7A8EF00232A6E;
+			remoteInfo = PEPSCTPTransport;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		431316B426E8A335006EA5B6 /* PEPSCTPTransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEPSCTPTransportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		431316B626E8A335006EA5B6 /* PEPSCTPTransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPSCTPTransportTests.m; sourceTree = "<group>"; };
+		431316B826E8A335006EA5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPSCTPTransport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPSCTPTransport.h; sourceTree = "<group>"; };
 		431964FF26E7A8EF00232A6E /* PEPSCTPTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPSCTPTransport.m; sourceTree = "<group>"; };
@@ -30,6 +45,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		431316B126E8A335006EA5B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				431316B926E8A335006EA5B6 /* libPEPSCTPTransport.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		431964F826E7A8EF00232A6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -40,10 +63,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		431316B526E8A335006EA5B6 /* PEPSCTPTransportTests */ = {
+			isa = PBXGroup;
+			children = (
+				431316B626E8A335006EA5B6 /* PEPSCTPTransportTests.m */,
+				431316B826E8A335006EA5B6 /* Info.plist */,
+			);
+			path = PEPSCTPTransportTests;
+			sourceTree = "<group>";
+		};
 		431964F126E7A8EF00232A6E = {
 			isa = PBXGroup;
 			children = (
 				431964FC26E7A8EF00232A6E /* PEPSCTPTransport */,
+				431316B526E8A335006EA5B6 /* PEPSCTPTransportTests */,
 				431964FB26E7A8EF00232A6E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */,
+				431316B426E8A335006EA5B6 /* PEPSCTPTransportTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +139,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		431316B326E8A335006EA5B6 /* PEPSCTPTransportTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 431316BE26E8A335006EA5B6 /* Build configuration list for PBXNativeTarget "PEPSCTPTransportTests" */;
+			buildPhases = (
+				431316B026E8A335006EA5B6 /* Sources */,
+				431316B126E8A335006EA5B6 /* Frameworks */,
+				431316B226E8A335006EA5B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				431316BB26E8A335006EA5B6 /* PBXTargetDependency */,
+			);
+			name = PEPSCTPTransportTests;
+			productName = PEPSCTPTransportTests;
+			productReference = 431316B426E8A335006EA5B6 /* PEPSCTPTransportTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		431964F926E7A8EF00232A6E /* PEPSCTPTransport */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4319650326E7A8EF00232A6E /* Build configuration list for PBXNativeTarget "PEPSCTPTransport" */;
@@ -130,6 +182,9 @@
 			attributes = {
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					431316B326E8A335006EA5B6 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					431964F926E7A8EF00232A6E = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -149,11 +204,30 @@
 			projectRoot = "";
 			targets = (
 				431964F926E7A8EF00232A6E /* PEPSCTPTransport */,
+				431316B326E8A335006EA5B6 /* PEPSCTPTransportTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		431316B226E8A335006EA5B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		431316B026E8A335006EA5B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				431316B726E8A335006EA5B6 /* PEPSCTPTransportTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		431964F726E7A8EF00232A6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,7 +240,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		431316BB26E8A335006EA5B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 431964F926E7A8EF00232A6E /* PEPSCTPTransport */;
+			targetProxy = 431316BA26E8A335006EA5B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		431316BC26E8A335006EA5B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NQLYU6MGPN;
+				INFOPLIST_FILE = PEPSCTPTransportTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = security.pEp.PEPSCTPTransportTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		431316BD26E8A335006EA5B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NQLYU6MGPN;
+				INFOPLIST_FILE = PEPSCTPTransportTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = security.pEp.PEPSCTPTransportTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4319650126E7A8EF00232A6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -313,6 +429,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		431316BE26E8A335006EA5B6 /* Build configuration list for PBXNativeTarget "PEPSCTPTransportTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				431316BC26E8A335006EA5B6 /* Debug */,
+				431316BD26E8A335006EA5B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		431964F526E7A8EF00232A6E /* Build configuration list for PBXProject "PEPSCTPTransport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
