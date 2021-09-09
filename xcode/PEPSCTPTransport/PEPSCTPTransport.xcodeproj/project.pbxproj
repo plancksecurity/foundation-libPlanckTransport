@@ -47,6 +47,7 @@
 		4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+internal.h"; sourceTree = "<group>"; };
 		4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+ErrorCode.h"; sourceTree = "<group>"; };
 		4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport.h"; sourceTree = "<group>"; };
+		43DA365826E9E33E002C2D1C /* CommonPEPDependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonPEPDependencies.xcodeproj; path = "../../../common-dependency-build-helpers-4-apple-hardware/CommonPEPDependencies/CommonPEPDependencies.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 		431964F126E7A8EF00232A6E = {
 			isa = PBXGroup;
 			children = (
+				43DA365826E9E33E002C2D1C /* CommonPEPDependencies.xcodeproj */,
 				431964FC26E7A8EF00232A6E /* PEPSCTPTransport */,
 				431316B526E8A335006EA5B6 /* PEPSCTPTransportTests */,
 				431964FB26E7A8EF00232A6E /* Products */,
@@ -135,6 +137,13 @@
 				4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		43DA365926E9E33E002C2D1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +227,12 @@
 			mainGroup = 431964F126E7A8EF00232A6E;
 			productRefGroup = 431964FB26E7A8EF00232A6E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 43DA365926E9E33E002C2D1C /* Products */;
+					ProjectRef = 43DA365826E9E33E002C2D1C /* CommonPEPDependencies.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				431964F926E7A8EF00232A6E /* PEPSCTPTransport */,
