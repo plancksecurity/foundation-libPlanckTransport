@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		431316B726E8A335006EA5B6 /* PEPSCTPTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 431316B626E8A335006EA5B6 /* PEPSCTPTransportTests.m */; };
-		431316B926E8A335006EA5B6 /* libPEPSCTPTransport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */; };
 		431316C126E8A44D006EA5B6 /* PEPMessageASN1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 431316C026E8A44D006EA5B6 /* PEPMessageASN1Tests.m */; };
 		4313177626E8C88A006EA5B6 /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 4313177526E8C88A006EA5B6 /* PEPTransportProtocol.h */; };
 		431964FE26E7A8EF00232A6E /* PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 431964FD26E7A8EF00232A6E /* PEPSCTPTransport.h */; };
@@ -20,6 +19,7 @@
 		4319651226E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */; };
 		4319651326E7A94E00232A6E /* NSError+PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */; };
 		436B2EDB26E9F89800A68D77 /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */; };
+		4383374926EA0049000D7A83 /* libPEPSCTPTransport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */; };
 		43D9AB6626E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D9AB6526E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				431316B926E8A335006EA5B6 /* libPEPSCTPTransport.a in Frameworks */,
+				4383374926EA0049000D7A83 /* libPEPSCTPTransport.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
