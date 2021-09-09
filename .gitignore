@@ -168,3 +168,4 @@ src/TransportStatusCode.kt
 
 # Local configuration
 src/local.conf
+/local.conf
