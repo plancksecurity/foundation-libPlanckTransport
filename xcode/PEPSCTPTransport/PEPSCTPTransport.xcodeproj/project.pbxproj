@@ -29,6 +29,27 @@
 			remoteGlobalIDString = 431964F926E7A8EF00232A6E;
 			remoteInfo = PEPSCTPTransport;
 		};
+		436B2ED326E9F86A00A68D77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1543DC66257943CE0041EFB5;
+			remoteInfo = PEPObjCAdapter_iOS;
+		};
+		436B2ED526E9F86A00A68D77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1552D93B2576602D00A92F71;
+			remoteInfo = PEPObjCAdapter_macOS;
+		};
+		436B2ED726E9F86A00A68D77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64415E171BE94FCB00F6CBB2;
+			remoteInfo = pEpObjCAdapterTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +68,7 @@
 		4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+internal.h"; sourceTree = "<group>"; };
 		4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+ErrorCode.h"; sourceTree = "<group>"; };
 		4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport.h"; sourceTree = "<group>"; };
+		436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pEpObjCAdapter.xcodeproj; path = ../../../pEpObjCAdapter/pEpObjCAdapter.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +112,7 @@
 		431964F126E7A8EF00232A6E = {
 			isa = PBXGroup;
 			children = (
+				436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */,
 				431964FC26E7A8EF00232A6E /* PEPSCTPTransport */,
 				431316B526E8A335006EA5B6 /* PEPSCTPTransportTests */,
 				431964FB26E7A8EF00232A6E /* Products */,
@@ -135,6 +158,16 @@
 				4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		436B2EC126E9F86900A68D77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				436B2ED426E9F86A00A68D77 /* libPEPObjCAdapter_iOS.a */,
+				436B2ED626E9F86A00A68D77 /* libPEPObjCAdapter_macOS.a */,
+				436B2ED826E9F86A00A68D77 /* pEpObjCAdapterTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +251,12 @@
 			mainGroup = 431964F126E7A8EF00232A6E;
 			productRefGroup = 431964FB26E7A8EF00232A6E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 436B2EC126E9F86900A68D77 /* Products */;
+					ProjectRef = 436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				431964F926E7A8EF00232A6E /* PEPSCTPTransport */,
@@ -225,6 +264,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		436B2ED426E9F86A00A68D77 /* libPEPObjCAdapter_iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEPObjCAdapter_iOS.a;
+			remoteRef = 436B2ED326E9F86A00A68D77 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		436B2ED626E9F86A00A68D77 /* libPEPObjCAdapter_macOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEPObjCAdapter_macOS.a;
+			remoteRef = 436B2ED526E9F86A00A68D77 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		436B2ED826E9F86A00A68D77 /* pEpObjCAdapterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = pEpObjCAdapterTests.xctest;
+			remoteRef = 436B2ED726E9F86A00A68D77 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		431316B226E8A335006EA5B6 /* Resources */ = {
