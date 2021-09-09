@@ -19,6 +19,7 @@
 		4319651126E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650D26E7A94E00232A6E /* NSError+PEPSCTPTransport+internal.h */; };
 		4319651226E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */; };
 		4319651326E7A94E00232A6E /* NSError+PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */; };
+		436B2EDB26E9F89800A68D77 /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		4319650E26E7A94E00232A6E /* NSError+PEPSCTPTransport+ErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport+ErrorCode.h"; sourceTree = "<group>"; };
 		4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport.h"; sourceTree = "<group>"; };
 		436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pEpObjCAdapter.xcodeproj; path = ../../../pEpObjCAdapter/pEpObjCAdapter.xcodeproj; sourceTree = "<group>"; };
+		436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPEPObjCTypes_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436B2EDB26E9F89800A68D77 /* libPEPObjCTypes_macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +119,7 @@
 				431964FC26E7A8EF00232A6E /* PEPSCTPTransport */,
 				431316B526E8A335006EA5B6 /* PEPSCTPTransportTests */,
 				431964FB26E7A8EF00232A6E /* Products */,
+				436B2ED926E9F89800A68D77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +172,14 @@
 				436B2ED826E9F86A00A68D77 /* pEpObjCAdapterTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		436B2ED926E9F89800A68D77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
