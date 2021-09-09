@@ -20,6 +20,7 @@
 		4319651326E7A94E00232A6E /* NSError+PEPSCTPTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */; };
 		436B2EDB26E9F89800A68D77 /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */; };
 		4383374926EA0049000D7A83 /* libPEPSCTPTransport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 431964FA26E7A8EF00232A6E /* libPEPSCTPTransport.a */; };
+		4383374B26EA07C4000D7A83 /* libpEpASN1_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4383374A26EA07C4000D7A83 /* libpEpASN1_macOS.a */; };
 		43D9AB6626E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D9AB6526E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		4319650F26E7A94E00232A6E /* NSError+PEPSCTPTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPSCTPTransport.h"; sourceTree = "<group>"; };
 		436B2EC026E9F86900A68D77 /* pEpObjCAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pEpObjCAdapter.xcodeproj; path = ../../../pEpObjCAdapter/pEpObjCAdapter.xcodeproj; sourceTree = "<group>"; };
 		436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPEPObjCTypes_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4383374A26EA07C4000D7A83 /* libpEpASN1_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpEpASN1_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D9AB6526E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPEPObjCTypeUtils_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4383374B26EA07C4000D7A83 /* libpEpASN1_macOS.a in Frameworks */,
 				43D9AB6626E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a in Frameworks */,
 				436B2EDB26E9F89800A68D77 /* libPEPObjCTypes_macOS.a in Frameworks */,
 			);
@@ -180,6 +183,7 @@
 		436B2ED926E9F89800A68D77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4383374A26EA07C4000D7A83 /* libpEpASN1_macOS.a */,
 				43D9AB6526E9FAE8000DD1C3 /* libPEPObjCTypeUtils_macOS.a */,
 				436B2EDA26E9F89800A68D77 /* libPEPObjCTypes_macOS.a */,
 			);
