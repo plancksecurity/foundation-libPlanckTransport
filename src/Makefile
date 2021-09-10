@@ -25,7 +25,7 @@ TransportStatusCode.kt: gen_kotlin.ysl2 transport_status_code.yml2 $(TSC)
 	$(YML2_PROC) -y $< -o $@ transport_status_code.yml2
 
 transport_status_code.cs: gen_cs.ysl2 transport_status_code.yml2 $(TSC)
-	yml2proc -y $< -o $@ transport_status_code.yml2
+	$(YML2_PROC) -y $< -o $@ transport_status_code.yml2
 
 install: $(TARGET)
 	mkdir -p $(PREFIX)/include/pEp
