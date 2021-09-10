@@ -1,5 +1,5 @@
-#ifdef __TRANSPORT_HH__
-#define __TRANSPORT_HH__
+#ifndef __PEP__TRANSPORT_HH__
+#define __PEP__TRANSPORT_HH__
 
 #include <exception>
 #include <functional>
@@ -67,4 +67,4 @@ namespace pEp {
     };
 }
 
-#endif // __TRANSPORT_HH__
+#endif // __PEP_TRANSPORT_HH__
