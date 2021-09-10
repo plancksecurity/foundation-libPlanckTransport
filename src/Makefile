@@ -1,6 +1,7 @@
 YML2PROC?=yml2proc
+PREFIX?=$(HOME)
 
-TARGET=transport_status_code.h transport_status_code.c PEPTransportStatusCode.h TransportStatusCode.kt
+TARGET=transport_status_code.h transport_status_code.c PEPTransportStatusCode.h TransportStatusCode.kt transport_status_code.cs
 
 TSC=$(wildcard *.tsc)
 
@@ -18,7 +19,14 @@ PEPTransportStatusCode.h: gen_objc.ysl2 transport_status_code.yml2 $(TSC)
 TransportStatusCode.kt: gen_kotlin.ysl2 transport_status_code.yml2 $(TSC)
 	yml2proc -y $< -o $@ transport_status_code.yml2
 
-.PHONY: clean
+transport_status_code.cs: gen_cs.ysl2 transport_status_code.yml2 $(TSC)
+	yml2proc -y $< -o $@ transport_status_code.yml2
+
+.PHONY: clean install
 
 clean:
 	rm -f $(TARGET)
+
+install:
+	mkdir -p $(PREFIX)/include/pEp
+	cp -f transport_status_code.h $(PREFIX)/include/pEp/

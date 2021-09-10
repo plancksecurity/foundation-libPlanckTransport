@@ -1,0 +1,37 @@
+include yslt.yml2
+
+tstylesheet {
+    include standardlib.ysl2
+
+    template "/enum"
+    ||
+    namespace pEp {
+        enum «yml:CamelCase(@name)»
+        {
+        `` apply "item|doc", 2
+        }
+    }
+    ||
+
+    template "item" {
+        param "hexdigits", 8;
+        indent 0;
+        choose {
+            when "@output='hex'"
+                > «yml:CamelCase(@name)» = 0x«yml:dec2hex(.,$hexdigits)»
+            otherwise
+                > «yml:CamelCase(@name)» = «.»
+        }
+        if "position()!=last()" > ,
+        if "@doc" >  // «@doc»
+        > \n
+    }
+
+    template "doc"
+    ||
+
+    // «.»
+
+    ||
+}
+

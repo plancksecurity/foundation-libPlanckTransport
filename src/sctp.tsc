@@ -1,3 +1,3 @@
-doc > transport status codes for p≡p over SCTP (0x04)
+doc > transport status codes for pEp over SCTP (0x04)
 
 hex unkown_sctp_error               0x04ffffff;
