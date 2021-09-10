@@ -1,5 +1,5 @@
-#ifndef __PEP__TRANSPORT_HH__
-#define __PEP__TRANSPORT_HH__
+#ifndef __PEP_TRANSPORT_HH__
+#define __PEP_TRANSPORT_HH__
 
 #include <exception>
 #include <functional>
