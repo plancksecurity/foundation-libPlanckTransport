@@ -167,3 +167,6 @@ src/transport_status_code.c
 src/TransportStatusCode.kt
 src/transport_status_code.cs
 
+# Local configuration
+src/local.conf
+/local.conf
