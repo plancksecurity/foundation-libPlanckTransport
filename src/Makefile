@@ -3,7 +3,7 @@ include ../Makefile.conf
 YML2PROC?=yml2proc
 PREFIX?=$(HOME)
 
-TARGET=transport_status_code.h transport_status_code.c PEPTransportStatusCode.h TransportStatusCode.kt transport_status_code.cs
+TARGET=transport_status_code.h transport_status_code.c PEPTransportStatusCode.h TransportStatusCode.kt TransportStatusCode.cs
 
 HEADERS=$(wildcard *.hh *.hxx *.h)
 TSC=$(wildcard *.tsc)
@@ -24,7 +24,7 @@ PEPTransportStatusCode.h: gen_objc.ysl2 transport_status_code.yml2 $(TSC)
 TransportStatusCode.kt: gen_kotlin.ysl2 transport_status_code.yml2 $(TSC)
 	$(YML2_PROC) -y $< -o $@ transport_status_code.yml2
 
-transport_status_code.cs: gen_cs.ysl2 transport_status_code.yml2 $(TSC)
+TransportStatusCode.cs: gen_cs.ysl2 transport_status_code.yml2 $(TSC)
 	$(YML2_PROC) -y $< -o $@ transport_status_code.yml2
 
 install: $(TARGET)
