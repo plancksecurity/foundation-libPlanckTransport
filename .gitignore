@@ -166,6 +166,8 @@ src/transport_status_code.h
 src/transport_status_code.c
 src/TransportStatusCode.kt
 src/TransportStatusCode.cs
+src/*.xml
+src/*.xsl
 
 # Local configuration
 src/local.conf
