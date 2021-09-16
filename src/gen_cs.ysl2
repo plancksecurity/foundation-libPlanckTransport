@@ -14,7 +14,7 @@ tstylesheet {
 
     template "/enum"
     ||
-    import System;
+    using System;
 
     namespace pEp {
         enum «yml:CamelCase(@name)»
@@ -23,14 +23,14 @@ tstylesheet {
         }
 
         `` apply "item", mode=exception
-        class UnknownErrorException : Exception { }
+        class UnknownTSCErrorException : Exception { }
         
         class «yml:CamelCase(@name)»Converter {
             public static void throwTSCError(TransportStatusCode tsc) {
                 switch (tsc) {
                     ``apply "item", 4, mode=case
                     default:
-                        throw new UnknownErrorException();
+                        throw new UnknownTSCErrorException();
                 }
             }
         }
@@ -58,7 +58,7 @@ tstylesheet {
     }
 
     template "item", mode=case {
-        | case «yml:CamelCase(@name)»:
+        | case TransportStatusCode.«yml:CamelCase(@name)»:
         const "isError" call "isError" with "tsc", ".";
         choose {
             when "$isError > 127"
