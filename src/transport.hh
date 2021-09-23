@@ -13,8 +13,8 @@ namespace pEp {
         struct TransportError : std::runtime_error {
             const PEP_transport_status_code tsc;
 
-            TransportError(PEP_transport_status_code tsc) :
-                std::runtime_error("transport error"), tsc(tsc)
+            explicit TransportError(PEP_transport_status_code tsc) :
+            std::runtime_error("transport error"), tsc(tsc)
             {
             }
         };
