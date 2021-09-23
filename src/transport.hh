@@ -5,28 +5,10 @@
 #include <functional>
 #include <pEp/transport_status_code.h>
 #include <pEp/types.hh>
+#include <pEp/transport.h>
 
 namespace pEp {
     class Transport {
-        enum class PEP_transport_id
-        {
-            EMAIL,
-            RCE,
-            PDL,
-            SCTP,
-            CONTROL_CHANNEL
-        };
-
-        enum class PEP_callback_execution_mode
-        {
-            PEP_cbe_polling,
-            // TODO WHAT else?
-        };
-        const PEP_transport_id id;
-
-    protected:
-        PEP_transport_status_code current_status;
-
     public:
         struct TransportError : std::runtime_error {
             const PEP_transport_status_code tsc;
