@@ -7,7 +7,7 @@
 #include <pEp/transport.h>
 
 namespace pEp {
-    class Transport {
+    class pEpTransport {
     public:
         // Types
         // -----
@@ -33,10 +33,10 @@ namespace pEp {
 
         // Ctors
         // -----
-        explicit Transport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
-        Transport(const Transport&) = delete;
-        Transport& operator=(const Transport&) = delete;
-        virtual ~Transport() = default;
+        explicit pEpTransport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
+        pEpTransport(const pEpTransport&) = delete;
+        pEpTransport& operator=(const pEpTransport&) = delete;
+        virtual ~pEpTransport() = default;
 
         // required for compat with the c interface transport.h because of missing polymorphism in c
         PEP_transport_id get_id()
