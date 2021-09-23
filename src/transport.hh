@@ -43,12 +43,17 @@ namespace pEp {
         // the signal_ function register signal handlers
         // they must be called while a transport is running, otherwise they
         // throw std::logic_error in case the transport is shut down
-
+        // TODO: heck: "They" refers to the handlers, not the register functions
+        // can we call them "register_"
         virtual void signal_statuschange(std::function<void(PEP_transport_status_code)> handler) = 0;
 
         virtual void signal_sendto_result(
             std::function<void(std::string, std::string, PEP_transport_status_code)> handler) = 0;
 
+        // Called on every message added to rx-queue
+        // The message can be fetched using recvnext()
+        // in case of callback_execution:::PEP_cbe_polling
+        // This callback is not expected to be used
         virtual void signal_incoming_message(std::function<void(PEP_transport_status_code)> handler) = 0;
 
         virtual void configure(const Config& config) = 0;
@@ -56,7 +61,16 @@ namespace pEp {
             PEP_callback_execution_mode cbe = PEP_callback_execution_mode::PEP_cbe_polling) = 0;
         virtual void shutdown() = 0;
 
+        // non-blocking
+        // Does not throw or deliver any kind of status, since it only puts the message on the
+        // tx-queue which succeeds always
+        // TODO: what id the queue is full? std::overflow_error?
         virtual void sendto(Message& msg) = 0;
+
+        // Potentially throws TransportError
+        // In case of callback_execution:::PEP_cbe_polling this needs to called repeatedly.
+        // In case of callback_execution:::PEP_cbe_async this only needs to be called after a
+        // signal_incoming_message() has been received.
         virtual Message recvnext() = 0;
 
         virtual bool shortmsg_supported() = 0;
