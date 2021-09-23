@@ -63,14 +63,13 @@ namespace pEp {
         virtual void signal_incoming_message(std::function<void(PEP_transport_status_code)> handler) = 0;
 
         virtual void configure(const Config& config) = 0;
-        virtual void startup(callback_execution cbe = PEP_cbe_polling) = 0;
+        virtual void startup(const callback_execution& cbe = PEP_cbe_polling) = 0;
         virtual void shutdown() = 0;
 
         // non-blocking
-        // Does not throw or deliver any kind of status, since it only puts the message on the
-        // tx-queue which succeeds always
-        // TODO: what id the queue is full? std::overflow_error?
-        virtual void sendto(Message& msg) = 0;
+        // Pushes the msg onto the tx-queue.
+        // Throws TransportError with tsc tx_queue_overrun if the tx_queue is full.
+        virtual void sendto(const Message& msg) = 0;
 
         // non-blocking
         // pops the next msg off the rx-queue
