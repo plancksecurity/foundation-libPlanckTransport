@@ -9,11 +9,13 @@
 namespace pEp {
     class Transport {
     public:
+        // Types
+        // -----
         struct TransportError : std::runtime_error {
             const PEP_transport_status_code tsc;
 
             explicit TransportError(PEP_transport_status_code tsc) :
-            std::runtime_error("transport error"), tsc(tsc)
+                std::runtime_error("transport error"), tsc(tsc)
             {
             }
         };
@@ -29,16 +31,21 @@ namespace pEp {
             virtual ~Config() = 0;
         };
 
+        // Ctors
+        // -----
         explicit Transport(PEP_transport_id id) : id(id), current_status(0x00ffffff) {}
         Transport(const Transport&) = delete;
         Transport& operator=(const Transport&) = delete;
         virtual ~Transport() = default;
 
+        // required for compat with the c interface transport.h because of missing polymorphism in c
         PEP_transport_id get_id()
         {
             return id;
         }
 
+        // Callbacks
+        // ---------
         // the signal_ function register signal handlers
         // they must be called while a transport is running, otherwise they
         // throw std::logic_error in case the transport is shut down
@@ -65,7 +72,10 @@ namespace pEp {
         // TODO: what id the queue is full? std::overflow_error?
         virtual void sendto(Message& msg) = 0;
 
-        // Potentially throws TransportError
+        // non-blocking
+        // pops the next msg off the rx-queue
+        // Throws TransportError with tsc rx_queue_underrun if there is no message left to be received
+        // execution modes:
         // In case of callback_execution:::PEP_cbe_polling this needs to called repeatedly.
         // In case of callback_execution:::PEP_cbe_async this only needs to be called after a
         // signal_incoming_message() has been received.
