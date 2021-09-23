@@ -76,6 +76,12 @@ namespace pEp {
         virtual bool longmsg_supported() = 0;
         virtual bool longmsg_formatted_supported() = 0;
         virtual PEP_text_format native_text_format() = 0;
+
+    protected:
+        PEP_transport_status_code current_status;
+
+    private:
+        const PEP_transport_id id;
     };
 } // namespace pEp
 
