@@ -51,16 +51,37 @@ namespace pEp {
         // throw std::logic_error in case the transport is shut down
         // TODO: heck: "They" refers to the handlers, not the register functions
         // can we call them "register_"
-        virtual void signal_statuschange(std::function<void(PEP_transport_status_code)> handler) = 0;
+        // equivalent of transport.h:
+        //        typedef PEP_STATUS (*signal_statuschange_t)(PEP_transport_id id, PEP_transport_status_code tsc);
+        virtual void signal_statuschange(
+            std::function<void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>
+                handler) = 0;
 
-        virtual void signal_sendto_result(
-            std::function<void(std::string, std::string, PEP_transport_status_code)> handler) = 0;
+        // equivalent of transport.h:
+        //        typedef PEP_STATUS (*signal_sendto_result_t)(
+        //            PEP_transport_id id,
+        //            char* message_id,
+        //            char* address,
+        //            PEP_rating rating,
+        //            PEP_transport_status_code tsc);
+        // TODO: libpEpDatatypes is missing pEpRating
+        virtual void signal_sendto_result(std::function<void(
+                                              const PEP_transport_id& id,
+                                              const std::string& message_id,
+                                              const std::string& address,
+                                              /*pEpRating */
+                                              const PEP_transport_status_code& tsc)> handler) = 0;
 
         // Called on every message added to rx-queue
         // The message can be fetched using recvnext()
         // in case of callback_execution:::PEP_cbe_polling
         // This callback is not expected to be used
-        virtual void signal_incoming_message(std::function<void(PEP_transport_status_code)> handler) = 0;
+        // equivalent of transport.h:
+        //        typedef PEP_STATUS (
+        //            *signal_incoming_message_t)(PEP_transport_id id, PEP_transport_status_code tsc);
+        virtual void signal_incoming_message(
+            std::function<void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>
+                handler) = 0;
 
         virtual void configure(const Config& config) = 0;
         virtual void startup(const callback_execution& cbe = PEP_cbe_polling) = 0;
