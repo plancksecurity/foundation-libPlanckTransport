@@ -30,6 +30,8 @@ enum transport_status_code {
     hex recv_config_incomplete_or_wrong 0x00800009;
     hex network_timeout                 0x0080000a;
     hex could_not_deliver_giving_up     0x0080000b;
+    hex rx_queue_underrun               0x0080000c doc="indicates that there is no message left to be received";
+    hex tx_queue_overflow               0x0080000d doc="indicates that the transmit queue is full";
 
     doc > transport is shut down
 
