@@ -57,8 +57,7 @@ namespace pEp {
         virtual void signal_incoming_message(std::function<void(PEP_transport_status_code)> handler) = 0;
 
         virtual void configure(const Config& config) = 0;
-        virtual void startup(
-            PEP_callback_execution_mode cbe = PEP_callback_execution_mode::PEP_cbe_polling) = 0;
+        virtual void startup(callback_execution cbe = PEP_cbe_polling) = 0;
         virtual void shutdown() = 0;
 
         // non-blocking
