@@ -30,12 +30,10 @@ namespace pEp {
             virtual ~Config() = 0;
         };
 
-        Transport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
-
+        explicit Transport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
         Transport(const Transport&) = delete;
         Transport& operator=(const Transport&) = delete;
-
-        virtual ~Transport() {}
+        virtual ~Transport() = default;
 
         PEP_transport_id get_id()
         {
