@@ -23,18 +23,11 @@ namespace pEp {
             ConfigError() : std::logic_error("config error") {}
         };
 
+        // Abs. Baseclass for config
         class Config {
         public:
-            Config() {}
-
-            virtual Config& operator=(const Config& second) = 0;
-
-            Config(const Config& second)
-            {
-                *this = second;
-            }
-
-            virtual ~Config() {}
+            Config() = default;
+            virtual ~Config() = 0;
         };
 
         Transport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
