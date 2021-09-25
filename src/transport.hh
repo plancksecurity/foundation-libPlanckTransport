@@ -33,7 +33,7 @@ namespace pEp {
 
         // Ctors
         // -----
-        explicit Transport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
+        explicit Transport(PEP_transport_id id) : id(id), current_status(0x00ffffff) {}
         Transport(const Transport&) = delete;
         Transport& operator=(const Transport&) = delete;
         virtual ~Transport() = default;
