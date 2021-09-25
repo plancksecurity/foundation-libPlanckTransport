@@ -7,7 +7,7 @@
 #include <pEp/transport.h>
 
 namespace pEp {
-    class pEpTransport {
+    class Transport {
     public:
         // Types
         // -----
