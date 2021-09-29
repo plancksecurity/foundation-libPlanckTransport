@@ -3,7 +3,7 @@
 
 #include <exception>
 #include <functional>
-#include <pEp/types.hh>
+// #include <pEp/types.hh>
 #include <pEp/transport.h>
 
 namespace pEp {
@@ -90,7 +90,7 @@ namespace pEp {
         // non-blocking
         // Pushes the msg onto the tx-queue.
         // Throws TransportError with tsc tx_queue_overrun if the tx_queue is full.
-        virtual void sendto(const Message& msg) = 0;
+        virtual void sendto(const ::message* msg) = 0;
 
         // non-blocking
         // pops the next msg off the rx-queue
@@ -99,7 +99,7 @@ namespace pEp {
         // In case of callback_execution:::PEP_cbe_polling this needs to called repeatedly.
         // In case of callback_execution:::PEP_cbe_async this only needs to be called after a
         // signal_incoming_message() has been received.
-        virtual Message recvnext() = 0;
+        virtual message* recvnext() = 0;
 
         virtual bool shortmsg_supported() = 0;
         virtual bool longmsg_supported() = 0;
