@@ -31,7 +31,6 @@ namespace pEp{
         // Abs. Baseclass for config
         class Config {
         public:
-            Config() = default;
             virtual ~Config() = 0;
         };
 
