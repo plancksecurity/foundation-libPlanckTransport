@@ -2,6 +2,8 @@
 #define __PEP_TRANSPORT_HH__
 
 #include <exception>
+#include <stdexcept>
+#include <string>
 #include <functional>
 // #include <pEp/types.hh>
 #include <pEp/transport.h>
