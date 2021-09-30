@@ -37,16 +37,13 @@ namespace pEp{
 
         // Ctors
         // -----
-        explicit Transport(PEP_transport_id id) : id(id), current_status(PEP_tsc_shut_down) {}
+        explicit Transport(PEP_transport_id id);
         Transport(const Transport&) = delete;
         Transport& operator=(const Transport&) = delete;
         virtual ~Transport() = default;
 
         // required for compat with the c interface transport.h because of missing polymorphism in c
-        PEP_transport_id get_id()
-        {
-            return id;
-        }
+        virtual PEP_transport_id get_id() = 0;
 
         // Callbacks
         // ---------
@@ -105,12 +102,6 @@ namespace pEp{
         virtual bool longmsg_supported() = 0;
         virtual bool longmsg_formatted_supported() = 0;
         virtual PEP_text_format native_text_format() = 0;
-
-    protected:
-        PEP_transport_status_code current_status;
-
-    private:
-        const PEP_transport_id id;
     };
 } // namespace pEp
 
