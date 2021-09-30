@@ -8,7 +8,9 @@
 // #include <pEp/types.hh>
 #include <pEp/transport.h>
 
-namespace pEp {
+namespace pEp{
+
+    // The implementation of the execution model is async/non-blocking using threads.
     class Transport {
     public:
         // Types
@@ -76,7 +78,6 @@ namespace pEp {
 
         // Called on every message added to rx-queue
         // The message can be fetched using recvnext()
-        // in case of callback_execution:::PEP_cbe_polling
         // This callback is not expected to be used
         // equivalent of transport.h:
         //        typedef PEP_STATUS (
@@ -86,7 +87,7 @@ namespace pEp {
                 handler) = 0;
 
         virtual void configure(const Config& config) = 0;
-        virtual void startup(const callback_execution& cbe = PEP_cbe_polling) = 0;
+        virtual void startup() = 0;
         virtual void shutdown() = 0;
 
         // non-blocking
@@ -97,10 +98,7 @@ namespace pEp {
         // non-blocking
         // pops the next msg off the rx-queue
         // Throws TransportError with tsc rx_queue_underrun if there is no message left to be received
-        // execution modes:
-        // In case of callback_execution:::PEP_cbe_polling this needs to called repeatedly.
-        // In case of callback_execution:::PEP_cbe_async this only needs to be called after a
-        // signal_incoming_message() has been received.
+        // this only needs to be called after asignal_incoming_message() has been received.
         virtual message* recvnext() = 0;
 
         virtual bool shortmsg_supported() = 0;
