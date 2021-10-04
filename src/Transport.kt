@@ -3,27 +3,38 @@ package foundation.pEp
 import foundation.pEp.jniadapter.Message
 
 /**
- * # pEp distributed ledger transport interface
+ * # pEp distributed transport Kotlin interface
  */
-abstract class PdlTransport {
-    val id = 0x03
-    val uriScheme = "etherum"
+abstract class Transport {
+    /**
+     * Transport id
+     *
+     * Exaple: 0x03 (for pdl)
+     */
+    abstract val id
+
+    /**
+     * Transport uri scheme.
+     *
+     * Example: "ethereum" (for pdl)
+     */
+    abstract val uriScheme
 
     abstract fun configure() : TransportStatusCode   // To be defined, what needs to be configured.
-    
+
     /**
      * Startup
-     * 
-     * Start the PDL broadcast channel and subscribe to it
-     * 
+     *
+     * Start transport channel and subscribe to it
+     *
      * @return Status code
      */
     abstract fun startup() : TransportStatusCode
-    
+
     /**
      * Shutdown
-     * 
-     * Stop the PDL broadcast channel and unsubscribe from it
+     *
+     * Stop transport channel and unsubscribe/disconnect from it
      *
      * @return Status code
      */
@@ -31,8 +42,8 @@ abstract class PdlTransport {
 
     /**
      * Send
-     * 
-     * Send the message to the ledger 
+     *
+     * Send the message to the transport
      *
      * @return Status code
      */
@@ -40,8 +51,8 @@ abstract class PdlTransport {
 
     /**
      * Receive Next
-     * 
-     * Receive next message from the broadcast/ledger
+     *
+     * Receive next message from transport
      *
      * @return Pair where first is the Result containing the message received or the exception produced and second is the TransportStatusCode
      */
@@ -73,7 +84,7 @@ data class StatusChanged (
         TODO("Not yet implemented")
     }
 }
- class OnSent (                             // Data class to notify message sent
+class OnSent (                             // Data class to notify message sent
     val messageId: String,
     val address: String,
     val result: Result<Message>                 // Result is the sent message on success or an Exception on failure
