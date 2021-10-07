@@ -8,7 +8,7 @@
 // #include <pEp/types.hh>
 #include <pEp/transport.h>
 
-namespace pEp{
+namespace pEp {
 
     // The implementation of the execution model is async/non-blocking using threads.
     class Transport {
@@ -36,7 +36,7 @@ namespace pEp{
 
         // Ctors
         // -----
-        explicit Transport(PEP_transport_id id);
+        explicit Transport(PEP_transport_id id) { }
         Transport(const Transport&) = delete;
         Transport(const Transport&&) = delete;
         Transport& operator=(const Transport&) = delete;

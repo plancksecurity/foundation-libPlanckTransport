@@ -40,4 +40,4 @@ uninstall:
 	cd $(PREFIX)/lib && rm -vf $(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) *.xml *.xsl
