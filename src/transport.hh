@@ -34,15 +34,6 @@ namespace pEp {
             virtual ~Config() = 0;
         };
 
-        // Ctors
-        // -----
-        explicit Transport(PEP_transport_id id) { }
-        Transport(const Transport&) = delete;
-        Transport(const Transport&&) = delete;
-        Transport& operator=(const Transport&) = delete;
-        Transport& operator=(const Transport&&) = delete;
-        virtual ~Transport() = default;
-
         // required for compat with the c interface transport.h because of missing polymorphism in c
         virtual PEP_transport_id get_id() = 0;
 
