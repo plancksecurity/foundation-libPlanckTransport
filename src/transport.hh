@@ -43,9 +43,11 @@ namespace pEp {
         // they must be called while a transport is running, otherwise they
         // throw std::logic_error in case the transport is shut down
         // TODO: heck: "They" refers to the handlers, not the register functions
-        // can we call them "register_"
+        // TODO: can we call them "register_", "callback_  or "cb_"?
         // equivalent of transport.h:
         //        typedef PEP_STATUS (*signal_statuschange_t)(PEP_transport_id id, PEP_transport_status_code tsc);
+        // TODO terminology suggestion:
+        // signal_transport_status() (using PEP_transport_status)
         virtual void signal_statuschange(
             std::function<void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>
                 handler) = 0;
@@ -57,13 +59,16 @@ namespace pEp {
         //            char* address,
         //            PEP_rating rating,
         //            PEP_transport_status_code tsc);
-        // TODO: libpEpDatatypes is missing pEpRating
+        // TODO terminology suggestion:
+        // signal_message_status() (using PEP_message_status)
         virtual void signal_sendto_result(std::function<void(
                                               const PEP_transport_id& id,
                                               const std::string& message_id,
+                                              // TODO: how does "address" behave with multicast messages?
+                                              // Cant we just rempve address, message_id is unique
                                               const std::string& address,
                                               /*pEpRating */
-                                              const PEP_transport_status_code& tsc)> handler) = 0;
+                                               const PEP_transport_status_code& tsc)> handler) = 0;
 
         // Called on every message added to rx-queue
         // The message can be fetched using recvnext()
