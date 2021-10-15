@@ -14,22 +14,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)signalSendToResultWithTransportID:(PEPTransportID)transportID
                                 messageID:(NSString *)messageID
                                   address:(NSString *)address
-                               statusCode:(PEPTransportStatusCode *)statusCode
-                                    error:(NSError * _Nullable * _Nullable)error;
+                               statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
 @protocol PEPTransportIncomingMessageDelegate <NSObject>
 
 - (BOOL)signalIncomingMessageWithTransportID:(PEPTransportID)transportID
-                                  statusCode:(PEPTransportStatusCode *)statusCode
-                                       error:(NSError * _Nullable * _Nullable)error;
+                                  statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
 @protocol PEPTransportStatusChangeDelegate <NSObject>
 
 - (BOOL)signalStatusChangeWithTransportID:(PEPTransportID)transportID
-                               statusCode:(PEPTransportStatusCode *)statusCode
-                                    error:(NSError * _Nullable * _Nullable)error;
+                               statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
 /// Idea in a nutshell:
@@ -43,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///     - listen to incomingMessage delegate
 ///         - call nextMessage to get it
 /// shutdown
-@protocol PEPTransport <NSObject>
+@protocol PEPTransportProtocol <NSObject>
 
 @property (weak, nonatomic) id<PEPTransportSendToResultDelegate> signalSendToResultDelegate;
 @property (weak, nonatomic) id<PEPTransportIncomingMessageDelegate> signalIncomingMessageDelegate;
