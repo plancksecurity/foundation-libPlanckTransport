@@ -82,7 +82,7 @@ namespace pEp {
         // non-blocking
         // Pushes the msg onto the tx-queue.
         // Throws TransportError with tsc tx_queue_overrun if the tx_queue is full.
-        virtual void sendto(const ::message* msg) = 0;
+        virtual void sendto(::message* msg) = 0;
 
         // non-blocking
         // pops the next msg off the rx-queue
