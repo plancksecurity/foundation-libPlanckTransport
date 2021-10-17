@@ -72,7 +72,6 @@ namespace pEp {
 
         // Called on every message added to rx-queue
         // The message can be fetched using recvnext()
-        // This callback is not expected to be used
         // equivalent of transport.h:
         //        typedef PEP_STATUS (
         //            *signal_incoming_message_t)(PEP_transport_id id, PEP_transport_status_code tsc);
