@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol PEPTransportSendToResultDelegate <NSObject>
 
-- (BOOL)signalSendToResultWithTransportID:(PEPTransportID)transportID
+- (void)signalSendToResultWithTransportID:(PEPTransportID)transportID
                                 messageID:(NSString *)messageID
                                   address:(NSString *)address
                                statusCode:(PEPTransportStatusCode)statusCode;
@@ -19,13 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol PEPTransportIncomingMessageDelegate <NSObject>
 
-- (BOOL)signalIncomingMessageWithTransportID:(PEPTransportID)transportID
+- (void)signalIncomingMessageWithTransportID:(PEPTransportID)transportID
                                   statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
 @protocol PEPTransportStatusChangeDelegate <NSObject>
 
-- (BOOL)signalStatusChangeWithTransportID:(PEPTransportID)transportID
+- (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
