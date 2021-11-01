@@ -16,6 +16,8 @@ tstylesheet {
     `` apply "item|doc"
     } PEP_«@name»;
 
+    const char *«@name»_label(PEP_«@name» value);
+
     #ifdef __cplusplus
     }
     #endif
