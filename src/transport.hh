@@ -13,8 +13,20 @@ namespace pEp {
     // The implementation of the execution model is async/non-blocking using threads.
     class Transport {
     public:
-        // Types
-        // -----
+        using CBStatusChange = std::function<
+            void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>;
+        using CBSendToResult = std::function<void(
+            const PEP_transport_id& id,
+            const std::string& message_id,
+            //TODO: clarify with fdik: originally there was rating and address, too in here:
+            // but i dont have neither of those in avail. in my transport
+            // I only have a message status in form of a TSC
+            // const std::string& address,
+            // const pEpRating& rating
+            const PEP_transport_status_code& tsc)>;
+        using CBIncomminMessage = std::function<
+            void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>;
+
         struct TransportError : std::runtime_error {
             const PEP_transport_status_code tsc;
 
@@ -28,7 +40,6 @@ namespace pEp {
             ConfigError() : std::logic_error("config error") {}
         };
 
-        // Abs. Baseclass for config
         class Config {
         public:
             virtual ~Config() = 0;
@@ -48,9 +59,7 @@ namespace pEp {
         //        typedef PEP_STATUS (*signal_statuschange_t)(PEP_transport_id id, PEP_transport_status_code tsc);
         // TODO terminology suggestion:
         // signal_transport_status() (using PEP_transport_status)
-        virtual void signal_statuschange(
-            std::function<void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>
-                handler) = 0;
+        virtual void signal_statuschange(CBStatusChange handler) = 0;
 
         // equivalent of transport.h:
         //        typedef PEP_STATUS (*signal_sendto_result_t)(
@@ -61,23 +70,14 @@ namespace pEp {
         //            PEP_transport_status_code tsc);
         // TODO terminology suggestion:
         // signal_message_status() (using PEP_message_status)
-        virtual void signal_sendto_result(std::function<void(
-                                              const PEP_transport_id& id,
-                                              const std::string& message_id,
-                                              // TODO: how does "address" behave with multicast messages?
-                                              // Cant we just rempve address, message_id is unique
-                                              const std::string& address,
-                                              /*pEpRating */
-                                               const PEP_transport_status_code& tsc)> handler) = 0;
+        virtual void signal_sendto_result(CBSendToResult handler) = 0;
 
         // Called on every message added to rx-queue
         // The message can be fetched using recvnext()
         // equivalent of transport.h:
         //        typedef PEP_STATUS (
         //            *signal_incoming_message_t)(PEP_transport_id id, PEP_transport_status_code tsc);
-        virtual void signal_incoming_message(
-            std::function<void(const PEP_transport_id& id, const PEP_transport_status_code& tsc)>
-                handler) = 0;
+        virtual void signal_incoming_message(CBIncomminMessage handler) = 0;
 
         virtual void configure(const Config& config) = 0;
         virtual void startup() = 0;
