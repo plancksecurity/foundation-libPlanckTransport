@@ -75,13 +75,13 @@ abstract class Transport {
 }
 
 sealed interface Event {
-    fun post(status: Int)
+    fun post(status: TransportStatusCode)
 }
 
 data class StatusChanged (
     val newStatus: TransportStatusCode
 ) : Event {
-    override fun post(status: Int) {
+    override fun post(status: TransportStatusCode) {
         TODO("Not yet implemented")
     }
 }
@@ -91,7 +91,7 @@ class OnSent (                             // Data class to notify message sent
     val rating: Rating,
     val result: Result<Message>                 // Result is the sent message on success or an Exception on failure
 ) : Event {
-    override fun post(status: Int) {
+    override fun post(status: TransportStatusCode) {
         TODO("Not yet implemented")
     }
 }
