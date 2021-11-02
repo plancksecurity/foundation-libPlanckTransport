@@ -1,6 +1,7 @@
 package foundation.pEp
 
 import foundation.pEp.jniadapter.Message
+import foundation.pEp.jniadapter.Rating
 
 /**
  * # pEp distributed transport Kotlin interface
@@ -87,6 +88,7 @@ data class StatusChanged (
 class OnSent (                             // Data class to notify message sent
     val messageId: String,
     val address: String,
+    val rating: Rating,
     val result: Result<Message>                 // Result is the sent message on success or an Exception on failure
 ) : Event {
     override fun post(status: Int) {
