@@ -12,14 +12,14 @@ abstract class Transport {
      *
      * Exaple: 0x03 (for pdl)
      */
-    abstract val id
+    abstract val id: Int
 
     /**
      * Transport uri scheme.
      *
      * Example: "ethereum" (for pdl)
      */
-    abstract val uriScheme
+    abstract val uriScheme: String
 
     abstract fun configure() : TransportStatusCode   // To be defined, what needs to be configured.
 
