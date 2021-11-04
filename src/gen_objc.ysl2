@@ -24,7 +24,7 @@ tstylesheet {
             when "@output='hex'"
                 > PEP«yml:CamelCase(../@name)»«yml:CamelCase(@name)» = 0x«yml:dec2hex(.,$hexdigits)»
             otherwise
-                > PEP«CamelCase(../@name)»«CamelCase(@name)» = «.»
+                > PEP«yml:CamelCase(../@name)»«CamelCase(@name)» = «.»
         }
         if "position()!=last()" > ,
         if "@doc" >  // «@doc»

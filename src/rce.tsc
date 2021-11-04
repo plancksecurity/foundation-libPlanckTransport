@@ -1,5 +1,9 @@
 doc > transport status codes for RCE (0x02)
 
+hex rce_cannot_create_user          0x02800001;
+hex rce_cannot_login_user           0x02800002;
+hex rce_cannot_find_user            0x02800003;
+
 hex torrent_has_no_seeders          0x02ff0001;
 hex unknown_torrent_error           0x02ffffff;
 
