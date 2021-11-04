@@ -52,7 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (_Nullable instancetype)initWithSignalStatusChangeDelegate:(id<PEPTransportStatusChangeDelegate> _Nullable)signalStatusChangeDelegate
                                   signalSendToResultDelegate:(id<PEPTransportSendToResultDelegate> _Nullable)signalSendToResultDelegate
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
-                                       callbackExecutionType:(PEPTransportCallbackExcecutionType)callbackExecutionType
                                                        error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)     configure:(PEPTransport * _Nullable)pEptransport
