@@ -1,6 +1,7 @@
 package foundation.pEp
 
 import foundation.pEp.jniadapter.Message
+import foundation.pEp.jniadapter.Rating
 
 /**
  * # pEp distributed transport Kotlin interface
@@ -11,14 +12,14 @@ abstract class Transport {
      *
      * Exaple: 0x03 (for pdl)
      */
-    abstract val id
+    abstract val id: Int
 
     /**
      * Transport uri scheme.
      *
      * Example: "ethereum" (for pdl)
      */
-    abstract val uriScheme
+    abstract val uriScheme: String
 
     abstract fun configure() : TransportStatusCode   // To be defined, what needs to be configured.
 
@@ -74,22 +75,23 @@ abstract class Transport {
 }
 
 sealed interface Event {
-    fun post(status: Int)
+    fun post(status: TransportStatusCode)
 }
 
 data class StatusChanged (
     val newStatus: TransportStatusCode
 ) : Event {
-    override fun post(status: Int) {
+    override fun post(status: TransportStatusCode) {
         TODO("Not yet implemented")
     }
 }
 class OnSent (                             // Data class to notify message sent
     val messageId: String,
     val address: String,
+    val rating: Rating,
     val result: Result<Message>                 // Result is the sent message on success or an Exception on failure
 ) : Event {
-    override fun post(status: Int) {
+    override fun post(status: TransportStatusCode) {
         TODO("Not yet implemented")
     }
 }
