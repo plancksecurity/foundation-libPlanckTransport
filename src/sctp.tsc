@@ -1,3 +1,4 @@
 doc > transport status codes for pEp over SCTP (0x04)
 
+hex sctp_could_not_decode_asn1 0x04080001;
 hex sctp_unkown_error          0x04ffffff;
