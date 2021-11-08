@@ -81,28 +81,53 @@ abstract class Transport {
 
 }
 
-sealed interface Event {
-    fun post(status: TransportStatusCode)
-}
+/**
+ * Base Event that represents action that happened on Transport
+ *
+ * @property status event status code
+ * @constructor Create Event
+ */
+sealed class Event(private val status: TransportStatusCode)
 
-data class StatusChanged (
+/**
+ * Data class to notify status changes
+ * Equivalent to transport.h: signal_statuschange_t
+ *
+ * @property newStatus event status code
+ * @constructor Create StatusChanged Event
+ */
+data class StatusChanged(
     val newStatus: TransportStatusCode
-) : Event {
-    override fun post(status: TransportStatusCode) {
-        TODO("Not yet implemented")
-    }
-}
-class OnSent (                             // Data class to notify message sent
+) : Event(newStatus)
+
+/**
+ * Data class to notify message sent
+ * Equivalent to transport.h: signal_sendto_result_t
+ *
+ * @property status event status code
+ * @property messageId message id
+ * @property address address message was sent to
+ * @property rating rating of the message sent
+ * @property result Result with Message sent on success or Exception on Failure
+ * @constructor Create OnSent Event
+ */
+data class OnSent(
+    val status: TransportStatusCode,
     val messageId: String,
     val address: String,
     val rating: Rating,
-    val result: Result<Message>                 // Result is the sent message on success or an Exception on failure
-) : Event {
-    override fun post(status: TransportStatusCode) {
-        TODO("Not yet implemented")
-    }
-}
+    val result: Result<Message>
+) : Event(status)
 
-
-interface OnReceive : Event {                    // Notify message received to call receiveNext
-}
+/**
+ * Data class to notify message received
+ * Equivalent to transport.h: signal_incoming_message_t
+ *
+ * @property status event status code
+ * @property message message received
+ * @constructor Create OnReceive Event
+ */
+data class OnReceive(
+    val status: TransportStatusCode,
+    val message: Message
+) : Event(status)
