@@ -67,11 +67,17 @@ abstract class Transport {
     fun nativeTextFormat() = 0                      // plain = 0, other = 0xff
 
     /**
-     * Notify
+     * Get event flow
      *
-     * This is called when a new event happens, it includes de event and the status code of that event,
+     * Equivalent to transport.h: notify_transport_t, instead of getting callbacks,
+     * the events will be pushed to the flow
+     *
+     * Get Flow of Events,
+     * Usage: subscribe to it to receive the events
+     *
+     * @return Result Flow of events received
      */
-    fun notify(event: Event, status: TransportStatusCode) = event.post(status)
+    abstract fun getEventsFlow(): Flow<Event>
 
 }
 
