@@ -1,3 +1,5 @@
 doc > transport status codes for PDL (0x03)
 
-hex unknown_eth_error           0x03ffffff;
+hex cannot_reach_eth_network        0x03800001;
+hex cannot_decode_pdl_message       0x03800002;
+hex unknown_eth_error               0x03ffffff;

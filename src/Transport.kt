@@ -2,6 +2,7 @@ package foundation.pEp
 
 import foundation.pEp.jniadapter.Message
 import foundation.pEp.jniadapter.Rating
+import kotlinx.coroutines.flow.Flow
 
 /**
  * # pEp distributed transport Kotlin interface
@@ -21,7 +22,7 @@ abstract class Transport {
      */
     abstract val uriScheme: String
 
-    abstract fun configure() : TransportStatusCode   // To be defined, what needs to be configured.
+    abstract fun configure(): TransportStatusCode   // To be defined, what needs to be configured.
 
     /**
      * Startup
@@ -30,7 +31,7 @@ abstract class Transport {
      *
      * @return Result with status code
      */
-    abstract fun startup() : Result<TransportStatusCode>
+    abstract fun startup(): Result<TransportStatusCode>
 
     /**
      * Shutdown
@@ -39,7 +40,7 @@ abstract class Transport {
      *
      * @return Status code
      */
-    abstract fun shutdown() : TransportStatusCode
+    abstract fun shutdown(): TransportStatusCode
 
     /**
      * Send
@@ -48,7 +49,7 @@ abstract class Transport {
      *
      * @return Result with tatus code
      */
-    abstract fun send(message: Message) : Result<TransportStatusCode>
+    abstract fun send(message: Message): Result<TransportStatusCode>
 
 
     /**
@@ -60,7 +61,7 @@ abstract class Transport {
      */
     abstract fun getAllMessages(): Result<List<Message>>
 
-    fun isOnline() = true;
+    fun isOnline() = true
     fun supportsShortMsg() = false
     fun supportsLongMsg() = true
     fun supportsLongMsgFormatted() = false
