@@ -28,9 +28,9 @@ abstract class Transport {
      *
      * Start transport channel and subscribe to it
      *
-     * @return Status code
+     * @return Result with status code
      */
-    abstract fun startup() : TransportStatusCode
+    abstract fun startup() : Result<TransportStatusCode>
 
     /**
      * Shutdown
@@ -46,9 +46,10 @@ abstract class Transport {
      *
      * Send the message to the transport
      *
-     * @return Status code
+     * @return Result with tatus code
      */
-    abstract fun send(message: Message) : TransportStatusCode
+    abstract fun send(message: Message) : Result<TransportStatusCode>
+
 
     /**
      * Receive Next
