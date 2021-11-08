@@ -52,13 +52,13 @@ abstract class Transport {
 
 
     /**
-     * Receive Next
+     * Get all messages
      *
-     * Receive next message from transport
+     * Get all messages from pEp distributed transport
      *
-     * @return Pair where first is the Result containing the message received or the exception produced and second is the TransportStatusCode
+     * @return Result with list of messages or Exception
      */
-    abstract fun receiveNext(): Result<Pair<Message, TransportStatusCode>>
+    abstract fun getAllMessages(): Result<List<Message>>
 
     fun isOnline() = true;
     fun supportsShortMsg() = false
