@@ -5,6 +5,13 @@ tstylesheet {
 
     template "/enum"
     ||
+    ///
+    /// This file was automatically generated. Don't edit it manually.
+    ///
+    /// For details, see here:
+    /// https://gitea.pep.foundation/pEp.foundation/libpEpTransport
+    ///
+
     #ifndef __PEP«yml:CamelCase(@name)»_H__
     #define __PEP«yml:CamelCase(@name)»_H__
 
