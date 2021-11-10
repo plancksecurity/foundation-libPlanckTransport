@@ -180,6 +180,7 @@
 			);
 			outputPaths = (
 				"${PROJECT_DIR}/../build/include/pEp/PEPTransportStatusCode.h",
+				"${PROJECT_DIR}/../../src/PEPTransportStatusCode.h",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -l";
