@@ -33,7 +33,7 @@ transport_status_code.xml: transport_status_code.yml2 $(TSC)
 install: $(TARGET)
 	mkdir -p $(PREFIX)/include/pEp
 	mkdir -p $(PREFIX)/lib
-	cp -v $(TARGET) $(PREFIX)/include/pEp/
+	cp -v $(HEADERS) $(PREFIX)/include/pEp/
 
 uninstall:
 	cd $(PREFIX)/include/pEp && rm -vf $(HEADERS)
