@@ -172,3 +172,34 @@ src/*.xsl
 # Local configuration
 src/local.conf
 /local.conf
+
+### Gradle template
+build-gradle/.gradle
+build-gradle/**/build/
+build-gradle/!src/**/build/
+
+# Idea project config
+.idea/
+*.iml
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+### Kotlin template
+# Compiled class file
+*.class
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+### macOS template
+# General
+.DS_Store
+.AppleDouble
+.LSOverride

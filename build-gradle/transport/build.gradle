@@ -1,0 +1,45 @@
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
+    id 'java-library'
+}
+
+group 'security.pEp'
+version '0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main.kotlin.srcDirs = ['../../src']
+}
+
+dependencies {
+    implementation platform('org.jetbrains.kotlin:kotlin-bom')
+    implementation fileTree(dir: '../../../libs', include: ['*.jar'])
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt"
+}
+
+task cleanSrc() {
+    description = "make clean"
+    exec{
+        def command = ['make', 'clean']
+        workingDir "../../src"
+        commandLine command
+    }
+}
+
+task makeSrc(dependsOn: 'cleanSrc') {
+    description = "make src"
+    exec{
+        def command = ['make', 'all']
+        workingDir "../../src"
+        commandLine command
+    }
+}
+
+tasks.getByName('assemble').dependsOn(makeSrc)
+
+
