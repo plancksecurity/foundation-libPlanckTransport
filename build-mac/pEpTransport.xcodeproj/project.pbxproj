@@ -184,7 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -l";
-			shellScript = "export LANG=en_US.UTF-8\n\necho \"***************************************\"\necho \"*** Generate files: ACTION: $ACTION ***\"\necho \"***************************************\"\n\nMAKE_DIR=\"${PROJECT_DIR}/../../\"\nCUSTOM_BUILD_DIR=\"${PROJECT_DIR}/../build\"\n\nmkdir -p ${CUSTOM_BUILD_DIR}\n\npushd \"${MAKE_DIR}\"\n    echo \"PREFIX=${CUSTOM_BUILD_DIR}\" > local.conf\n    echo \"YML2_PATH=~/yml2\" >> local.conf\n    make src\n    make install\npopd\n";
+			shellScript = "export LANG=en_US.UTF-8\n\necho \"***************************************\"\necho \"*** Generate files: ACTION: $ACTION ***\"\necho \"***************************************\"\n\nMAKE_DIR=\"${PROJECT_DIR}/../\"\nCUSTOM_BUILD_DIR=\"${PROJECT_DIR}/../build\"\n\nmkdir -p ${CUSTOM_BUILD_DIR}\n\npushd \"${MAKE_DIR}\"\n    echo MAKE_DIR ${MAKE_DIR}\n    echo CUSTOM_BUILD_DIR ${CUSTOM_BUILD_DIR}\n    echo \"PREFIX=${CUSTOM_BUILD_DIR}\" > local.conf\n    echo \"YML2_PATH=~/yml2\" >> local.conf\n    make src\n    make install\npopd\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
