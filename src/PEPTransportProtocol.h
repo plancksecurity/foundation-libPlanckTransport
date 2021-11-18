@@ -2,6 +2,8 @@
 
 @import PEPObjCTypes_macOS;
 
+#import "PEPTransportStatusCode.h"
+
 @class PEPTransportConfig;
 @class PEPSession;
 @class PEPTransport;
