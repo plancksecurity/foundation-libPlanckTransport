@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@import PEPObjCTypes_macOS;
-
+#import "PEPObjCTypes.h"
 #import "PEPTransportStatusCode.h"
 
 @class PEPTransportConfig;
