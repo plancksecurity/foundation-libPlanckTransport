@@ -38,6 +38,7 @@ namespace pEp {
 
         struct ConfigError : std::logic_error {
             ConfigError() : std::logic_error("config error") {}
+            explicit ConfigError(const std::string& desc) : std::logic_error(desc) {}
         };
 
         class Config {
