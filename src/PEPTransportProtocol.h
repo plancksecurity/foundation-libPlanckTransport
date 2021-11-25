@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
-@import PEPObjCTypes_macOS;
+#import "PEPObjCTypes.h"
+#import "PEPTransportStatusCode.h"
 
 @class PEPTransportConfig;
 @class PEPSession;
@@ -52,28 +53,27 @@ NS_ASSUME_NONNULL_BEGIN
 - (_Nullable instancetype)initWithSignalStatusChangeDelegate:(id<PEPTransportStatusChangeDelegate> _Nullable)signalStatusChangeDelegate
                                   signalSendToResultDelegate:(id<PEPTransportSendToResultDelegate> _Nullable)signalSendToResultDelegate
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
-                                       callbackExecutionType:(PEPTransportCallbackExcecutionType)callbackExecutionType
                                                        error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)     configure:(PEPTransport * _Nullable)pEptransport
             withConfig:(PEPTransportConfig *)config
-   transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
+   transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
                  error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)     startup:(PEPTransport * _Nullable)pEptransport
- transportStatusCode:(out PEPTransportStatusCode*)tsc
+ transportStatusCode:(out PEPTransportStatusCode*)transportStatusCode
                error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)     shutdown:(PEPTransport * _Nullable)pEptransport
-  transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
+  transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
                 error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)     sendMessage:(PEPMessage *)msg pEpSession:(PEPSession * _Nullable)pEpSession
-     transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
+     transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
                    error:(NSError * _Nullable * _Nullable)error;
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
-                                transportStatusCode:(out PEPTransportStatusCode * _Nullable)tsc
+                                transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
                                               error:(NSError * _Nullable * _Nullable)error;
 @end
 
