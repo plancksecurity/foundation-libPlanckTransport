@@ -17,7 +17,7 @@
                BlueprintIdentifier = "1554CEA12755135200529E81"
                BuildableName = "TestMirrorRPCServer_macOS"
                BlueprintName = "TestMirrorRPCServer_macOS"
-               ReferencedContainer = "container:pEpCC.xcodeproj">
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "1554CEA12755135200529E81"
             BuildableName = "TestMirrorRPCServer_macOS"
             BlueprintName = "TestMirrorRPCServer_macOS"
-            ReferencedContainer = "container:pEpCC.xcodeproj">
+            ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "1554CEA12755135200529E81"
             BuildableName = "TestMirrorRPCServer_macOS"
             BlueprintName = "TestMirrorRPCServer_macOS"
-            ReferencedContainer = "container:pEpCC.xcodeproj">
+            ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

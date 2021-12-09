@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "15E06F9726CA587B0039696A"
-               BuildableName = "libpEpCC_macOS.a"
-               BlueprintName = "pEpCC_macOS"
-               ReferencedContainer = "container:pEpCC.xcodeproj">
+               BuildableName = "libPEPIPsecControlChannel_macOS.a"
+               BlueprintName = "PEPIPsecControlChannel_macOS"
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "156F8384275E307700826400"
                BuildableName = "TestAutoSendingRPCClient_macOS"
                BlueprintName = "TestAutoSendingRPCClient_macOS"
-               ReferencedContainer = "container:pEpCC.xcodeproj">
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "1554CEA12755135200529E81"
                BuildableName = "TestMirrorRPCServer_macOS"
                BlueprintName = "TestMirrorRPCServer_macOS"
-               ReferencedContainer = "container:pEpCC.xcodeproj">
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -76,9 +76,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "15E070F926CBE4190039696A"
-               BuildableName = "pEpCCTests.xctest"
-               BlueprintName = "pEpCCTests"
-               ReferencedContainer = "container:pEpCC.xcodeproj">
+               BuildableName = "PEPIPsecControlChannelTests.xctest"
+               BlueprintName = "PEPIPsecControlChannelTests"
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -129,9 +129,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15E06F9726CA587B0039696A"
-            BuildableName = "libpEpCC_macOS.a"
-            BlueprintName = "pEpCC_macOS"
-            ReferencedContainer = "container:pEpCC.xcodeproj">
+            BuildableName = "libPEPIPsecControlChannel_macOS.a"
+            BlueprintName = "PEPIPsecControlChannel_macOS"
+            ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

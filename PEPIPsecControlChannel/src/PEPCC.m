@@ -5,16 +5,16 @@
 //  Created by Andreas Buff on 16.08.21.
 //
 
-#import "PEPCC.h"
+#import "PEPIPsecControlChannel.h"
 
 // TODO #import "PEPSCTPTransport.h"
 //#import "PEPSession.h"
 
-@interface PEPCC () <PEPTransportStatusChangeDelegate, PEPTransportSendToResultDelegate, PEPTransportIncomingMessageDelegate>
+@interface PEPIPsecControlChannel () <PEPTransportStatusChangeDelegate, PEPTransportSendToResultDelegate, PEPTransportIncomingMessageDelegate>
 @property (nonatomic) id<PEPTransportProtocol> pEpSCTPTransport;
 @end
 
-@implementation PEPCC
+@implementation PEPIPsecControlChannel
 
 // synthesize required when properties are declared in protocol.
 @synthesize signalIncomingMessageDelegate;

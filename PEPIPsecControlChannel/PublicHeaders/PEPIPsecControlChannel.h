@@ -4,7 +4,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PEPCC : NSObject <PEPTransportProtocol>
+@interface PEPIPsecControlChannel : NSObject <PEPTransportProtocol>
 
 @end
 

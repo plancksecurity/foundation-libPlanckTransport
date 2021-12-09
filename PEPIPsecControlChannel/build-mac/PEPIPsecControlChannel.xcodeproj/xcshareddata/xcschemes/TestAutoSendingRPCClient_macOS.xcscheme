@@ -17,7 +17,7 @@
                BlueprintIdentifier = "156F8384275E307700826400"
                BuildableName = "TestAutoSendingRPCClient_macOS"
                BlueprintName = "TestAutoSendingRPCClient_macOS"
-               ReferencedContainer = "container:pEpCC.xcodeproj">
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "156F8384275E307700826400"
             BuildableName = "TestAutoSendingRPCClient_macOS"
             BlueprintName = "TestAutoSendingRPCClient_macOS"
-            ReferencedContainer = "container:pEpCC.xcodeproj">
+            ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "156F8384275E307700826400"
             BuildableName = "TestAutoSendingRPCClient_macOS"
             BlueprintName = "TestAutoSendingRPCClient_macOS"
-            ReferencedContainer = "container:pEpCC.xcodeproj">
+            ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

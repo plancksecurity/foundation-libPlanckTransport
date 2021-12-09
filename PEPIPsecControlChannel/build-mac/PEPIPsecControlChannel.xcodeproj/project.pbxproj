@@ -28,7 +28,7 @@
 		15B3694327625E3E00EFC2EA /* libpEpRPCObjCAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690C27625A6F00EFC2EA /* libpEpRPCObjCAdapter.a */; };
 		15E06FA926CA5DD10039696A /* PEPCC.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E06FA826CA5DD10039696A /* PEPCC.m */; };
 		15E070FD26CBE4190039696A /* pEpCCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E070FC26CBE4190039696A /* pEpCCTests.m */; };
-		15E070FF26CBE4190039696A /* libpEpCC_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libpEpCC_macOS.a */; };
+		15E070FF26CBE4190039696A /* libPEPIPsecControlChannel_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */; };
 		435330032744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 43532FE52744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h */; };
 		435330042744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 43532FE62744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m */; };
 		43FDE95127463BE800667EE4 /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */; };
@@ -210,7 +210,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1554CB722750007200529E81 /* PEPCC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPCC.h; sourceTree = "<group>"; };
+		1554CB722750007200529E81 /* PEPIPsecControlChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPIPsecControlChannel.h; sourceTree = "<group>"; };
 		1554CEA22755135200529E81 /* TestMirrorRPCServer_macOS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestMirrorRPCServer_macOS; sourceTree = BUILT_PRODUCTS_DIR; };
 		1554CEAA275513A000529E81 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1554CEAB275513A000529E81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -243,10 +243,9 @@
 		15B3692027625D7A00EFC2EA /* PEPIPsecObjCTypes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPIPsecObjCTypes.xcodeproj; path = "/Users/buff/workspace/pEp/src_pEp4ipsec/pEp-for-ipsec/PEPIPsecObjCTypes/build-mac/PEPIPsecObjCTypes.xcodeproj"; sourceTree = "<absolute>"; };
 		15B3692827625DBC00EFC2EA /* PEPObjCTypeUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPObjCTypeUtils.xcodeproj; path = /Users/buff/workspace/pEp/src_pEp4ipsec/pEpObjCAdapter/Subprojects/PEPObjCTypeUtils/PEPObjCTypeUtils.xcodeproj; sourceTree = "<absolute>"; };
 		15BD32332743B2D100B1B1F5 /* libPEPObjCTypes_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPEPObjCTypes_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		15E06F9826CA587B0039696A /* libpEpCC_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpCC_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPIPsecControlChannel_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E06FA826CA5DD10039696A /* PEPCC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPCC.m; sourceTree = "<group>"; };
-		15E06FC126CA63BA0039696A /* CommonPEPDependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonPEPDependencies.xcodeproj; path = "../../../common-dependency-build-helpers-4-apple-hardware/CommonPEPDependencies/CommonPEPDependencies.xcodeproj"; sourceTree = "<group>"; };
-		15E070FA26CBE4190039696A /* pEpCCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pEpCCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15E070FA26CBE4190039696A /* PEPIPsecControlChannelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEPIPsecControlChannelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E070FC26CBE4190039696A /* pEpCCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pEpCCTests.m; sourceTree = "<group>"; };
 		15E070FE26CBE4190039696A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43532FE52744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPCCTransport+internal.h"; sourceTree = "<group>"; };
@@ -306,7 +305,7 @@
 				156F8380275E2B5400826400 /* libc++.tbd in Frameworks */,
 				156F837F275E2B2400826400 /* libpEpIPsecObjCTypeUtils_macOS.a in Frameworks */,
 				156F837D275E2A0F00826400 /* libPEPIPsecObjCTypes_macOS.a in Frameworks */,
-				15E070FF26CBE4190039696A /* libpEpCC_macOS.a in Frameworks */,
+				15E070FF26CBE4190039696A /* libPEPIPsecControlChannel_macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +315,7 @@
 		1554CB712750007200529E81 /* PublicHeaders */ = {
 			isa = PBXGroup;
 			children = (
-				1554CB722750007200529E81 /* PEPCC.h */,
+				1554CB722750007200529E81 /* PEPIPsecControlChannel.h */,
 			);
 			name = PublicHeaders;
 			path = ../PublicHeaders;
@@ -341,13 +340,6 @@
 				1554CF0627552A8000529E81 /* libPEPObjCTypes_iOS.a */,
 				1554CF0827552A8000529E81 /* PEPObjCTypesTests_iOS.xctest */,
 				156F82E2275E1B0B00826400 /* PEPObjCTypesTests_macOS.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		159807F626D630E900593C9D /* Products */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,10 +392,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		15B3697D27625FB100EFC2EA /* Delete? */ = {
+			isa = PBXGroup;
+			children = (
+				43532FE42744FF2D0000D4AD /* Error */,
+			);
+			path = "Delete?";
+			sourceTree = "<group>";
+		};
 		15E06F7F26CA585B0039696A = {
 			isa = PBXGroup;
 			children = (
 				1554CEFD27552A8000529E81 /* PEPObjCTypes.xcodeproj */,
+				15B3692827625DBC00EFC2EA /* PEPObjCTypeUtils.xcodeproj */,
+				15B3692027625D7A00EFC2EA /* PEPIPsecObjCTypes.xcodeproj */,
+				15B3691127625D5900EFC2EA /* pEpIPsecObjCTypeUtils.xcodeproj */,
 				1554CEC82755295500529E81 /* pEpRPCObjCAdapter.xcodeproj */,
 				1554CB712750007200529E81 /* PublicHeaders */,
 				15E06FA126CA590D0039696A /* src */,
@@ -411,19 +414,15 @@
 				1554CEA9275513A000529E81 /* TestMirrorRPCServer */,
 				15A9CA272761051A00307D3F /* TestRPCClient */,
 				15E06F8926CA585B0039696A /* Products */,
-				15E06FC126CA63BA0039696A /* CommonPEPDependencies.xcodeproj */,
 				15E070AB26CA7D2A0039696A /* Frameworks */,
-				15B3691127625D5900EFC2EA /* pEpIPsecObjCTypeUtils.xcodeproj */,
-				15B3692027625D7A00EFC2EA /* PEPIPsecObjCTypes.xcodeproj */,
-				15B3692827625DBC00EFC2EA /* PEPObjCTypeUtils.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
 		15E06F8926CA585B0039696A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15E06F9826CA587B0039696A /* libpEpCC_macOS.a */,
-				15E070FA26CBE4190039696A /* pEpCCTests.xctest */,
+				15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */,
+				15E070FA26CBE4190039696A /* PEPIPsecControlChannelTests.xctest */,
 				1554CEA22755135200529E81 /* TestMirrorRPCServer_macOS */,
 				156F8385275E307700826400 /* TestAutoSendingRPCClient_macOS */,
 			);
@@ -433,7 +432,7 @@
 		15E06FA126CA590D0039696A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				43532FE42744FF2D0000D4AD /* Error */,
+				15B3697D27625FB100EFC2EA /* Delete? */,
 				43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */,
 				15E06FA826CA5DD10039696A /* PEPCC.m */,
 			);
@@ -559,9 +558,9 @@
 			productReference = 156F8385275E307700826400 /* TestAutoSendingRPCClient_macOS */;
 			productType = "com.apple.product-type.tool";
 		};
-		15E06F9726CA587B0039696A /* pEpCC_macOS */ = {
+		15E06F9726CA587B0039696A /* PEPIPsecControlChannel_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15E06F9E26CA587B0039696A /* Build configuration list for PBXNativeTarget "pEpCC_macOS" */;
+			buildConfigurationList = 15E06F9E26CA587B0039696A /* Build configuration list for PBXNativeTarget "PEPIPsecControlChannel_macOS" */;
 			buildPhases = (
 				15E06F9426CA587B0039696A /* Headers */,
 				15E06F9526CA587B0039696A /* Sources */,
@@ -573,14 +572,14 @@
 			dependencies = (
 				1554CF0A27552A8F00529E81 /* PBXTargetDependency */,
 			);
-			name = pEpCC_macOS;
+			name = PEPIPsecControlChannel_macOS;
 			productName = pEpCC_macOS;
-			productReference = 15E06F9826CA587B0039696A /* libpEpCC_macOS.a */;
+			productReference = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		15E070F926CBE4190039696A /* pEpCCTests */ = {
+		15E070F926CBE4190039696A /* PEPIPsecControlChannelTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15E0710226CBE4190039696A /* Build configuration list for PBXNativeTarget "pEpCCTests" */;
+			buildConfigurationList = 15E0710226CBE4190039696A /* Build configuration list for PBXNativeTarget "PEPIPsecControlChannelTests" */;
 			buildPhases = (
 				15E070F626CBE4190039696A /* Sources */,
 				15E070F726CBE4190039696A /* Frameworks */,
@@ -591,9 +590,9 @@
 			dependencies = (
 				15E0710126CBE4190039696A /* PBXTargetDependency */,
 			);
-			name = pEpCCTests;
+			name = PEPIPsecControlChannelTests;
 			productName = pEpCCTests;
-			productReference = 15E070FA26CBE4190039696A /* pEpCCTests.xctest */;
+			productReference = 15E070FA26CBE4190039696A /* PEPIPsecControlChannelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -619,7 +618,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 15E06F8326CA585B0039696A /* Build configuration list for PBXProject "pEpCC" */;
+			buildConfigurationList = 15E06F8326CA585B0039696A /* Build configuration list for PBXProject "PEPIPsecControlChannel" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -631,10 +630,6 @@
 			productRefGroup = 15E06F8926CA585B0039696A /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 159807F626D630E900593C9D /* Products */;
-					ProjectRef = 15E06FC126CA63BA0039696A /* CommonPEPDependencies.xcodeproj */;
-				},
 				{
 					ProductGroup = 15B3692127625D7A00EFC2EA /* Products */;
 					ProjectRef = 15B3692027625D7A00EFC2EA /* PEPIPsecObjCTypes.xcodeproj */;
@@ -658,8 +653,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				15E06F9726CA587B0039696A /* pEpCC_macOS */,
-				15E070F926CBE4190039696A /* pEpCCTests */,
+				15E06F9726CA587B0039696A /* PEPIPsecControlChannel_macOS */,
+				15E070F926CBE4190039696A /* PEPIPsecControlChannelTests */,
 				1554CEA12755135200529E81 /* TestMirrorRPCServer_macOS */,
 				156F8384275E307700826400 /* TestAutoSendingRPCClient_macOS */,
 			);
@@ -884,7 +879,7 @@
 		};
 		15E0710126CBE4190039696A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 15E06F9726CA587B0039696A /* pEpCC_macOS */;
+			target = 15E06F9726CA587B0039696A /* PEPIPsecControlChannel_macOS */;
 			targetProxy = 15E0710026CBE4190039696A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1181,7 +1176,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15E06F8326CA585B0039696A /* Build configuration list for PBXProject "pEpCC" */ = {
+		15E06F8326CA585B0039696A /* Build configuration list for PBXProject "PEPIPsecControlChannel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15E06F8F26CA585B0039696A /* Debug */,
@@ -1190,7 +1185,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15E06F9E26CA587B0039696A /* Build configuration list for PBXNativeTarget "pEpCC_macOS" */ = {
+		15E06F9E26CA587B0039696A /* Build configuration list for PBXNativeTarget "PEPIPsecControlChannel_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15E06F9F26CA587B0039696A /* Debug */,
@@ -1199,7 +1194,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15E0710226CBE4190039696A /* Build configuration list for PBXNativeTarget "pEpCCTests" */ = {
+		15E0710226CBE4190039696A /* Build configuration list for PBXNativeTarget "PEPIPsecControlChannelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15E0710326CBE4190039696A /* Debug */,

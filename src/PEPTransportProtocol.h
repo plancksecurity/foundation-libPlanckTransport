@@ -55,22 +55,20 @@ NS_ASSUME_NONNULL_BEGIN
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
                                                        error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)     configure:(PEPTransport * _Nullable)pEptransport
-            withConfig:(PEPTransportConfig *)config
-   transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
-                 error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)configureWithConfig:(PEPTransportConfig *)config
+        transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+                      error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)     startup:(PEPTransport * _Nullable)pEptransport
- transportStatusCode:(out PEPTransportStatusCode*)transportStatusCode
-               error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)startupWithTtransportStatusCode:(out PEPTransportStatusCode*)transportStatusCode
+                                  error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)     shutdown:(PEPTransport * _Nullable)pEptransport
-  transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
-                error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)shutdownWithtransportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+                                  error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)     sendMessage:(PEPMessage *)msg pEpSession:(PEPSession * _Nullable)pEpSession
-     transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
-                   error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)sendMessage:(PEPMessage *)msg
+         pEpSession:(PEPSession * _Nullable)pEpSession
+transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+              error:(NSError * _Nullable * _Nullable)error;
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
                                 transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
