@@ -9,17 +9,20 @@
 
 #import <pEpIPsecRPCObjCAdapter.h>
 #import <PEPObjCTypes.h>
-#import "NSError+PEPCCTransport+internal.h"
+#import "NSError+PEPTransportStatusCode.h"
 
 @interface PEPIPsecControlChannel () <PEPRPCConnectorTransportDelegate>
 @property (atomic, nonnull) PEPRPCConnector *connector;
 @property (atomic, nonnull) PEPRPCConnectorConfig *connectorConfig;
 @property (atomic, nullable) PEPRPCSupervisorTransportInterface *supervisorTransportInterface;
 @property (atomic, nonnull) NSMutableArray<PEPMessage*> *receivedMessages;
-@property (atomic) PEPTransportStatusCode state;
+@property (nonatomic) UInt16 defaultPort;
+@property (atomic) NSUInteger failedConnectionAttemptCounter;
 @end
 
 @implementation PEPIPsecControlChannel
+
+static const NSUInteger maxNumRetry = 3;
 
 // synthesize required when properties are declared in protocol.
 @synthesize signalIncomingMessageDelegate = _signalIncomingMessageDelegate;
@@ -30,7 +33,8 @@
     if (self = [super init]) {
         _receivedMessages = [NSMutableArray<PEPMessage*> new];
         _connector = [PEPRPCConnector new];
-        self.state = PEPTransportStatusCodeReady;
+        _failedConnectionAttemptCounter = 0;
+        [self setupDefaultConfig];
     }
     return self;
 }
@@ -50,21 +54,38 @@
 }
 
 - (BOOL)configureWithConfig:(nonnull PEPTransportConfig *)config
-        transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+        transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    if ([self weAreConnected]) {
+        NSString *errorMsg = @"We do not allow to reconfigure after calling `startupWithTransportStatusCode:error:`";
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong
+                                                         errorMessage:errorMsg];
+        return NO;
+    }
+    if (config && config.port == 0) {
+        // Incomplete Config given
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong];
+      return NO;
+    }
 
-    //BUFF: HEEEEEEEERRRRRRRRRRRRRWEEEEEEEEEEEEE
-//    if (!config.port) {
-//        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
-//      return NO;
-//    }
     self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:config.port];
+    *transportStatusCode = PEPTransportStatusCodeReady;
+
     return YES;
 }
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
-                                transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+                                transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                                               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    if (![self weAreConnected]) {
+        NSString *errorMsg = @"Must not be called before connection has been established (by calling `startupWithTransportStatusCode:error:`";
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConnectionDown
+                                                         errorMessage:errorMsg];
+        return nil;
+    }
     if (self.receivedMessages.count == 0) {
         *transportStatusCode = PEPTransportStatusCodeRxQueueUnderrun;
         *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeRxQueueUnderrun];
@@ -76,62 +97,123 @@
     return nextMessage;
 }
 
-- (BOOL)sendMessage:(nonnull PEPMessage *)msg
-         pEpSession:(PEPSession * _Nullable)pEpSession
-transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
-              error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+- (BOOL)    sendMessage:(nonnull PEPMessage *)msg
+             pEpSession:(PEPSession * _Nullable)pEpSession
+    transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
+                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    if (![self weAreConnected]) {
+        NSString *errorMsg = @"Must not be called before connection has been established (by calling `startupWithTransportStatusCode:error:`";
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConnectionDown
+                                                         errorMessage:errorMsg];
+        return NO;
+    }
     __weak typeof(self) weakSelf = self;
     [self.supervisorTransportInterface send:msg onSuccess:^{
         __strong typeof(self) strongSelf = weakSelf;
         [strongSelf.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
                                                                       statusCode:PEPTransportStatusCodeMessageDelivered];
     } onError:^(NSError *error) {
+        // Resend once on error
         __strong typeof(self) strongSelf = weakSelf;
         [strongSelf.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
                                                                       statusCode:PEPTransportStatusCodeCouldNotDeliverResending];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            // Dispatched away as it might be problematic to call supervisorTransportInterface
+            // from its own thread.
+            [strongSelf.supervisorTransportInterface send:msg onSuccess:^{
+                [strongSelf.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
+                                                                              statusCode:PEPTransportStatusCodeMessageDelivered];
+            } onError:^(NSError *error) {
+                [strongSelf.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
+                                                                              statusCode:PEPTransportStatusCodeCouldNotDeliverGivingUp];
+            }];
+        });
     }];
     *transportStatusCode = PEPTransportStatusCodeMessageOnTheWay;
     return YES;
 }
 
-- (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+- (BOOL)shutdownWithTransportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                                   error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    self.supervisorTransportInterface = nil;
-    *transportStatusCode = PEPTransportStatusCodeReady;
-
+    if (![self weAreConnected]) {
+        NSString *errorMsg = @"`shutdown`called before `startup`. We ignore it";
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong
+                                                         errorMessage:errorMsg];
+        return NO;
+    }
+    [self shutdown];
+    // Thought about resetting here, but decided to keep received messages in
+    // queue before next startup.
+    *transportStatusCode = PEPTransportStatusCodeConnectionDown;
+    [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
+                                                            statusCode:PEPTransportStatusCodeConnectionDown];
     return YES;
 }
 
 - (BOOL)startupWithTransportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    if ([self weAreConnected]) {
+        NSString *errorMsg = @"We are already started. You must not call `startupWithTransportStatusCode:error:` on a conneted transport";
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong
+                                                         errorMessage:errorMsg];
+        return NO;
+    }
+    [self reset];
     [self.connector connectToTransportSupervisor:self.connectorConfig delegate:self];
-    self.state = PEPTransportStatusCodeReady; // should be connecting but does not exist
-    *transportStatusCode = self.state;
+    *transportStatusCode = PEPTransportStatusCodeReady;  // should be connecting but does not exist
     return YES;
+}
+
+// MARK: - PRIVATE
+
+- (void)reset {
+    [self.receivedMessages removeAllObjects];
+    self.failedConnectionAttemptCounter = 0;
+}
+
+- (void)setupDefaultConfig {
+    self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:self.defaultPort];
+}
+
+- (BOOL)weAreConnected {
+    return self.supervisorTransportInterface != nil;
+}
+
+- (void)shutdown {
+    self.supervisorTransportInterface = nil;
 }
 
 // MARK: - PEPRPCConnectorTransportDelegate
 
 - (void)handleRPCConnectFailure:(nonnull NSError *)error {
-    self.state = PEPTransportStatusCodeConnectionDown;
-    [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
-                                                            statusCode:self.state];
+
+    if (self.failedConnectionAttemptCounter > maxNumRetry) {
+        [self reset];
+        [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
+                                                                statusCode:PEPTransportStatusCodeShutDown];
+    } else {
+        // Retry!
+        self.failedConnectionAttemptCounter++;
+        [self.connector connectToTransportSupervisor:self.connectorConfig delegate:self];
+        return;
+    }
 }
 
 - (void)handleRPCConnectSuccess:(nonnull PEPRPCSupervisorTransportInterface *)supervisor {
     self.supervisorTransportInterface = supervisor;
-    self.state = PEPTransportStatusCodeReady;
     [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
-                                                            statusCode:self.state];
+                                                            statusCode:PEPTransportStatusCodeConnectionUp];
 }
 
 - (void)handleReceive:(nonnull PEPMessage *)message
             onSuccess:(nonnull void (^)(void))successCallback
               onError:(nonnull void (^)(NSError * _Nonnull))errorCallback {
     [self.receivedMessages addObject:message];
-    self.state = PEPTransportStatusCodeReady;
     [self.signalIncomingMessageDelegate signalIncomingMessageWithTransportID:PEPTransportIDTransportCC
-                                                                  statusCode:self.state];
+                                                                  statusCode:PEPTransportStatusCodeReady];
     successCallback();
 }
 

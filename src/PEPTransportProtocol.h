@@ -41,6 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 ///     - listen to incomingMessage delegate
 ///         - call nextMessage to get it
 /// shutdown
+///
+/// Implementaions:
+/// - MUST always set the `out nonnull PEPTransportStatusCode *`
+/// - IF the PEPTransportStatusCode is an error:
+///     - MUST return [nil|NO]
+///     - MUST set the error
+/// - ELSE:
+///     - MUST return [returnval|YES]
+///
 @protocol PEPTransportProtocol <NSObject>
 
 @property (weak, nonatomic) id<PEPTransportSendToResultDelegate> signalSendToResultDelegate;
@@ -56,24 +65,29 @@ NS_ASSUME_NONNULL_BEGIN
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
                                                        error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)configureWithConfig:(PEPTransportConfig *)config
-        transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+/// @param config Optional config. If none is passed, default config is used.
+/// @param transportStatusCode  ConfigIncompleteOrWrong is returend if an invalid config is passed
+///                             Otherwize: READY
+/// @param error ConfigIncompleteOrWrong
+/// @return success
+- (BOOL)configureWithConfig:(nonnull PEPTransportConfig *)config
+        transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+- (BOOL)startupWithTransportStatusCode:(out  nonnull PEPTransportStatusCode *)transportStatusCode
                                   error:(NSError * _Nullable * _Nullable)error;
 
 //BUFF: status code out nullable OK? Also Is inconsistant.
-- (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+- (BOOL)shutdownWithTransportStatusCode:(out  nonnull PEPTransportStatusCode *)transportStatusCode
                                   error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)sendMessage:(PEPMessage *)msg
          pEpSession:(PEPSession * _Nullable)pEpSession
-transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+transportStatusCode:(out  nonnull PEPTransportStatusCode *)transportStatusCode
               error:(NSError * _Nullable * _Nullable)error;
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
-                                transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
+                                transportStatusCode:(out  nonnull PEPTransportStatusCode *)transportStatusCode
                                               error:(NSError * _Nullable * _Nullable)error;
 @end
 

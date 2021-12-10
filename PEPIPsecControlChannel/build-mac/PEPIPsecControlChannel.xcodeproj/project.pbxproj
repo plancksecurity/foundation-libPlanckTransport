@@ -31,8 +31,8 @@
 		15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */; };
 		15E070FD26CBE4190039696A /* pEpCCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E070FC26CBE4190039696A /* pEpCCTests.m */; };
 		15E070FF26CBE4190039696A /* libPEPIPsecControlChannel_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */; };
-		435330032744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 43532FE52744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h */; };
-		435330042744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 43532FE62744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m */; };
+		435330032744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 43532FE52744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h */; };
+		435330042744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 43532FE62744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m */; };
 		43FDE95127463BE800667EE4 /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */; };
 		4E5FB2C226E609BA00CDB7D4 /* PEPCC+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB2C126E609BA00CDB7D4 /* PEPCC+Test.m */; };
 		4E5FB2F326E6125C00CDB7D4 /* PEPSCTPTransportMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB2F226E6125C00CDB7D4 /* PEPSCTPTransportMock.m */; };
@@ -280,8 +280,8 @@
 		15E070FA26CBE4190039696A /* PEPIPsecControlChannelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEPIPsecControlChannelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E070FC26CBE4190039696A /* pEpCCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pEpCCTests.m; sourceTree = "<group>"; };
 		15E070FE26CBE4190039696A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43532FE52744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPCCTransport+internal.h"; sourceTree = "<group>"; };
-		43532FE62744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+PEPCCTransport+internal.m"; sourceTree = "<group>"; };
+		43532FE52744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPTransportStatusCode.h"; sourceTree = "<group>"; };
+		43532FE62744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+PEPTransportStatusCode.m"; sourceTree = "<group>"; };
 		43AA7AC5274BF08F0080ABDA /* libpEpEngine_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpEpEngine_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEPTransportProtocol.h; path = ../../../libpEpTransport/src/PEPTransportProtocol.h; sourceTree = "<group>"; };
 		4E5FB29E26E6038E00CDB7D4 /* libpEpASN1_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpEpASN1_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,14 +424,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		15B3697D27625FB100EFC2EA /* Delete? */ = {
-			isa = PBXGroup;
-			children = (
-				43532FE42744FF2D0000D4AD /* Error */,
-			);
-			path = "Delete?";
-			sourceTree = "<group>";
-		};
 		15C9B3332763691F00111FF2 /* _TEMP_MOVE */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,7 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				15C9B3332763691F00111FF2 /* _TEMP_MOVE */,
-				15B3697D27625FB100EFC2EA /* Delete? */,
+				43532FE42744FF2D0000D4AD /* Error */,
 				43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */,
 				15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */,
 			);
@@ -522,8 +514,8 @@
 		43532FE42744FF2D0000D4AD /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				43532FE52744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h */,
-				43532FE62744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m */,
+				43532FE52744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h */,
+				43532FE62744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -552,7 +544,7 @@
 			files = (
 				43FDE95127463BE800667EE4 /* PEPTransportProtocol.h in Headers */,
 				15C9B3372763691F00111FF2 /* trans_cc.h in Headers */,
-				435330032744FF2D0000D4AD /* NSError+PEPCCTransport+internal.h in Headers */,
+				435330032744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,7 +842,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15C9B3362763691F00111FF2 /* trans_cc.c in Sources */,
-				435330042744FF2D0000D4AD /* NSError+PEPCCTransport+internal.m in Sources */,
+				435330042744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m in Sources */,
 				15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

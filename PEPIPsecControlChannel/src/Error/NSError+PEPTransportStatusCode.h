@@ -12,8 +12,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
- /// Extension for creating `NSError`s from status codes
-@interface NSError (Internal)
+/// Extension for creating `NSError`s from status codes
+@interface NSError (PEPTransportStatusCode)
 //
 ///// Figures out whether or not a given status is indicating an error condition.
 ///// @param status status to check if it's indicating an error condition.
@@ -39,6 +39,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return NSError representing the error status code if the status code is considered an error,
 ///         nil otherwize.
 + (NSError * _Nullable)errorWithPEPCCTransportStatusCode:(PEPTransportStatusCode)statusCode;
+
+/// Figures out whether or not a given status indicates an error condition and returns an NSError object
+/// representing the error if so.
+/// @param statusCode status code to create NSError from
+/// @param errorMessage some text you might want to add
+/// @return NSError representing the error status code if the status code is considered an error,
+///         nil otherwize.
++ (NSError * _Nullable)errorWithPEPCCTransportStatusCode:(PEPTransportStatusCode)statusCode
+                                            errorMessage:(NSString *)errorMessage;
+
 //
 ///// If the status indicates an error condition, the given [NS]error is updated to represent the
 ///// error status.
