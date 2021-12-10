@@ -47,9 +47,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id<PEPTransportIncomingMessageDelegate> signalIncomingMessageDelegate;
 @property (weak, nonatomic) id<PEPTransportStatusChangeDelegate> signalStatusChangeDelegate;
 
-- (instancetype)init;
+/// Nullable only for OUT_OF_MEMORY
+- (_Nullable instancetype)init;
 
-/// Convenience initializer.
+/// Nullable only for OUT_OF_MEMORY
 - (_Nullable instancetype)initWithSignalStatusChangeDelegate:(id<PEPTransportStatusChangeDelegate> _Nullable)signalStatusChangeDelegate
                                   signalSendToResultDelegate:(id<PEPTransportSendToResultDelegate> _Nullable)signalSendToResultDelegate
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
@@ -59,19 +60,20 @@ NS_ASSUME_NONNULL_BEGIN
         transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
                       error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)startupWithTtransportStatusCode:(out PEPTransportStatusCode*)transportStatusCode
+- (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
                                   error:(NSError * _Nullable * _Nullable)error;
 
-- (BOOL)shutdownWithtransportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+//BUFF: status code out nullable OK? Also Is inconsistant.
+- (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
                                   error:(NSError * _Nullable * _Nullable)error;
 
 - (BOOL)sendMessage:(PEPMessage *)msg
          pEpSession:(PEPSession * _Nullable)pEpSession
-transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
               error:(NSError * _Nullable * _Nullable)error;
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
-                                transportStatusCode:(out PEPTransportStatusCode * _Nullable)transportStatusCode
+                                transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
                                               error:(NSError * _Nullable * _Nullable)error;
 @end
 
