@@ -28,12 +28,21 @@
 		15B3694327625E3E00EFC2EA /* libpEpRPCObjCAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690C27625A6F00EFC2EA /* libpEpRPCObjCAdapter.a */; };
 		15C9B3362763691F00111FF2 /* trans_cc.c in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B3342763691F00111FF2 /* trans_cc.c */; };
 		15C9B3372763691F00111FF2 /* trans_cc.h in Headers */ = {isa = PBXBuildFile; fileRef = 15C9B3352763691F00111FF2 /* trans_cc.h */; };
+		15C9B3472763C0E300111FF2 /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1554CF0427552A8000529E81 /* libPEPObjCTypes_macOS.a */; };
+		15C9B3482763C0E300111FF2 /* libPEPObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F83A2275E4D3C00826400 /* libPEPObjCTypeUtils_macOS.a */; };
+		15C9B3492763C0E300111FF2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F82E8275E204900826400 /* libc++.tbd */; };
+		15C9B34A2763C0E300111FF2 /* libpEpIPsecObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F839F275E3DC500826400 /* libpEpIPsecObjCTypeUtils_macOS.a */; };
+		15C9B34B2763C0E300111FF2 /* libPEPIPsecObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F839D275E3DC500826400 /* libPEPIPsecObjCTypes_macOS.a */; };
+		15C9B34C2763C0E300111FF2 /* libpEpRPCObjCAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690C27625A6F00EFC2EA /* libpEpRPCObjCAdapter.a */; };
+		15C9B35E2763C54100111FF2 /* PEPTestControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B35A2763C54100111FF2 /* PEPTestControlChannel.m */; };
+		15C9B35F2763C54100111FF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B35C2763C54100111FF2 /* main.m */; };
+		15C9B3602763C54100111FF2 /* PEPTestControlChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 15C9B35D2763C54100111FF2 /* PEPTestControlChannel.h */; };
+		15C9B3612763C5E100111FF2 /* libPEPIPsecControlChannel_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */; };
 		15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */; };
 		15E070FD26CBE4190039696A /* pEpCCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E070FC26CBE4190039696A /* pEpCCTests.m */; };
 		15E070FF26CBE4190039696A /* libPEPIPsecControlChannel_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */; };
 		435330032744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 43532FE52744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h */; };
 		435330042744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 43532FE62744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m */; };
-		43FDE95127463BE800667EE4 /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */; };
 		4E5FB2C226E609BA00CDB7D4 /* PEPCC+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB2C126E609BA00CDB7D4 /* PEPCC+Test.m */; };
 		4E5FB2F326E6125C00CDB7D4 /* PEPSCTPTransportMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB2F226E6125C00CDB7D4 /* PEPSCTPTransportMock.m */; };
 		4E5FB31926E63DA800CDB7D4 /* PEPCCTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FB31826E63DA800CDB7D4 /* PEPCCTestUtil.m */; };
@@ -230,6 +239,41 @@
 			remoteGlobalIDString = 5B9C6C10273C2B5C00079CDC;
 			remoteInfo = pEpRPCObjCAdapter;
 		};
+		15C9B33A2763C0E300111FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1554CEFD27552A8000529E81 /* PEPObjCTypes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E575857268329170084F02D;
+			remoteInfo = PEPObjCTypes_macOS;
+		};
+		15C9B33C2763C0E300111FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15B3692827625DBC00EFC2EA /* PEPObjCTypeUtils.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1585EA7B26984C4300B822E1;
+			remoteInfo = PEPObjCTypeUtils_macOS;
+		};
+		15C9B33E2763C0E300111FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15B3692027625D7A00EFC2EA /* PEPIPsecObjCTypes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BF163742726C60D00DBEC03;
+			remoteInfo = PEPIPsecObjCTypes_macOS;
+		};
+		15C9B3402763C0E300111FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15B3691127625D5900EFC2EA /* pEpIPsecObjCTypeUtils.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BD9A179272A94FC00D6336D;
+			remoteInfo = pEpIPsecObjCTypeUtils_macOS;
+		};
+		15C9B3422763C0E300111FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1554CEC82755295500529E81 /* pEpRPCObjCAdapter.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B9C6C10273C2B5C00079CDC;
+			remoteInfo = pEpRPCObjCAdapter;
+		};
 		15E0710026CBE4190039696A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15E06F8026CA585B0039696A /* Project object */;
@@ -275,6 +319,11 @@
 		15BD32332743B2D100B1B1F5 /* libPEPObjCTypes_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPEPObjCTypes_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C9B3342763691F00111FF2 /* trans_cc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trans_cc.c; sourceTree = "<group>"; };
 		15C9B3352763691F00111FF2 /* trans_cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trans_cc.h; sourceTree = "<group>"; };
+		15C9B3502763C0E300111FF2 /* TestAutoSendingControlChannel_macOS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestAutoSendingControlChannel_macOS; sourceTree = BUILT_PRODUCTS_DIR; };
+		15C9B35A2763C54100111FF2 /* PEPTestControlChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEPTestControlChannel.m; sourceTree = "<group>"; };
+		15C9B35B2763C54100111FF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		15C9B35C2763C54100111FF2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		15C9B35D2763C54100111FF2 /* PEPTestControlChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTestControlChannel.h; sourceTree = "<group>"; };
 		15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPIPsecControlChannel_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPIPsecControlChannel.m; sourceTree = "<group>"; };
 		15E070FA26CBE4190039696A /* PEPIPsecControlChannelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEPIPsecControlChannelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,7 +332,6 @@
 		43532FE52744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+PEPTransportStatusCode.h"; sourceTree = "<group>"; };
 		43532FE62744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+PEPTransportStatusCode.m"; sourceTree = "<group>"; };
 		43AA7AC5274BF08F0080ABDA /* libpEpEngine_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpEpEngine_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEPTransportProtocol.h; path = ../../../libpEpTransport/src/PEPTransportProtocol.h; sourceTree = "<group>"; };
 		4E5FB29E26E6038E00CDB7D4 /* libpEpASN1_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpEpASN1_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5FB2C026E609BA00CDB7D4 /* PEPCC+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEPCC+Test.h"; sourceTree = "<group>"; };
 		4E5FB2C126E609BA00CDB7D4 /* PEPCC+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPCC+Test.m"; sourceTree = "<group>"; };
@@ -320,6 +368,20 @@
 				156F83A0275E3DC500826400 /* libpEpIPsecObjCTypeUtils_macOS.a in Frameworks */,
 				156F839E275E3DC500826400 /* libPEPIPsecObjCTypes_macOS.a in Frameworks */,
 				15B3694327625E3E00EFC2EA /* libpEpRPCObjCAdapter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15C9B3462763C0E300111FF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C9B3472763C0E300111FF2 /* libPEPObjCTypes_macOS.a in Frameworks */,
+				15C9B3482763C0E300111FF2 /* libPEPObjCTypeUtils_macOS.a in Frameworks */,
+				15C9B3492763C0E300111FF2 /* libc++.tbd in Frameworks */,
+				15C9B34A2763C0E300111FF2 /* libpEpIPsecObjCTypeUtils_macOS.a in Frameworks */,
+				15C9B34B2763C0E300111FF2 /* libPEPIPsecObjCTypes_macOS.a in Frameworks */,
+				15C9B34C2763C0E300111FF2 /* libpEpRPCObjCAdapter.a in Frameworks */,
+				15C9B3612763C5E100111FF2 /* libPEPIPsecControlChannel_macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +438,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		15A9CA272761051A00307D3F /* TestRPCClient */ = {
+		15A9CA272761051A00307D3F /* TestAutoSendingRPCClient */ = {
 			isa = PBXGroup;
 			children = (
 				15A9CA2B2761051A00307D3F /* README.md */,
@@ -384,8 +446,8 @@
 				15A9CA2D2761051A00307D3F /* PEPRPCTransportTestConnector.h */,
 				15A9CA282761051A00307D3F /* PEPRPCTransportTestConnector.m */,
 			);
-			name = TestRPCClient;
-			path = ../TestRPCClient;
+			name = TestAutoSendingRPCClient;
+			path = ../TestAutoSendingRPCClient;
 			sourceTree = "<group>";
 		};
 		15B3690727625A6F00EFC2EA /* Products */ = {
@@ -433,6 +495,18 @@
 			path = _TEMP_MOVE;
 			sourceTree = "<group>";
 		};
+		15C9B3592763C54100111FF2 /* TestAutoSendingControlChannel */ = {
+			isa = PBXGroup;
+			children = (
+				15C9B35B2763C54100111FF2 /* README.md */,
+				15C9B35C2763C54100111FF2 /* main.m */,
+				15C9B35D2763C54100111FF2 /* PEPTestControlChannel.h */,
+				15C9B35A2763C54100111FF2 /* PEPTestControlChannel.m */,
+			);
+			name = TestAutoSendingControlChannel;
+			path = ../TestAutoSendingControlChannel;
+			sourceTree = "<group>";
+		};
 		15E06F7F26CA585B0039696A = {
 			isa = PBXGroup;
 			children = (
@@ -445,7 +519,8 @@
 				15E06FA126CA590D0039696A /* src */,
 				15E070FB26CBE4190039696A /* pEpCCTests */,
 				1554CEA9275513A000529E81 /* TestMirrorRPCServer */,
-				15A9CA272761051A00307D3F /* TestRPCClient */,
+				15A9CA272761051A00307D3F /* TestAutoSendingRPCClient */,
+				15C9B3592763C54100111FF2 /* TestAutoSendingControlChannel */,
 				15E06F8926CA585B0039696A /* Products */,
 				15E070AB26CA7D2A0039696A /* Frameworks */,
 			);
@@ -458,6 +533,7 @@
 				15E070FA26CBE4190039696A /* PEPIPsecControlChannelTests.xctest */,
 				1554CEA22755135200529E81 /* TestMirrorRPCServer_macOS */,
 				156F8385275E307700826400 /* TestAutoSendingRPCClient_macOS */,
+				15C9B3502763C0E300111FF2 /* TestAutoSendingControlChannel_macOS */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -467,7 +543,6 @@
 			children = (
 				15C9B3332763691F00111FF2 /* _TEMP_MOVE */,
 				43532FE42744FF2D0000D4AD /* Error */,
-				43FDE95027463BE800667EE4 /* PEPTransportProtocol.h */,
 				15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */,
 			);
 			name = src;
@@ -542,7 +617,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43FDE95127463BE800667EE4 /* PEPTransportProtocol.h in Headers */,
+				15C9B3602763C54100111FF2 /* PEPTestControlChannel.h in Headers */,
 				15C9B3372763691F00111FF2 /* trans_cc.h in Headers */,
 				435330032744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h in Headers */,
 			);
@@ -591,6 +666,27 @@
 			name = TestAutoSendingRPCClient_macOS;
 			productName = TestMirrorRPCClient_macOS;
 			productReference = 156F8385275E307700826400 /* TestAutoSendingRPCClient_macOS */;
+			productType = "com.apple.product-type.tool";
+		};
+		15C9B3382763C0E300111FF2 /* TestAutoSendingControlChannel_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15C9B34D2763C0E300111FF2 /* Build configuration list for PBXNativeTarget "TestAutoSendingControlChannel_macOS" */;
+			buildPhases = (
+				15C9B3432763C0E300111FF2 /* Sources */,
+				15C9B3462763C0E300111FF2 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15C9B3392763C0E300111FF2 /* PBXTargetDependency */,
+				15C9B33B2763C0E300111FF2 /* PBXTargetDependency */,
+				15C9B33D2763C0E300111FF2 /* PBXTargetDependency */,
+				15C9B33F2763C0E300111FF2 /* PBXTargetDependency */,
+				15C9B3412763C0E300111FF2 /* PBXTargetDependency */,
+			);
+			name = TestAutoSendingControlChannel_macOS;
+			productName = TestMirrorRPCClient_macOS;
+			productReference = 15C9B3502763C0E300111FF2 /* TestAutoSendingControlChannel_macOS */;
 			productType = "com.apple.product-type.tool";
 		};
 		15E06F9726CA587B0039696A /* PEPIPsecControlChannel_macOS */ = {
@@ -696,6 +792,7 @@
 				15E070F926CBE4190039696A /* PEPIPsecControlChannelTests */,
 				1554CEA12755135200529E81 /* TestMirrorRPCServer_macOS */,
 				156F8384275E307700826400 /* TestAutoSendingRPCClient_macOS */,
+				15C9B3382763C0E300111FF2 /* TestAutoSendingControlChannel_macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -837,11 +934,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		15C9B3432763C0E300111FF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15E06F9526CA587B0039696A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C9B35F2763C54100111FF2 /* main.m in Sources */,
 				15C9B3362763691F00111FF2 /* trans_cc.c in Sources */,
+				15C9B35E2763C54100111FF2 /* PEPTestControlChannel.m in Sources */,
 				435330042744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m in Sources */,
 				15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */,
 			);
@@ -937,6 +1043,31 @@
 			name = pEpRPCObjCAdapter;
 			targetProxy = 15C9B3012763577C00111FF2 /* PBXContainerItemProxy */;
 		};
+		15C9B3392763C0E300111FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PEPObjCTypes_macOS;
+			targetProxy = 15C9B33A2763C0E300111FF2 /* PBXContainerItemProxy */;
+		};
+		15C9B33B2763C0E300111FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PEPObjCTypeUtils_macOS;
+			targetProxy = 15C9B33C2763C0E300111FF2 /* PBXContainerItemProxy */;
+		};
+		15C9B33D2763C0E300111FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PEPIPsecObjCTypes_macOS;
+			targetProxy = 15C9B33E2763C0E300111FF2 /* PBXContainerItemProxy */;
+		};
+		15C9B33F2763C0E300111FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = pEpIPsecObjCTypeUtils_macOS;
+			targetProxy = 15C9B3402763C0E300111FF2 /* PBXContainerItemProxy */;
+		};
+		15C9B3412763C0E300111FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = pEpRPCObjCAdapter;
+			targetProxy = 15C9B3422763C0E300111FF2 /* PBXContainerItemProxy */;
+		};
 		15E0710126CBE4190039696A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 15E06F9726CA587B0039696A /* PEPIPsecControlChannel_macOS */;
@@ -991,6 +1122,34 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z3SAL3W4E6;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		15C9B34E2763C0E300111FF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z3SAL3W4E6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = ../PublicHeaders;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		15C9B34F2763C0E300111FF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z3SAL3W4E6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = ../PublicHeaders;
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1218,6 +1377,15 @@
 			buildConfigurations = (
 				156F838A275E307700826400 /* Debug */,
 				156F838B275E307700826400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15C9B34D2763C0E300111FF2 /* Build configuration list for PBXNativeTarget "TestAutoSendingControlChannel_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15C9B34E2763C0E300111FF2 /* Debug */,
+				15C9B34F2763C0E300111FF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

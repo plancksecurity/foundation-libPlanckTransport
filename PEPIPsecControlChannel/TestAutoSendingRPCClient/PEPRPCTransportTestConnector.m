@@ -7,9 +7,10 @@
 
 #import "PEPRPCTransportTestConnector.h"
 
+#import <pEpIPsecRPCObjCAdapter.h>
 #import <PEPObjCTypes.h>
 
-@interface PEPRPCTransportTestConnector()
+@interface PEPRPCTransportTestConnector()<PEPRPCConnectorIPsecDelegate, PEPRPCConnectorTransportDelegate>
 @property PEPRPCConnector *connector;
 @property PEPRPCSupervisorTransportInterface *supervisorTransportInterface;
 @property NSTimer *sendTimer;
@@ -55,23 +56,20 @@
 }
 
 - (PEPMessage *)newPepMessage {
-    static PEPMessage *cachedMsg;
-    if (!cachedMsg) {
-        PEPIdentity *me = [[PEPIdentity alloc] initWithAddress:@"myAddress:myPort"
-                                                        userID:@"PEP_OWN_USER_ID"
-                                                      userName:@"myUserName"
-                                                         isOwn:YES];
-        PEPMessage *createe = [PEPMessage new];
-        createe.from = me;
-        createe.to = @[me];
-        createe.shortMessage = @"A shortMessage";
-        createe.longMessage = @"A longMessage";
-        createe.longMessageFormatted = @"A longMessageFormatted";
-        createe.direction = PEPMsgDirectionOutgoing;
+    PEPIdentity *me = [[PEPIdentity alloc] initWithAddress:@"myAddress:myPort"
+                                                    userID:@"PEP_OWN_USER_ID"
+                                                  userName:@"myUserName"
+                                                     isOwn:YES];
+    PEPMessage *createe = [PEPMessage new];
+    createe.messageID = [[NSUUID new] UUIDString];
+    createe.from = me;
+    createe.to = @[me];
+    createe.shortMessage = @"A shortMessage";
+    createe.longMessage = @"A longMessage";
+    createe.longMessageFormatted = @"A longMessageFormatted";
+    createe.direction = PEPMsgDirectionOutgoing;
 
-        cachedMsg = createe;
-    }
-    return  cachedMsg;
+    return  createe;
 }
 
 // MARK: - PEPRPCConnectorIPsecDelegate

@@ -20,6 +20,48 @@
                ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "156F8384275E307700826400"
+               BuildableName = "TestAutoSendingRPCClient_macOS"
+               BlueprintName = "TestAutoSendingRPCClient_macOS"
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1554CEA12755135200529E81"
+               BuildableName = "TestMirrorRPCServer_macOS"
+               BlueprintName = "TestMirrorRPCServer_macOS"
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "15C9B3382763C0E300111FF2"
+               BuildableName = "TestAutoSendingControlChannel_macOS"
+               BlueprintName = "TestAutoSendingControlChannel_macOS"
+               ReferencedContainer = "container:PEPIPsecControlChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

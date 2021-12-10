@@ -57,14 +57,14 @@ static const NSUInteger maxNumRetry = 3;
         transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     if ([self weAreConnected]) {
-        NSString *errorMsg = @"We do not allow to reconfigure after calling `startupWithTransportStatusCode:error:`";
+        NSString *errorMsg = @"We do not allow to reconfigure after calling `startupWithTransportStatusCode:error:`. The connection will keep running. The config passed is ignored.";
         *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong
                                                          errorMessage:errorMsg];
         return NO;
     }
     if (config && config.port == 0) {
-        // Incomplete Config given
+        // Incomplete config given
         *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong];
       return NO;

@@ -7,11 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import <pEpIPsecRPCObjCAdapter.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PEPRPCTransportTestConnector : NSObject<PEPRPCConnectorIPsecDelegate, PEPRPCConnectorTransportDelegate>
+@interface PEPRPCTransportTestConnector : NSObject
 
 - (void)start;
 

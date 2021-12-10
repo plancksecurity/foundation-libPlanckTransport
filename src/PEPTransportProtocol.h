@@ -57,10 +57,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id<PEPTransportStatusChangeDelegate> signalStatusChangeDelegate;
 
 /// Nullable only for OUT_OF_MEMORY
-- (_Nullable instancetype)init;
+- (nullable instancetype)init;
 
 /// Nullable only for OUT_OF_MEMORY
-- (_Nullable instancetype)initWithSignalStatusChangeDelegate:(id<PEPTransportStatusChangeDelegate> _Nullable)signalStatusChangeDelegate
+- (nullable instancetype)initWithSignalStatusChangeDelegate:(id<PEPTransportStatusChangeDelegate> _Nullable)signalStatusChangeDelegate
                                   signalSendToResultDelegate:(id<PEPTransportSendToResultDelegate> _Nullable)signalSendToResultDelegate
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
                                                        error:(NSError * _Nullable * _Nullable)error;
