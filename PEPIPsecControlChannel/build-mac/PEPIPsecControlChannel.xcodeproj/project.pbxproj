@@ -34,10 +34,9 @@
 		15C9B34A2763C0E300111FF2 /* libpEpIPsecObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F839F275E3DC500826400 /* libpEpIPsecObjCTypeUtils_macOS.a */; };
 		15C9B34B2763C0E300111FF2 /* libPEPIPsecObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F839D275E3DC500826400 /* libPEPIPsecObjCTypes_macOS.a */; };
 		15C9B34C2763C0E300111FF2 /* libpEpRPCObjCAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690C27625A6F00EFC2EA /* libpEpRPCObjCAdapter.a */; };
-		15C9B35E2763C54100111FF2 /* PEPTestControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B35A2763C54100111FF2 /* PEPTestControlChannel.m */; };
-		15C9B35F2763C54100111FF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B35C2763C54100111FF2 /* main.m */; };
-		15C9B3602763C54100111FF2 /* PEPTestControlChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 15C9B35D2763C54100111FF2 /* PEPTestControlChannel.h */; };
 		15C9B3612763C5E100111FF2 /* libPEPIPsecControlChannel_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */; };
+		15C9B3A32767A5C600111FF2 /* PEPTestControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B35A2763C54100111FF2 /* PEPTestControlChannel.m */; };
+		15C9B3A42767A5D500111FF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B35C2763C54100111FF2 /* main.m */; };
 		15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */; };
 		15E070FD26CBE4190039696A /* pEpCCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E070FC26CBE4190039696A /* pEpCCTests.m */; };
 		15E070FF26CBE4190039696A /* libPEPIPsecControlChannel_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E06F9826CA587B0039696A /* libPEPIPsecControlChannel_macOS.a */; };
@@ -617,7 +616,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C9B3602763C54100111FF2 /* PEPTestControlChannel.h in Headers */,
 				15C9B3372763691F00111FF2 /* trans_cc.h in Headers */,
 				435330032744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h in Headers */,
 			);
@@ -911,7 +909,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CUSTOM_BUILD_DIR=${PROJECT_DIR}/build\nCUSTOM_INCLUDE_DIR=\"${CUSTOM_BUILD_DIR}/include/\"\nLIB_STATIC_NAME=\"lib${PRODUCT_NAME}.a\"\nmkdir -p ${CUSTOM_INCLUDE_DIR}\n\nPUBLIC_HEADERS_DIR=\"${PROJECT_DIR}/../PublicHeaders\"\n\ncp \"${PUBLIC_HEADERS_DIR}\"/*.h* \"${CUSTOM_BUILD_DIR}/include/\"\ncp \"${BUILT_PRODUCTS_DIR}/${LIB_STATIC_NAME}\" ${CUSTOM_BUILD_DIR}\n";
+			shellScript = "CUSTOM_BUILD_DIR=${PROJECT_DIR}/build\nCUSTOM_INCLUDE_DIR=\"${CUSTOM_BUILD_DIR}/include/\"\nLIB_STATIC_NAME=\"lib${PRODUCT_NAME}.a\"\nmkdir -p ${CUSTOM_INCLUDE_DIR}\n\nPUBLIC_HEADERS_DIR=\"${PROJECT_DIR}/../PublicHeaders\"\n\ncp \ncp \"${PUBLIC_HEADERS_DIR}\"/*.h* \"${CUSTOM_BUILD_DIR}/include/\"\ncp \"${BUILT_PRODUCTS_DIR}/${LIB_STATIC_NAME}\" ${CUSTOM_BUILD_DIR}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -938,6 +936,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C9B3A42767A5D500111FF2 /* main.m in Sources */,
+				15C9B3A32767A5C600111FF2 /* PEPTestControlChannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,9 +945,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C9B35F2763C54100111FF2 /* main.m in Sources */,
 				15C9B3362763691F00111FF2 /* trans_cc.c in Sources */,
-				15C9B35E2763C54100111FF2 /* PEPTestControlChannel.m in Sources */,
 				435330042744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m in Sources */,
 				15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */,
 			);
@@ -1135,7 +1133,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z3SAL3W4E6;
 				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = ../PublicHeaders;
+				HEADER_SEARCH_PATHS = (
+					"${inherited}",
+					../PublicHeaders,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1149,7 +1150,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z3SAL3W4E6;
 				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = ../PublicHeaders;
+				HEADER_SEARCH_PATHS = (
+					"${inherited}",
+					../PublicHeaders,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
