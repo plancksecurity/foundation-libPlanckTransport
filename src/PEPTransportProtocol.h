@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///                             Otherwize: READY
 /// @param error ConfigIncompleteOrWrong
 /// @return success
-- (BOOL)configureWithConfig:(nonnull PEPTransportConfig *)config
+- (BOOL)configureWithConfig:(nullable PEPTransportConfig *)config
         transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable * _Nullable)error;
 

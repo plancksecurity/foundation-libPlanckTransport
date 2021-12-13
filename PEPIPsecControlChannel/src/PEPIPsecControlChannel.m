@@ -16,13 +16,13 @@
 @property (atomic, nonnull) PEPRPCConnectorConfig *connectorConfig;
 @property (atomic, nullable) PEPRPCSupervisorTransportInterface *supervisorTransportInterface;
 @property (atomic, nonnull) NSMutableArray<PEPMessage*> *receivedMessages;
-@property (nonatomic) UInt16 defaultPort;
 @property (atomic) NSUInteger failedConnectionAttemptCounter;
 @end
 
 @implementation PEPIPsecControlChannel
 
-static const NSUInteger maxNumRetry = 3;
+static const NSUInteger s_maxNumRetry = 3;
+static const UInt16 s_defaultPort = 5923;
 
 // synthesize required when properties are declared in protocol.
 @synthesize signalIncomingMessageDelegate = _signalIncomingMessageDelegate;
@@ -53,7 +53,7 @@ static const NSUInteger maxNumRetry = 3;
     return self;
 }
 
-- (BOOL)configureWithConfig:(nonnull PEPTransportConfig *)config
+- (BOOL)configureWithConfig:(nullable PEPTransportConfig *)config
         transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     if ([self weAreConnected]) {
@@ -68,9 +68,13 @@ static const NSUInteger maxNumRetry = 3;
         *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         *error = [NSError errorWithPEPCCTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong];
       return NO;
+    } else if (!config) {
+        // No config, defaults used
+        self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:s_defaultPort];
+    } else {
+        // use given config
+        self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:config.port];
     }
-
-    self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:config.port];
     *transportStatusCode = PEPTransportStatusCodeReady;
 
     return YES;
@@ -175,7 +179,7 @@ static const NSUInteger maxNumRetry = 3;
 }
 
 - (void)setupDefaultConfig {
-    self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:self.defaultPort];
+    self.connectorConfig = [[PEPRPCConnectorConfig alloc] initWithPort:s_defaultPort];
 }
 
 - (BOOL)weAreConnected {
@@ -190,7 +194,7 @@ static const NSUInteger maxNumRetry = 3;
 
 - (void)handleRPCConnectFailure:(nonnull NSError *)error {
 
-    if (self.failedConnectionAttemptCounter > maxNumRetry) {
+    if (self.failedConnectionAttemptCounter > s_maxNumRetry) {
         [self reset];
         [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:PEPTransportIDTransportCC
                                                                 statusCode:PEPTransportStatusCodeShutDown];
