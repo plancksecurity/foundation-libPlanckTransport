@@ -8,6 +8,8 @@
 #import "PEPTestControlChannel.h"
 
 #import "PEPIPsecControlChannel.h"
+#import <PEPObjCTypes.h>
+
 
 @interface PEPTestControlChannel()<PEPTransportStatusChangeDelegate, PEPTransportSendToResultDelegate, PEPTransportIncomingMessageDelegate>
 @property PEPIPsecControlChannel *cc;
@@ -18,13 +20,15 @@
 @implementation PEPTestControlChannel
 
 -(instancetype)init {
-    _cc = [[PEPIPsecControlChannel alloc] initWithSignalStatusChangeDelegate:self
-                                                  signalSendToResultDelegate:self
-                                               signalIncomingMessageDelegate:self
-                                                                       error:nil];
-    _sendTimer = [self newSendMessageTimer];
-    _isConnected = NO;
-    return nil;
+    if (self = [super init]) {
+        _cc = [[PEPIPsecControlChannel alloc] initWithSignalStatusChangeDelegate:self
+                                                      signalSendToResultDelegate:self
+                                                   signalIncomingMessageDelegate:self
+                                                                           error:nil];
+        _sendTimer = [self newSendMessageTimer];
+        _isConnected = NO;
+    }
+    return self;
 }
 
 - (void)start {
