@@ -26,8 +26,6 @@
 		15B3691027625D2800EFC2EA /* libPEPObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690F27625D2800EFC2EA /* libPEPObjCTypeUtils_macOS.a */; };
 		15B3694027625E2300EFC2EA /* libpEpRPCObjCAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690C27625A6F00EFC2EA /* libpEpRPCObjCAdapter.a */; };
 		15B3694327625E3E00EFC2EA /* libpEpRPCObjCAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3690C27625A6F00EFC2EA /* libpEpRPCObjCAdapter.a */; };
-		15C9B3362763691F00111FF2 /* trans_cc.c in Sources */ = {isa = PBXBuildFile; fileRef = 15C9B3342763691F00111FF2 /* trans_cc.c */; };
-		15C9B3372763691F00111FF2 /* trans_cc.h in Headers */ = {isa = PBXBuildFile; fileRef = 15C9B3352763691F00111FF2 /* trans_cc.h */; };
 		15C9B3472763C0E300111FF2 /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1554CF0427552A8000529E81 /* libPEPObjCTypes_macOS.a */; };
 		15C9B3482763C0E300111FF2 /* libPEPObjCTypeUtils_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F83A2275E4D3C00826400 /* libPEPObjCTypeUtils_macOS.a */; };
 		15C9B3492763C0E300111FF2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 156F82E8275E204900826400 /* libc++.tbd */; };
@@ -316,8 +314,6 @@
 		15B3692027625D7A00EFC2EA /* PEPIPsecObjCTypes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPIPsecObjCTypes.xcodeproj; path = "/Users/buff/workspace/pEp/src_pEp4ipsec/pEp-for-ipsec/PEPIPsecObjCTypes/build-mac/PEPIPsecObjCTypes.xcodeproj"; sourceTree = "<absolute>"; };
 		15B3692827625DBC00EFC2EA /* PEPObjCTypeUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPObjCTypeUtils.xcodeproj; path = /Users/buff/workspace/pEp/src_pEp4ipsec/pEpObjCAdapter/Subprojects/PEPObjCTypeUtils/PEPObjCTypeUtils.xcodeproj; sourceTree = "<absolute>"; };
 		15BD32332743B2D100B1B1F5 /* libPEPObjCTypes_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPEPObjCTypes_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		15C9B3342763691F00111FF2 /* trans_cc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trans_cc.c; sourceTree = "<group>"; };
-		15C9B3352763691F00111FF2 /* trans_cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trans_cc.h; sourceTree = "<group>"; };
 		15C9B3502763C0E300111FF2 /* TestAutoSendingControlChannel_macOS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestAutoSendingControlChannel_macOS; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C9B35A2763C54100111FF2 /* PEPTestControlChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEPTestControlChannel.m; sourceTree = "<group>"; };
 		15C9B35B2763C54100111FF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -485,15 +481,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		15C9B3332763691F00111FF2 /* _TEMP_MOVE */ = {
-			isa = PBXGroup;
-			children = (
-				15C9B3342763691F00111FF2 /* trans_cc.c */,
-				15C9B3352763691F00111FF2 /* trans_cc.h */,
-			);
-			path = _TEMP_MOVE;
-			sourceTree = "<group>";
-		};
 		15C9B3592763C54100111FF2 /* TestAutoSendingControlChannel */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,7 +527,6 @@
 		15E06FA126CA590D0039696A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				15C9B3332763691F00111FF2 /* _TEMP_MOVE */,
 				43532FE42744FF2D0000D4AD /* Error */,
 				15E06FA826CA5DD10039696A /* PEPIPsecControlChannel.m */,
 			);
@@ -616,7 +602,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C9B3372763691F00111FF2 /* trans_cc.h in Headers */,
 				435330032744FF2D0000D4AD /* NSError+PEPTransportStatusCode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -945,7 +930,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C9B3362763691F00111FF2 /* trans_cc.c in Sources */,
 				435330042744FF2D0000D4AD /* NSError+PEPTransportStatusCode.m in Sources */,
 				15E06FA926CA5DD10039696A /* PEPIPsecControlChannel.m in Sources */,
 			);
