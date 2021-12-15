@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)signalSendToResultWithTransportID:(PEPTransportID)transportID
                                 messageID:(NSString *)messageID
                                   address:(NSString *)address
+                                pEpRating:(PEPRating)pEpRating
                                statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
