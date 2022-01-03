@@ -2,6 +2,7 @@ package foundation.pEp
 
 import foundation.pEp.jniadapter.Message
 import foundation.pEp.jniadapter.Rating
+import kotlinx.coroutines.flow.Flow
 
 /**
  * # pEp distributed transport Kotlin interface
@@ -21,16 +22,16 @@ abstract class Transport {
      */
     abstract val uriScheme: String
 
-    abstract fun configure() : TransportStatusCode   // To be defined, what needs to be configured.
+    abstract fun configure(): TransportStatusCode   // To be defined, what needs to be configured.
 
     /**
      * Startup
      *
      * Start transport channel and subscribe to it
      *
-     * @return Status code
+     * @return Result with status code
      */
-    abstract fun startup() : TransportStatusCode
+    abstract fun startup(): Result<TransportStatusCode>
 
     /**
      * Shutdown
@@ -39,63 +40,95 @@ abstract class Transport {
      *
      * @return Status code
      */
-    abstract fun shutdown() : TransportStatusCode
+    abstract fun shutdown(): TransportStatusCode
 
     /**
      * Send
      *
      * Send the message to the transport
      *
-     * @return Status code
+     * @return Result with tatus code
      */
-    abstract fun send(message: Message) : TransportStatusCode
+    abstract fun send(message: Message): Result<TransportStatusCode>
+
 
     /**
-     * Receive Next
+     * Get all messages
      *
-     * Receive next message from transport
+     * Get all messages from pEp distributed transport
      *
-     * @return Pair where first is the Result containing the message received or the exception produced and second is the TransportStatusCode
+     * @return Result with list of messages or Exception
      */
-    abstract fun receiveNext(): Result<Pair<Message, TransportStatusCode>>
+    abstract fun getAllMessages(): Result<List<Message>>
 
-    fun isOnline() = true;
+    fun isOnline() = true
     fun supportsShortMsg() = false
     fun supportsLongMsg() = true
     fun supportsLongMsgFormatted() = false
     fun nativeTextFormat() = 0                      // plain = 0, other = 0xff
 
     /**
-     * Notify
+     * Get event flow
      *
-     * This is called when a new event happens, it includes de event and the status code of that event,
+     * Equivalent to transport.h: notify_transport_t, instead of getting callbacks,
+     * the events will be pushed to the flow
+     *
+     * Get Flow of Events,
+     * Usage: subscribe to it to receive the events
+     *
+     * @return Result Flow of events received
      */
-    fun notify(event: Event, status: TransportStatusCode) = event.post(status)
+    abstract fun getEventsFlow(): Flow<Event>
 
 }
 
-sealed interface Event {
-    fun post(status: TransportStatusCode)
-}
+/**
+ * Base Event that represents action that happened on Transport
+ *
+ * @property status event status code
+ * @constructor Create Event
+ */
+sealed class Event(private val status: TransportStatusCode)
 
-data class StatusChanged (
+/**
+ * Data class to notify status changes
+ * Equivalent to transport.h: signal_statuschange_t
+ *
+ * @property newStatus event status code
+ * @constructor Create StatusChanged Event
+ */
+data class StatusChanged(
     val newStatus: TransportStatusCode
-) : Event {
-    override fun post(status: TransportStatusCode) {
-        TODO("Not yet implemented")
-    }
-}
-class OnSent (                             // Data class to notify message sent
+) : Event(newStatus)
+
+/**
+ * Data class to notify message sent
+ * Equivalent to transport.h: signal_sendto_result_t
+ *
+ * @property status event status code
+ * @property messageId message id
+ * @property address address message was sent to
+ * @property rating rating of the message sent
+ * @property result Result with Message sent on success or Exception on Failure
+ * @constructor Create OnSent Event
+ */
+data class OnSent(
+    val status: TransportStatusCode,
     val messageId: String,
     val address: String,
     val rating: Rating,
-    val result: Result<Message>                 // Result is the sent message on success or an Exception on failure
-) : Event {
-    override fun post(status: TransportStatusCode) {
-        TODO("Not yet implemented")
-    }
-}
+    val result: Result<Message>
+) : Event(status)
 
-
-interface OnReceive : Event {                    // Notify message received to call receiveNext
-}
+/**
+ * Data class to notify message received
+ * Equivalent to transport.h: signal_incoming_message_t
+ *
+ * @property status event status code
+ * @property message message received
+ * @constructor Create OnReceive Event
+ */
+data class OnReceive(
+    val status: TransportStatusCode,
+    val message: Message
+) : Event(status)
