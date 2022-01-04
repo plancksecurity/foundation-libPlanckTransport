@@ -21,17 +21,13 @@ Then, tweak it to your needs.
 The default make target is `src`.
 
 ### Build
-* `make src`
-  Generates all the headers and source files
+`make src` - Generates all the headers and source files
 
 ### Install
-* `make install`
-  Installs the header files in $PREFIX/include/pEp
-
-* `make uninstall`
-  Removes all headers from $PREFIX/include/pEp 
+`make install` - Installs the header files in $PREFIX/include/pEp   
+`make uninstall` - Removes all headers from $PREFIX/include/pEp 
 
 ### Clean
-* `make clean`
+`make clean`
 
 
