@@ -15,6 +15,18 @@ sourceSets {
     main.kotlin.srcDirs = ['../../src']
 }
 
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
     implementation fileTree(dir: '../../libs', include: ['*.jar'])
