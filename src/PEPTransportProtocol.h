@@ -75,6 +75,8 @@ NS_ASSUME_NONNULL_BEGIN
         transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                       error:(NSError * _Nullable * _Nullable)error;
 
+/// Signals PEPTransportStatusCodeConnectionUp on successful startup
+/// (both to `signalStatusChangeDelegate` and via `transportStatusCode`).
 - (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                   error:(NSError * _Nullable * _Nullable)error;
 
