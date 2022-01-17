@@ -203,3 +203,8 @@ hs_err_pid*
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# Windows build
+build-windows/Debug/
+build-windows/Release/
+build-windows/*.user
