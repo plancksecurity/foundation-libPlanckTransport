@@ -2,7 +2,7 @@
 SET current_directory=%~dp0
 
 :: YML2 directory is ...\pEpForWindowsAdapterSolution\yml2\
-SET yml2_directory=%current_directory:~0,-31%\yml2
+SET yml2_directory=%current_directory%..\..\..\pEpForWindowsAdapterSolution\yml2
 
 SET YML2PROC="%yml2_directory%\yml2proc"
 
