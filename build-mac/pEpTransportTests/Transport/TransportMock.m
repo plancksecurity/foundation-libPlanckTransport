@@ -61,7 +61,13 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
 - (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                   error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return NO;
+    *transportStatusCode = PEPTransportStatusCodeReady;
+    
+    [self.signalStatusChangeDelegate
+     signalStatusChangeWithTransportID:g_transportID
+     statusCode:PEPTransportStatusCodeConnectionDown];
+    
+    return YES;
 }
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
