@@ -31,7 +31,8 @@
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
         transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                       error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return NO;
+    *transportStatusCode = PEPTransportStatusCodeReady;
+    return YES;
 }
 
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
