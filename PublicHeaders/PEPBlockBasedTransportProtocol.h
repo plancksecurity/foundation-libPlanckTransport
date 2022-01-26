@@ -15,6 +15,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PEPBlockBasedTransportIncomingMessageDelegate <NSObject>
+
+- (void)signalIncomingMessage:(PEPMessage *)message
+                  transportID:(PEPTransportID)transportID
+                   statusCode:(PEPTransportStatusCode)statusCode;
+@end
+
 @protocol PEPBlockBasedTransportProtocol <NSObject>
 
 /// Nullable only for OUT_OF_MEMORY
