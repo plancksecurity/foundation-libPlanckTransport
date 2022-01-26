@@ -40,7 +40,7 @@
     XCTAssertEqual(statusChangeDelegate.statusChanges.count, 1);
     NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
     XCTAssertNotNil(num);
-    XCTAssertEqual(num.integerValue, PEPTransportStatusCodeReady);
+    XCTAssertEqual(num.integerValue, PEPTransportStatusCodeConnectionUp);
 }
 
 @end
