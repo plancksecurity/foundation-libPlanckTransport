@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PEPTransportProtocol.h"
 #import "PEPTransportStatusCode.h"
 #import "PEPObjCTypes.h"
 
@@ -22,14 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
                    statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
+/// Wraps any `id<PEPTransportProtocol>` into a version with callbacks instead of delegates,
+/// wherever possible.
 @protocol PEPBlockBasedTransportProtocol <NSObject>
 
-/// Nullable only for OUT_OF_MEMORY
-/// Since there are no delegates anymore, this is the one and only
-/// initializer.
-/// A PEPBlockBasedTransport wrapper would have in initializer that
-/// receives an underlying PEPTransportProtocol in order to wrap it
-- (instancetype _Nullable)initWithIncomingMessageDelegate:(id<PEPBlockBasedTransportIncomingMessageDelegate>)incomingMessageDelegate;
+/// Initializes the block based wrapper for the given `PEPTransportProtocol` and with a
+/// `PEPBlockBasedTransportIncomingMessageDelegate` delegate.
+/// @note Nullable only for OUT_OF_MEMORY
+- (instancetype _Nullable)initWithTransport:(id<PEPTransportProtocol>)transport
+                    incomingMessageDelegate:(id<PEPBlockBasedTransportIncomingMessageDelegate>)incomingMessageDelegate;
 
 // NOTE: Not quite true: I think we still need something like the
 // existing PEPTransportIncomingMessageDelegate.
