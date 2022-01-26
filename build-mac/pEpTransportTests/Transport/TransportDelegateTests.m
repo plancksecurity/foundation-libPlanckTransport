@@ -109,4 +109,17 @@
     XCTAssertEqualObjects(msg, msg2);
 }
 
+- (void)testNoMessageReceived {
+    XCTAssertFalse(self.incomingMessageDelegate.messageIsAvailable);
+
+    PEPTransportStatusCode statusCode;
+    NSError *error = nil;
+    PEPMessage *msg = [self.transport nextMessageWithPEPSession:nil
+                                            transportStatusCode:&statusCode
+                                                          error:&error];
+    XCTAssertNil(msg);
+    XCTAssertNil(error);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionUp);
+}
+
 @end
