@@ -40,17 +40,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Async startup with error and success callback, _both_ also conveying a status code in order to not lose anything
 /// from `PEPTransportProtocol`, which has similar semantics.
+/// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
 - (BOOL)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode statusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode statusCode,
                                                NSError * _Nonnull))errorCallback;
 
-/// Like the startup method before, only for shut down.
-/// Same comments apply.
+/// Async shut down with error and success callback, _both_ also conveying a status code in order to not lose anything
+/// from `PEPTransportProtocol`, which has similar semantics.
+/// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
 - (void)shutdownOnSuccess:(void (^)(PEPTransportStatusCode))successCallback
                   onError:(void (^)(PEPTransportStatusCode, NSError *))errorCallback;
 
-/// The good old send message, only with direct error and
-/// success callbacks.
+/// Async send message with error and success callback, _both_ also conveying a status code in order to not lose anything
+/// from `PEPTransportProtocol`, which has similar semantics.
+/// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
 - (BOOL)sendMessage:(PEPMessage *)msg
      withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(void (^)(PEPTransportStatusCode))successCallback
