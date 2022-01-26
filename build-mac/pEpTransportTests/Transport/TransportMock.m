@@ -35,6 +35,16 @@
     return YES;
 }
 
+- (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
+                                 error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    return NO;
+}
+
+- (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
+                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    return NO;
+}
+
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
                                 transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
@@ -45,16 +55,6 @@
          pEpSession:(PEPSession * _Nullable)pEpSession
 transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return NO;
-}
-
-- (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
-                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return NO;
-}
-
-- (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
-                                 error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     return NO;
 }
 
