@@ -7,6 +7,9 @@
 
 #import <XCTest/XCTest.h>
 
+#import "MockStatusChangeDelegate.h"
+#import "TransportMock.h"
+
 @interface TransportDelegateTests : XCTestCase
 
 @end
@@ -14,23 +17,30 @@
 @implementation TransportDelegateTests
 
 - (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
+- (void)testStartupSuccess {
+    MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
+    NSError *error = nil;
+    TransportMock *transport = [[TransportMock alloc]
+                                initWithSignalStatusChangeDelegate:statusChangeDelegate signalSendToResultDelegate:nil signalIncomingMessageDelegate:nil
+                                error:&error];
+    XCTAssertNotNil(transport);
+    XCTAssertNil(error);
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    error = nil;
+    transport.startupShouldSucceed = YES;
+    PEPTransportStatusCode statusCode;
+    BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];
+    XCTAssertTrue(success);
+    XCTAssertNil(error);
+    XCTAssertEqual(statusChangeDelegate.statusChanges.count, 1);
+    NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
+    XCTAssertNotNil(num);
+    XCTAssertEqual(num.integerValue, PEPTransportStatusCodeReady);
 }
 
 @end
