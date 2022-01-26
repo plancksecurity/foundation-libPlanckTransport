@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// initializer.
 /// A PEPBlockBasedTransport wrapper would have in initializer that
 /// receives an underlying PEPTransportProtocol in order to wrap it
-- (instancetype _Nullable)init;
+- (instancetype _Nullable)initWithIncomingMessageDelegate:(id<PEPBlockBasedTransportIncomingMessageDelegate>)incomingMessageDelegate;
 
 // NOTE: Not quite true: I think we still need something like the
 // existing PEPTransportIncomingMessageDelegate.
