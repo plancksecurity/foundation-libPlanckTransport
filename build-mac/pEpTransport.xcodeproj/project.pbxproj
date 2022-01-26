@@ -26,6 +26,7 @@
 		43C24D0B27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */; };
 		43C24D0E27A14B1B000E90FF /* PEPBlockBasedTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */; };
 		43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */; };
+		43C24D9027A14D36000E90FF /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,13 @@
 			remoteGlobalIDString = 439F4C36275632B2005F278E;
 			remoteInfo = PEPObjCTypesTests_macOS;
 		};
+		43C24D8D27A14D2D000E90FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E575857268329170084F02D;
+			remoteInfo = PEPObjCTypes_macOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C24D9027A14D36000E90FF /* libPEPObjCTypes_macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +118,7 @@
 				43C24D0927A14A55000E90FF /* PublicHeaders */,
 				43C24CEA27A14978000E90FF /* src */,
 				43B26351272AA95000EE82BC /* Products */,
+				43C24D8F27A14D36000E90FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +163,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		43C24D8F27A14D36000E90FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -188,6 +205,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				43C24D8E27A14D2D000E90FF /* PBXTargetDependency */,
 				15BD2FC1273586CB00B1B1F5 /* PBXTargetDependency */,
 			);
 			name = pEpTransport_macOS;
@@ -334,6 +352,11 @@
 			isa = PBXTargetDependency;
 			target = 43B263D0272AC14700EE82BC /* generate_code */;
 			targetProxy = 43B263D5272AC15700EE82BC /* PBXContainerItemProxy */;
+		};
+		43C24D8E27A14D2D000E90FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PEPObjCTypes_macOS;
+			targetProxy = 43C24D8D27A14D2D000E90FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
