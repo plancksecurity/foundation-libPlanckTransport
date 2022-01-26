@@ -89,4 +89,22 @@
     XCTAssertNil(num);
 }
 
+- (void)testMessageReceived {
+    NSString *subject = @"Some Subject";
+    PEPMessage *msg = [[PEPMessage alloc] init];
+    msg.shortMessage = subject;
+
+    [self.transport pushReceivedMessage:msg];
+    XCTAssertTrue(self.incomingMessageDelegate.messageIsAvailable);
+
+    PEPTransportStatusCode statusCode;
+    NSError *error = nil;
+    PEPMessage *msg2 = [self.transport nextMessageWithPEPSession:nil
+                                             transportStatusCode:&statusCode
+                                                           error:&error];
+    XCTAssertNotNil(msg2);
+    XCTAssertNil(error);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeMessageDelivered);
+}
+
 @end
