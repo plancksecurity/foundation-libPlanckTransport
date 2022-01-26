@@ -16,11 +16,15 @@
 
 @implementation TransportDelegateTests
 
+#pragma mark - Setup, Teardown
+
 - (void)setUp {
 }
 
 - (void)tearDown {
 }
+
+#pragma mark - Tests
 
 - (void)testStartupSuccess {
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
@@ -97,5 +101,7 @@
                                 [NSNumber numberWithInteger:PEPTransportStatusCodeConnectionDown]];
     XCTAssertEqualObjects(statusChangeDelegate.statusChanges, expectedStatus);
 }
+
+#pragma mark - Helpers
 
 @end
