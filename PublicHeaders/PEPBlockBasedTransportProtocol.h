@@ -35,15 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Exact behavior as with `PEPTransportProtocol`, please see documentation there.
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
-        transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
+        transportStatusCode:(out PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable * _Nullable)error;
 
 /// Async startup with error and success callback, _both_ also conveying a status code in order to not lose anything
 /// from `PEPTransportProtocol`, which has similar semantics.
 /// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
-- (BOOL)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode statusCode))successCallback
-                     onError:(nonnull void (^)(PEPTransportStatusCode statusCode,
-                                               NSError * _Nonnull))errorCallback;
+- (BOOL)startupWithOnSuccess:(void (^)(PEPTransportStatusCode statusCode))successCallback
+                     onError:(void (^)(PEPTransportStatusCode statusCode, NSError *))errorCallback;
 
 /// Async shut down with error and success callback, _both_ also conveying a status code in order to not lose anything
 /// from `PEPTransportProtocol`, which has similar semantics.
