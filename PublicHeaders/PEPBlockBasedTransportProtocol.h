@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PEPTransportStatusCode.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol PEPBlockBasedTransportProtocol <NSObject>
