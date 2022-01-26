@@ -16,8 +16,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Delegate for receiving messages.
 @protocol PEPBlockBasedTransportIncomingMessageDelegate <NSObject>
 
+/// Gets called with the latest message whenever the underlying transport has a new message available.
 - (void)signalIncomingMessage:(PEPMessage *)message
                   transportID:(PEPTransportID)transportID
                    statusCode:(PEPTransportStatusCode)statusCode;
