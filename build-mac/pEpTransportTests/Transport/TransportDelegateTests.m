@@ -89,7 +89,7 @@
     XCTAssertNil(num);
 }
 
-- (void)testMessageReceivedSuccess {
+- (void)testMessageReceived {
     NSString *subject = @"Some Subject";
     PEPMessage *msg = [[PEPMessage alloc] init];
     msg.shortMessage = subject;
