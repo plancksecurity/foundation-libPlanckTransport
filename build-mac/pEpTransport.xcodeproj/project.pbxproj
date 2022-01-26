@@ -43,6 +43,34 @@
 			remoteGlobalIDString = 43B263D0272AC14700EE82BC;
 			remoteInfo = generate_code_iOS;
 		};
+		43C24D8527A14D00000E90FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4E575858268329170084F02D;
+			remoteInfo = PEPObjCTypes_macOS;
+		};
+		43C24D8727A14D00000E90FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4E575865268329A20084F02D;
+			remoteInfo = PEPObjCTypes_iOS;
+		};
+		43C24D8927A14D00000E90FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4E5758BF26833D140084F02D;
+			remoteInfo = PEPObjCTypesTests_iOS;
+		};
+		43C24D8B27A14D00000E90FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 439F4C36275632B2005F278E;
+			remoteInfo = PEPObjCTypesTests_macOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +81,7 @@
 		43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransportProtocol.h; sourceTree = "<group>"; };
 		43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransport.h; sourceTree = "<group>"; };
 		43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPBlockBasedTransport.m; sourceTree = "<group>"; };
+		43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPObjCTypes.xcodeproj; path = "../../pEpObjCAdapter/Subprojects/PEPObjCTypes/build-mac/PEPObjCTypes.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +105,7 @@
 		43B26347272AA95000EE82BC = {
 			isa = PBXGroup;
 			children = (
+				43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */,
 				43C24D0927A14A55000E90FF /* PublicHeaders */,
 				43C24CEA27A14978000E90FF /* src */,
 				43B26351272AA95000EE82BC /* Products */,
@@ -110,6 +140,17 @@
 			);
 			name = PublicHeaders;
 			path = ../PublicHeaders;
+			sourceTree = "<group>";
+		};
+		43C24D7F27A14D00000E90FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */,
+				43C24D8827A14D00000E90FF /* libPEPObjCTypes_iOS.a */,
+				43C24D8A27A14D00000E90FF /* PEPObjCTypesTests_iOS.xctest */,
+				43C24D8C27A14D00000E90FF /* PEPObjCTypesTests_macOS.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +237,12 @@
 			mainGroup = 43B26347272AA95000EE82BC;
 			productRefGroup = 43B26351272AA95000EE82BC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 43C24D7F27A14D00000E90FF /* Products */;
+					ProjectRef = 43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				43B2634F272AA95000EE82BC /* pEpTransport_macOS */,
@@ -204,6 +251,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEPObjCTypes_macOS.a;
+			remoteRef = 43C24D8527A14D00000E90FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43C24D8827A14D00000E90FF /* libPEPObjCTypes_iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEPObjCTypes_iOS.a;
+			remoteRef = 43C24D8727A14D00000E90FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43C24D8A27A14D00000E90FF /* PEPObjCTypesTests_iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PEPObjCTypesTests_iOS.xctest;
+			remoteRef = 43C24D8927A14D00000E90FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43C24D8C27A14D00000E90FF /* PEPObjCTypesTests_macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PEPObjCTypesTests_macOS.xctest;
+			remoteRef = 43C24D8B27A14D00000E90FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		43B263D1272AC14700EE82BC /* Generate Code */ = {
