@@ -7,9 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PEPTransportProtocol.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MockIncomingMessageDelegate : NSObject
+@interface MockIncomingMessageDelegate : NSObject <PEPTransportIncomingMessageDelegate>
+
+@property (nonatomic) BOOL messageIsAvailable;
 
 @end
 

@@ -9,4 +9,9 @@
 
 @implementation MockIncomingMessageDelegate
 
+- (void)signalIncomingMessageWithTransportID:(PEPTransportID)transportID
+                                  statusCode:(PEPTransportStatusCode)statusCode {
+    self.messageIsAvailable = YES;
+}
+
 @end
