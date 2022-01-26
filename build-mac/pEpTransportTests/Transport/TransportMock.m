@@ -8,6 +8,7 @@
 #import "TransportMock.h"
 
 const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
+NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
 @implementation TransportMock
 
@@ -41,13 +42,16 @@ const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     if (!self.startupShouldSucceed) {
         *transportStatusCode = PEPTransportStatusCodeConnectionDown;
+        if (error) {
+            *error = [NSError errorWithDomain:g_ErrorDomain
+                                         code:PEPTransportStatusCodeConnectionDown
+                                     userInfo:nil];
+        }
         return NO;
     }
 
-    // Success: Indicate PEPTransportStatusCodeConnectionUp on return.
     *transportStatusCode = PEPTransportStatusCodeConnectionUp;
 
-    // Success: Signal PEPTransportStatusCodeConnectionUp to signalStatusChangeDelegate.
     [self.signalStatusChangeDelegate
      signalStatusChangeWithTransportID:g_transportID
      statusCode:PEPTransportStatusCodeConnectionUp];
