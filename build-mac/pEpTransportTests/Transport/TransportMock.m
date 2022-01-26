@@ -9,17 +9,23 @@
 
 @implementation TransportMock
 
-@synthesize signalIncomingMessageDelegate;
+@synthesize signalIncomingMessageDelegate = _signalIncomingMessageDelegate;
 
-@synthesize signalSendToResultDelegate;
+@synthesize signalSendToResultDelegate = _signalSendToResultDelegate;
 
-@synthesize signalStatusChangeDelegate;
+@synthesize signalStatusChangeDelegate = _signalStatusChangeDelegate;
 
 - (instancetype _Nullable)initWithSignalStatusChangeDelegate:(id<PEPTransportStatusChangeDelegate> _Nullable)signalStatusChangeDelegate
                                   signalSendToResultDelegate:(id<PEPTransportSendToResultDelegate> _Nullable)signalSendToResultDelegate
                                signalIncomingMessageDelegate:(id<PEPTransportIncomingMessageDelegate> _Nullable)signalIncomingMessageDelegate
                                                        error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return nil;
+    self = [self init];
+    if (self) {
+        _signalStatusChangeDelegate = signalStatusChangeDelegate;
+        _signalSendToResultDelegate = signalSendToResultDelegate;
+        _signalIncomingMessageDelegate = signalIncomingMessageDelegate;
+    }
+    return self;
 }
 
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
