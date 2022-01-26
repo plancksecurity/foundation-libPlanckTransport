@@ -89,7 +89,7 @@
     XCTAssertNil(num);
 }
 
-- (void)testMessageReceived {
+- (void)testMessageReceivedSuccess {
     NSString *subject = @"Some Subject";
     PEPMessage *msg = [[PEPMessage alloc] init];
     msg.shortMessage = subject;
@@ -104,7 +104,7 @@
                                                            error:&error];
     XCTAssertNotNil(msg2);
     XCTAssertNil(error);
-    XCTAssertEqual(statusCode, PEPTransportStatusCodeMessageDelivered);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionUp);
 }
 
 @end

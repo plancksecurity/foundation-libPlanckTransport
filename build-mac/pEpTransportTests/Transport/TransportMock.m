@@ -101,6 +101,8 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
         self.receivedMessage = nil;
     }
 
+    *transportStatusCode = PEPTransportStatusCodeConnectionUp;
+
     return newMessage;
 }
 
