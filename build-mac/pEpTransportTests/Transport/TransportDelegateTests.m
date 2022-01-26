@@ -8,11 +8,13 @@
 #import <XCTest/XCTest.h>
 
 #import "MockStatusChangeDelegate.h"
+#import "MockIncomingMessageDelegate.h"
 #import "TransportMock.h"
 
 @interface TransportDelegateTests : XCTestCase
 
 @property (nonatomic) MockStatusChangeDelegate *statusChangeDelegate;
+@property (nonatomic) MockIncomingMessageDelegate *incomingMessageDelegate;
 @property (nonatomic) TransportMock *transport;
 
 @end
@@ -23,11 +25,13 @@
 
 - (void)setUp {
     self.statusChangeDelegate = [MockStatusChangeDelegate new];
+    self.incomingMessageDelegate = [MockIncomingMessageDelegate new];
+
     NSError *error = nil;
     self.transport = [[TransportMock alloc]
                       initWithSignalStatusChangeDelegate:self.statusChangeDelegate
                       signalSendToResultDelegate:nil
-                      signalIncomingMessageDelegate:nil
+                      signalIncomingMessageDelegate:self.incomingMessageDelegate
                       error:&error];
     XCTAssertNotNil(self.transport);
     XCTAssertNil(error);
