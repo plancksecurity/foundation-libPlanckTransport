@@ -38,10 +38,9 @@
     BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
     XCTAssertTrue(success);
     XCTAssertNil(error);
-    XCTAssertEqual(self.statusChangeDelegate.statusChanges.count, 1);
-    NSNumber *num = [self.statusChangeDelegate.statusChanges firstObject];
-    XCTAssertNotNil(num);
-    XCTAssertEqual(num.integerValue, PEPTransportStatusCodeConnectionUp);
+
+    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp]];
+    XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
 }
 
 - (void)tearDown {
