@@ -7,10 +7,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PEPTransportProtocol.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 /// A mock of `PEPTransportProtocol`.
-@interface TransportMock : NSObject
+@interface TransportMock : NSObject <PEPTransportProtocol>
 
 @end
 
