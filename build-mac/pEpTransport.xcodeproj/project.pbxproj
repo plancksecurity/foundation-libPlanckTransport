@@ -32,6 +32,7 @@
 		43C24DF427A15F03000E90FF /* TransportMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF327A15F03000E90FF /* TransportMock.m */; };
 		43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF527A1793D000E90FF /* TransportDelegateTests.m */; };
 		43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */; };
+		43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		43C24DF527A1793D000E90FF /* TransportDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportDelegateTests.m; sourceTree = "<group>"; };
 		43C24DF727A17988000E90FF /* MockStatusChangeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockStatusChangeDelegate.h; sourceTree = "<group>"; };
 		43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockStatusChangeDelegate.m; sourceTree = "<group>"; };
+		43C24DFA27A18D98000E90FF /* MockIncomingMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockIncomingMessageDelegate.h; sourceTree = "<group>"; };
+		43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockIncomingMessageDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,8 @@
 			children = (
 				43C24DF727A17988000E90FF /* MockStatusChangeDelegate.h */,
 				43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */,
+				43C24DFA27A18D98000E90FF /* MockIncomingMessageDelegate.h */,
+				43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */,
 				43C24DF227A15F03000E90FF /* TransportMock.h */,
 				43C24DF327A15F03000E90FF /* TransportMock.m */,
 				43C24DF527A1793D000E90FF /* TransportDelegateTests.m */,
@@ -429,6 +434,7 @@
 				43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */,
 				43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */,
 				43C24DE627A15C81000E90FF /* pEpTransportTests.m in Sources */,
+				43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */,
 				43C24DF427A15F03000E90FF /* TransportMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
