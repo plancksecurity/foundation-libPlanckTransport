@@ -10,7 +10,28 @@
 const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
 NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
+@interface TransportMock ()
+
+// Simulate a received message
+@property (nonatomic) PEPMessage *receivedMessage;
+
+@end
+
 @implementation TransportMock
+
+#pragma mark - Own API
+
+- (void)pushReceivedMessage:(PEPMessage *)message {
+    @synchronized (self) {
+        self.receivedMessage = message;
+    }
+
+    [self.signalIncomingMessageDelegate
+     signalIncomingMessageWithTransportID:g_transportID
+     statusCode:PEPTransportStatusCodeMessageDelivered];
+}
+
+#pragma mark - PEPTransportProtocol
 
 @synthesize signalIncomingMessageDelegate = _signalIncomingMessageDelegate;
 
@@ -73,7 +94,14 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 - (PEPMessage * _Nullable)nextMessageWithPEPSession:(PEPSession * _Nullable)pEpsession
                                 transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return nil;
+    PEPMessage *newMessage = nil;
+
+    @synchronized (self) {
+        newMessage = self.receivedMessage;
+        self.receivedMessage = nil;
+    }
+
+    return newMessage;
 }
 
 - (BOOL)sendMessage:(nonnull PEPMessage *)msg
