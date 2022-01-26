@@ -30,8 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// I assume this is always a sync call, and will therefore not change.
 /// Please let me know if you see that differently.
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
-        transportStatusCode:(out PEPTransportStatusCode *
-                             _Nonnull)transportStatusCode
+        transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                       error:(NSError * _Nullable * _Nullable)error;
 
 /// Async startup with error and success callback,
@@ -41,16 +40,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// with supporting languages (like swift) looks a little bit nicer?
 /// (IIRC in swift, if you have a block as last parameter, you
 /// can put put it into a block outside of the parameter list.)
-- (BOOL)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode
-                                               statusCode))successCallback
-                     onError:(nonnull void (^)(PEPTransportStatusCode
-                                               statusCode, NSError * _Nonnull))errorCallback;
+- (BOOL)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode statusCode))successCallback
+                     onError:(nonnull void (^)(PEPTransportStatusCode statusCode,
+                                               NSError * _Nonnull))errorCallback;
 
 /// Like the startup method before, only for shut down.
 /// Same comments apply.
 - (void)shutdownOnSuccess:(void (^)(PEPTransportStatusCode))successCallback
-                  onError:(void (^)(PEPTransportStatusCode, NSError
-                                    *))errorCallback;
+                  onError:(void (^)(PEPTransportStatusCode, NSError *))errorCallback;
 
 /// The good old send message, only with direct error and
 /// success callbacks.
