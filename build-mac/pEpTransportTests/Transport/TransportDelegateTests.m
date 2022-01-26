@@ -26,7 +26,9 @@
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
     NSError *error = nil;
     TransportMock *transport = [[TransportMock alloc]
-                                initWithSignalStatusChangeDelegate:statusChangeDelegate signalSendToResultDelegate:nil signalIncomingMessageDelegate:nil
+                                initWithSignalStatusChangeDelegate:statusChangeDelegate
+                                signalSendToResultDelegate:nil
+                                signalIncomingMessageDelegate:nil
                                 error:&error];
     XCTAssertNotNil(transport);
     XCTAssertNil(error);
@@ -47,7 +49,9 @@
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
     NSError *error = nil;
     TransportMock *transport = [[TransportMock alloc]
-                                initWithSignalStatusChangeDelegate:statusChangeDelegate signalSendToResultDelegate:nil signalIncomingMessageDelegate:nil
+                                initWithSignalStatusChangeDelegate:statusChangeDelegate
+                                signalSendToResultDelegate:nil
+                                signalIncomingMessageDelegate:nil
                                 error:&error];
     XCTAssertNotNil(transport);
     XCTAssertNil(error);
