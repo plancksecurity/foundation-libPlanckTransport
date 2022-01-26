@@ -23,7 +23,7 @@
 /* Begin PBXBuildFile section */
 		43C24D0127A14978000E90FF /* PEPTransportStatusCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43C24D0227A14978000E90FF /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24CF727A14978000E90FF /* PEPTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		43C24D0B27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */; };
+		43C24D0B27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43C24D0E27A14B1B000E90FF /* PEPBlockBasedTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */; };
 		43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */; };
 		43C24D9027A14D36000E90FF /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */; };
