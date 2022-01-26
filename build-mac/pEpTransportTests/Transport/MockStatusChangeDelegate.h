@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MockStatusChangeDelegate : NSObject <PEPTransportStatusChangeDelegate>
 
+/// The last `PEPTransportStatusCode`s from the transport.
+@property (nonatomic) NSArray<NSNumber *> *statusChanges;
+
 @end
 
 NS_ASSUME_NONNULL_END
