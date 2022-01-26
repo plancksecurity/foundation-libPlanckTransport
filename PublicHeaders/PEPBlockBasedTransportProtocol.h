@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "PEPTransportStatusCode.h"
+#import "PEPObjCTypes.h"
 
 @class PEPTransportConfig;
 @class PEPMessage;
