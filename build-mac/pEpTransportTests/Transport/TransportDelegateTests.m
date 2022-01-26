@@ -105,6 +105,8 @@
     XCTAssertNotNil(msg2);
     XCTAssertNil(error);
     XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionUp);
+
+    XCTAssertEqualObjects(msg, msg2);
 }
 
 @end
