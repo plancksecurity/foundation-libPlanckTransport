@@ -7,9 +7,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PEPTransportProtocol.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MockStatusChangeDelegate : NSObject
+@interface MockStatusChangeDelegate : NSObject <PEPTransportStatusChangeDelegate>
 
 @end
 

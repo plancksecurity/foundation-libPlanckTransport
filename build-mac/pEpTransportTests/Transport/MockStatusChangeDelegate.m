@@ -9,4 +9,8 @@
 
 @implementation MockStatusChangeDelegate
 
+- (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
+                               statusCode:(PEPTransportStatusCode)statusCode {
+}
+
 @end
