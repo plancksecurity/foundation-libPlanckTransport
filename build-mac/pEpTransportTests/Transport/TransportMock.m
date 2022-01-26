@@ -7,6 +7,8 @@
 
 #import "TransportMock.h"
 
+const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
+
 @implementation TransportMock
 
 @synthesize signalIncomingMessageDelegate = _signalIncomingMessageDelegate;
@@ -37,7 +39,20 @@
 
 - (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return NO;
+    if (!self.startupShouldSucceed) {
+        *transportStatusCode = PEPTransportStatusCodeConnectionDown;
+        return NO;
+    }
+
+    // Success: Indicate PEPTransportStatusCodeConnectionUp on return.
+    *transportStatusCode = PEPTransportStatusCodeConnectionUp;
+
+    // Success: Signal PEPTransportStatusCodeConnectionUp to signalStatusChangeDelegate.
+    [self.signalStatusChangeDelegate
+     signalStatusChangeWithTransportID:g_transportID
+     statusCode:PEPTransportStatusCodeConnectionUp];
+
+    return YES;
 }
 
 - (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode

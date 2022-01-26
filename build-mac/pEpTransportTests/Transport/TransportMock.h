@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// A mock of `PEPTransportProtocol`.
 @interface TransportMock : NSObject <PEPTransportProtocol>
 
+@property (nonatomic) BOOL startupShouldSucceed;
+
 @end
 
 NS_ASSUME_NONNULL_END
