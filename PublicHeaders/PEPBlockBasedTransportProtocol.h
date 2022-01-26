@@ -11,7 +11,6 @@
 #import "PEPObjCTypes.h"
 
 @class PEPTransportConfig;
-@class PEPMessage;
 @class PEPSession;
 
 NS_ASSUME_NONNULL_BEGIN
