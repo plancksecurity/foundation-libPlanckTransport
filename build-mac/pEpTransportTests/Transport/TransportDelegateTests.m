@@ -43,4 +43,25 @@
     XCTAssertEqual(num.integerValue, PEPTransportStatusCodeConnectionUp);
 }
 
+- (void)testStartupDirectError {
+    MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
+    NSError *error = nil;
+    TransportMock *transport = [[TransportMock alloc]
+                                initWithSignalStatusChangeDelegate:statusChangeDelegate signalSendToResultDelegate:nil signalIncomingMessageDelegate:nil
+                                error:&error];
+    XCTAssertNotNil(transport);
+    XCTAssertNil(error);
+
+    error = nil;
+    transport.startupShouldSucceed = NO;
+    PEPTransportStatusCode statusCode;
+    BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];
+    XCTAssertFalse(success);
+    XCTAssertNotNil(error);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionDown);
+    XCTAssertEqual(statusChangeDelegate.statusChanges.count, 0);
+    NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
+    XCTAssertNil(num);
+}
+
 @end
