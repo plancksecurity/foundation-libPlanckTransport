@@ -24,6 +24,8 @@
 		43C24D0127A14978000E90FF /* PEPTransportStatusCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43C24D0227A14978000E90FF /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24CF727A14978000E90FF /* PEPTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43C24D0B27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */; };
+		43C24D0E27A14B1B000E90FF /* PEPBlockBasedTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */; };
+		43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportStatusCode.h; sourceTree = "<group>"; };
 		43C24CF727A14978000E90FF /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportProtocol.h; sourceTree = "<group>"; };
 		43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransportProtocol.h; sourceTree = "<group>"; };
+		43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransport.h; sourceTree = "<group>"; };
+		43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPBlockBasedTransport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			children = (
 				43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */,
 				43C24CF727A14978000E90FF /* PEPTransportProtocol.h */,
+				43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */,
+				43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */,
 			);
 			name = src;
 			path = ../src;
@@ -115,6 +121,7 @@
 			files = (
 				43C24D0B27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h in Headers */,
 				43C24D0227A14978000E90FF /* PEPTransportProtocol.h in Headers */,
+				43C24D0E27A14B1B000E90FF /* PEPBlockBasedTransport.h in Headers */,
 				43C24D0127A14978000E90FF /* PEPTransportStatusCode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
