@@ -211,11 +211,11 @@
 		43C24DEE27A15EF2000E90FF /* Transport */ = {
 			isa = PBXGroup;
 			children = (
+				43C24DF727A17988000E90FF /* MockStatusChangeDelegate.h */,
+				43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */,
 				43C24DF227A15F03000E90FF /* TransportMock.h */,
 				43C24DF327A15F03000E90FF /* TransportMock.m */,
 				43C24DF527A1793D000E90FF /* TransportDelegateTests.m */,
-				43C24DF727A17988000E90FF /* MockStatusChangeDelegate.h */,
-				43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
