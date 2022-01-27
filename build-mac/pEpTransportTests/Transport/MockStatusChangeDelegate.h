@@ -21,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// The last `PEPTransportStatusCode`s from the transport.
 @property (nonatomic) NSArray<NSNumber *> *statusChanges;
 
-- (instancetype)initWithStatusChangedExpectation:(XCTestExpectation * _Nullable)expectationStatusChanged;
-
 @end
 
 NS_ASSUME_NONNULL_END

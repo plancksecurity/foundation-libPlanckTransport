@@ -9,15 +9,6 @@
 
 @implementation MockStatusChangeDelegate
 
-- (instancetype)initWithStatusChangedExpectation:(XCTestExpectation *)expectationStatusChanged
-{
-    self = [super init];
-    if (self) {
-        _expectationStatusChanged = expectationStatusChanged;
-    }
-    return self;
-}
-
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     @synchronized (self) {
