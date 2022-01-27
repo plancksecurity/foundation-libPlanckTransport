@@ -83,11 +83,11 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
         return NO;
     }
 
-    if (self.asyncStartupErrorCode) {
+    if (self.delayedStartupErrorCode) {
         dispatch_async(self.queue, ^{
             [self.signalStatusChangeDelegate
              signalStatusChangeWithTransportID:g_transportID
-             statusCode:self.asyncStartupErrorCode.integerValue];
+             statusCode:self.delayedStartupErrorCode.integerValue];
         });
     }
 

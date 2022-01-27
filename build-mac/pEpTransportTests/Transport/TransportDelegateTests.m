@@ -93,6 +93,41 @@
     XCTAssertNil(num);
 }
 
+- (void)testStartupDelayedError {
+    // Use local variables, note that there was already a successful startup in setUp,
+    // that we simply ignore.
+
+    MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
+    XCTestExpectation *expectationStatusChanged = [self expectationWithDescription:@"expectationStatusChange"];
+    statusChangeDelegate.expectationStatusChanged = expectationStatusChanged;
+
+    NSError *error = nil;
+    TransportMock *transport = [[TransportMock alloc]
+                                initWithSignalStatusChangeDelegate:statusChangeDelegate
+                                signalSendToResultDelegate:nil
+                                signalIncomingMessageDelegate:nil
+                                error:&error];
+    XCTAssertNotNil(transport);
+    XCTAssertNil(error);
+
+    error = nil;
+
+    PEPTransportStatusCode errorCode = PEPTransportStatusCodeConnectionDown;
+    transport.delayedStartupErrorCode = [NSNumber numberWithInteger:errorCode];
+
+    PEPTransportStatusCode statusCode;
+    BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];
+    XCTAssertFalse(success);
+    XCTAssertNotNil(error);
+    XCTAssertEqual(error.code, errorCode);
+    XCTAssertEqual(statusCode, errorCode);
+    XCTAssertEqual(statusChangeDelegate.statusChanges.count, 0);
+    NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
+    XCTAssertNil(num);
+
+    [self waitForExpectations:@[expectationStatusChanged] timeout:1.0];
+}
+
 - (void)testMessageReceived {
     NSString *subject = @"Some Subject";
     PEPMessage *msg = [[PEPMessage alloc] init];
