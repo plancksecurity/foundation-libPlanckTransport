@@ -95,9 +95,11 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
     *transportStatusCode = PEPTransportStatusCodeConnectionUp;
 
-    [self.signalStatusChangeDelegate
-     signalStatusChangeWithTransportID:g_transportID
-     statusCode:PEPTransportStatusCodeConnectionUp];
+    dispatch_async(self.queue, ^{
+        [self.signalStatusChangeDelegate
+         signalStatusChangeWithTransportID:g_transportID
+         statusCode:PEPTransportStatusCodeConnectionUp];
+    });
 
     return YES;
 }
