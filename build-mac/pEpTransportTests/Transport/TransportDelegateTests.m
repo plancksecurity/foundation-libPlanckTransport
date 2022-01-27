@@ -101,6 +101,8 @@
 }
 
 /// Immediate startup looks good/neutral, error comes asynchronously via delegate.
+/// Note that from the view of the used mock it doesn't matter if the delayed response is an error status
+/// code or success, the test sets the desired response.
 - (void)testStartupDelayedError {
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
     XCTestExpectation *expectationStatusChanged = [self expectationWithDescription:@"expectationStatusChange"];
