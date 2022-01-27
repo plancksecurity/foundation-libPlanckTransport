@@ -109,6 +109,7 @@
 
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
     XCTestExpectation *expectationStatusChanged = [self expectationWithDescription:@"expectationStatusChange"];
+    expectationStatusChanged.expectedFulfillmentCount = 2;
     statusChangeDelegate.expectationStatusChanged = expectationStatusChanged;
 
     NSError *error = nil;
@@ -125,17 +126,21 @@
     PEPTransportStatusCode errorCode = PEPTransportStatusCodeConnectionDown;
     transport.delayedStartupErrorCode = [NSNumber numberWithInteger:errorCode];
 
+    // Directly on return, all looks good
+
     PEPTransportStatusCode statusCode;
     BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];
-    XCTAssertFalse(success);
-    XCTAssertNotNil(error);
-    XCTAssertEqual(error.code, errorCode);
-    XCTAssertEqual(statusCode, errorCode);
-    XCTAssertEqual(statusChangeDelegate.statusChanges.count, 0);
-    NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
-    XCTAssertNil(num);
+    XCTAssertTrue(success);
+    XCTAssertNil(error);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionUp);
 
     [self waitForExpectations:@[expectationStatusChanged] timeout:TestUtilsDefaultTimeout];
+
+    // But the start up failed with a short delay
+
+    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp],
+                                [NSNumber numberWithInteger:errorCode]];
+    XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
 }
 
 - (void)testMessageReceived {
