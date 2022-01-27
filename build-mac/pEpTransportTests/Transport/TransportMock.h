@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// If this is set, startup will fail immediately with this status code and corresponding error.
 @property (nonatomic, nullable) NSNumber *directStartupErrorCode;
 
+/// If this is set, startup will first succed and then fail asynchronously with this status code and corresponding error.
+@property (nonatomic, nullable) NSNumber *asyncStartupErrorCode;
+
 /// Simulate the case that a message is received by this transport, and offered to the client.
 - (void)pushReceivedMessage:(PEPMessage *)message;
 

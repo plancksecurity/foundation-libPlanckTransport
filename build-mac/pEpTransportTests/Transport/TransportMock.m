@@ -71,6 +71,12 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
         return NO;
     }
 
+    if (self.asyncStartupErrorCode) {
+        [self.signalStatusChangeDelegate
+         signalStatusChangeWithTransportID:g_transportID
+         statusCode:self.asyncStartupErrorCode.integerValue];
+    }
+
     // Successful startup (so far)
 
     *transportStatusCode = PEPTransportStatusCodeConnectionUp;
