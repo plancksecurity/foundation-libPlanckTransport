@@ -84,9 +84,11 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
     }
 
     if (self.asyncStartupErrorCode) {
-        [self.signalStatusChangeDelegate
-         signalStatusChangeWithTransportID:g_transportID
-         statusCode:self.asyncStartupErrorCode.integerValue];
+        dispatch_async(self.queue, ^{
+            [self.signalStatusChangeDelegate
+             signalStatusChangeWithTransportID:g_transportID
+             statusCode:self.asyncStartupErrorCode.integerValue];
+        });
     }
 
     // Successful startup (so far)
