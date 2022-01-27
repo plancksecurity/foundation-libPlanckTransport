@@ -9,6 +9,15 @@
 
 @implementation MockStatusChangeDelegate
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _statusChanges = [NSArray new];
+    }
+    return self;
+}
+
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     @synchronized (self) {
