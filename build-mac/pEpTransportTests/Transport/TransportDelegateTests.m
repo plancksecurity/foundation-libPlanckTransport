@@ -10,6 +10,7 @@
 #import "MockStatusChangeDelegate.h"
 #import "MockIncomingMessageDelegate.h"
 #import "TransportMock.h"
+#import "TestUtils.h"
 
 @interface TransportDelegateTests : XCTestCase
 
@@ -125,7 +126,7 @@
     NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
     XCTAssertNil(num);
 
-    [self waitForExpectations:@[expectationStatusChanged] timeout:1.0];
+    [self waitForExpectations:@[expectationStatusChanged] timeout:TestUtilsDefaultTimeout];
 }
 
 - (void)testMessageReceived {

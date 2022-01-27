@@ -33,6 +33,7 @@
 		43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF527A1793D000E90FF /* TransportDelegateTests.m */; };
 		43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */; };
 		43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */; };
+		43C24EFD27A29957000E90FF /* TestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24EFC27A29957000E90FF /* TestUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockStatusChangeDelegate.m; sourceTree = "<group>"; };
 		43C24DFA27A18D98000E90FF /* MockIncomingMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockIncomingMessageDelegate.h; sourceTree = "<group>"; };
 		43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockIncomingMessageDelegate.m; sourceTree = "<group>"; };
+		43C24EFB27A29957000E90FF /* TestUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtils.h; sourceTree = "<group>"; };
+		43C24EFC27A29957000E90FF /* TestUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,7 @@
 		43C24DE427A15C81000E90FF /* pEpTransportTests */ = {
 			isa = PBXGroup;
 			children = (
+				43C24EF727A2994A000E90FF /* TestUtils */,
 				43C24DEE27A15EF2000E90FF /* Transport */,
 				43C24DE527A15C81000E90FF /* pEpTransportTests.m */,
 			);
@@ -223,6 +227,15 @@
 				43C24DF527A1793D000E90FF /* TransportDelegateTests.m */,
 			);
 			path = Transport;
+			sourceTree = "<group>";
+		};
+		43C24EF727A2994A000E90FF /* TestUtils */ = {
+			isa = PBXGroup;
+			children = (
+				43C24EFB27A29957000E90FF /* TestUtils.h */,
+				43C24EFC27A29957000E90FF /* TestUtils.m */,
+			);
+			path = TestUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +449,7 @@
 				43C24DE627A15C81000E90FF /* pEpTransportTests.m in Sources */,
 				43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */,
 				43C24DF427A15F03000E90FF /* TransportMock.m in Sources */,
+				43C24EFD27A29957000E90FF /* TestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
