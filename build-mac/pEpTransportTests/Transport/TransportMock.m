@@ -15,7 +15,7 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 /// The queue used to simulate async behavior (like async calls to the delegates).
 @property (nonatomic) dispatch_queue_t queue;
 
-// The message to be used in order to simulate receiving messages
+/// The message to be used in order to simulate receiving messages
 @property (nonatomic) PEPMessage *receivedMessage;
 
 @end
