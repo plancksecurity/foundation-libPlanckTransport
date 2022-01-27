@@ -30,7 +30,9 @@
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
         transportStatusCode:(out nonnull PEPTransportStatusCode *)transportStatusCode
                       error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    return NO;
+    return [self.transport configureWithConfig:config
+                           transportStatusCode:transportStatusCode
+                                         error:error];
 }
 
 - (void)sendMessage:(nonnull PEPMessage *)msg
