@@ -73,9 +73,6 @@
 }
 
 - (void)testStartupDirectError {
-    // Use local variables, note that there was already a successful startup in setUp,
-    // that we simply ignore.
-
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
     NSError *error = nil;
     TransportMock *transport = [[TransportMock alloc]
@@ -103,13 +100,10 @@
     XCTAssertNil(num);
 }
 
+/// Immediate startup looks good/neutral, error comes asynchronously via delegate.
 - (void)testStartupDelayedError {
-    // Use local variables, note that there was already a successful startup in setUp,
-    // that we simply ignore.
-
     MockStatusChangeDelegate *statusChangeDelegate = [MockStatusChangeDelegate new];
     XCTestExpectation *expectationStatusChanged = [self expectationWithDescription:@"expectationStatusChange"];
-    expectationStatusChanged.expectedFulfillmentCount = 2;
     statusChangeDelegate.expectationStatusChanged = expectationStatusChanged;
 
     NSError *error = nil;
@@ -124,23 +118,18 @@
     error = nil;
 
     PEPTransportStatusCode errorCode = PEPTransportStatusCodeConnectionDown;
-    transport.delayedStartupErrorCode = [NSNumber numberWithInteger:errorCode];
-
-    // Directly on return, all looks good
+    transport.delayedStartupStatusCode = [NSNumber numberWithInteger:errorCode];
 
     PEPTransportStatusCode statusCode;
     BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];
     XCTAssertTrue(success);
     XCTAssertNil(error);
-    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionUp);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeReady);
 
     [self waitForExpectations:@[expectationStatusChanged] timeout:TestUtilsDefaultTimeout];
 
-    // But later connection problems appeared
-
-    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp],
-                                [NSNumber numberWithInteger:errorCode]];
-    XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
+    NSArray *expectedStatus = @[[NSNumber numberWithInteger:errorCode]];
+    XCTAssertEqualObjects(statusChangeDelegate.statusChanges, expectedStatus);
 }
 
 - (void)testMessageReceived {

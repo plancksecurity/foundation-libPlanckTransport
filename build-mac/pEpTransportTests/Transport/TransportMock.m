@@ -74,6 +74,7 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 - (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     if (self.directStartupErrorCode) {
+        // Fail immediately, don't invoke the delegate for a status change.
         *transportStatusCode = self.directStartupErrorCode.integerValue;
         if (error) {
             *error = [NSError errorWithDomain:g_ErrorDomain
@@ -81,27 +82,23 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
                                      userInfo:nil];
         }
         return NO;
-    }
+    } else if (self.delayedStartupStatusCode) {
+        // Generic status code, we don't know yet if there will be an error or not,
+        // the user of this mock decided that with the status code.
+        *transportStatusCode = PEPTransportStatusCodeReady;
 
-    if (self.delayedStartupErrorCode) {
         dispatch_async(self.queue, ^{
             [self.signalStatusChangeDelegate
              signalStatusChangeWithTransportID:g_transportID
-             statusCode:self.delayedStartupErrorCode.integerValue];
+             statusCode:self.delayedStartupStatusCode.integerValue];
         });
+
+        return YES;
+    } else {
+        // We are able to start up immediately and know it's a success.
+        *transportStatusCode = PEPTransportStatusCodeConnectionUp;
+        return YES;
     }
-
-    // Successful startup (so far)
-
-    *transportStatusCode = PEPTransportStatusCodeConnectionUp;
-
-    dispatch_async(self.queue, ^{
-        [self.signalStatusChangeDelegate
-         signalStatusChangeWithTransportID:g_transportID
-         statusCode:PEPTransportStatusCodeConnectionUp];
-    });
-
-    return YES;
 }
 
 - (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
