@@ -136,7 +136,7 @@
 
     [self waitForExpectations:@[expectationStatusChanged] timeout:TestUtilsDefaultTimeout];
 
-    // But the start up failed with a short delay
+    // But later connection problems appeared
 
     NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp],
                                 [NSNumber numberWithInteger:errorCode]];
