@@ -17,12 +17,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Delegate for receiving messages.
-@protocol PEPBlockBasedTransportIncomingMessageDelegate <NSObject>
+@protocol PEPBlockBasedTransportDelegate <NSObject>
 
 /// Gets called with the latest message whenever the underlying transport has a new message available.
 - (void)signalIncomingMessage:(PEPMessage *)message
                   transportID:(PEPTransportID)transportID
                    statusCode:(PEPTransportStatusCode)statusCode;
+
+/// The connection encountered a fatal error and was cut.
+- (void)connectionStoppedWithtransportID:(PEPTransportID)transportID
+                              statusCode:(PEPTransportStatusCode)statusCode;
+
 @end
 
 /// Wraps any `id<PEPTransportProtocol>` into a version with callbacks instead of delegates,
@@ -33,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// `PEPBlockBasedTransportIncomingMessageDelegate` delegate.
 /// @note Nullable only for OUT_OF_MEMORY
 - (instancetype _Nullable)initWithTransport:(id<PEPTransportProtocol>)transport
-                    incomingMessageDelegate:(id<PEPBlockBasedTransportIncomingMessageDelegate>)incomingMessageDelegate;
+                          transportDelegate:(id<PEPBlockBasedTransportDelegate>)transportDelegate;
 
 /// Exact behavior as with `PEPTransportProtocol`, please see documentation there.
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
