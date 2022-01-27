@@ -12,7 +12,7 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
 @interface TransportMock ()
 
-// Simulate a received message
+// The message to be used in order to simulate receiving messages
 @property (nonatomic) PEPMessage *receivedMessage;
 
 @end
