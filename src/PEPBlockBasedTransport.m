@@ -7,11 +7,24 @@
 
 #import "PEPBlockBasedTransport.h"
 
+@interface PEPBlockBasedTransport ()
+
+@property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
+@property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
+
+@end
+
 @implementation PEPBlockBasedTransport
 
+/// @note The delegate is stored as `weak`.
 - (instancetype _Nullable)initWithTransport:(nonnull id<PEPTransportProtocol>)transport
                           transportDelegate:(nonnull id<PEPBlockBasedTransportDelegate>)transportDelegate {
-    return nil;
+    self = [super init];
+    if (self) {
+        _transport = transport;
+        _transportDelegate = transportDelegate;
+    }
+    return self;
 }
 
 - (BOOL)configureWithConfig:(PEPTransportConfig * _Nullable)config
