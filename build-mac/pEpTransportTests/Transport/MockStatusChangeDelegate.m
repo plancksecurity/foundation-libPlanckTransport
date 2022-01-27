@@ -16,6 +16,8 @@
         [array addObject:[NSNumber numberWithInteger:statusCode]];
         self.statusChanges = [NSArray arrayWithArray:array];
     }
+
+    [self.expectationStatusChanged fulfill];
 }
 
 @end
