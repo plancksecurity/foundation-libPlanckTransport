@@ -48,13 +48,17 @@
     NSError *error = nil;
     PEPTransportStatusCode statusCode;
 
-    // not interested in that for the successful shut down
-    self.statusChangeDelegate.expectationStatusChanged = nil;
+    XCTestExpectation *expShutDown = [self expectationWithDescription:@"expShutDown"];
+    self.statusChangeDelegate.expectationStatusChanged = expShutDown;
 
     BOOL success = [self.transport shutdownWithTransportStatusCode:&statusCode error:&error];
     XCTAssertTrue(success);
-    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp],
-                                [NSNumber numberWithInteger:PEPTransportStatusCodeConnectionDown]];
+    XCTAssertNil(error);
+    XCTAssertEqual(statusCode, PEPTransportStatusCodeReady);
+
+    [self waitForExpectations:@[expShutDown] timeout:TestUtilsDefaultTimeout];
+
+    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionDown]];
     XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
 }
 

@@ -106,10 +106,12 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
                                   error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     *transportStatusCode = PEPTransportStatusCodeReady;
     
-    [self.signalStatusChangeDelegate
-     signalStatusChangeWithTransportID:g_transportID
-     statusCode:PEPTransportStatusCodeConnectionDown];
-    
+    dispatch_async(self.queue, ^{
+        [self.signalStatusChangeDelegate
+         signalStatusChangeWithTransportID:g_transportID
+         statusCode:PEPTransportStatusCodeConnectionDown];
+    });
+
     return YES;
 }
 
