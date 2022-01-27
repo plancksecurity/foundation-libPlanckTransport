@@ -24,7 +24,7 @@
 
 #pragma mark - Setup, Teardown
 
-- (void)setUp {
+- (void)setUp1 {
     XCTestExpectation *expectationStatusChanged = [self expectationWithDescription:@"expectationStatusChange"];
     self.statusChangeDelegate = [MockStatusChangeDelegate new];
     self.statusChangeDelegate.expectationStatusChanged = expectationStatusChanged;
@@ -52,7 +52,7 @@
     XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
 }
 
-- (void)tearDown {
+- (void)tearDown1 {
     NSError *error = nil;
     PEPTransportStatusCode statusCode;
 
