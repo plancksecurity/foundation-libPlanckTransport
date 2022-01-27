@@ -35,10 +35,9 @@
                                          error:error];
 }
 
-- (void)sendMessage:(nonnull PEPMessage *)msg
-     withPEPSession:(PEPSession * _Nullable)pEpSession
-          onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
-            onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
+- (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
+                     onError:(nonnull void (^)(PEPTransportStatusCode,
+                                               NSError * _Nonnull))errorCallback {
 }
 
 - (void)shutdownOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
@@ -46,9 +45,10 @@
                                             NSError * _Nonnull))errorCallback {
 }
 
-- (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
-                     onError:(nonnull void (^)(PEPTransportStatusCode,
-                                               NSError * _Nonnull))errorCallback {
+- (void)sendMessage:(nonnull PEPMessage *)msg
+     withPEPSession:(PEPSession * _Nullable)pEpSession
+          onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
+            onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
 }
 
 @end
