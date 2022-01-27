@@ -61,15 +61,17 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
 - (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    if (!self.startupShouldSucceed) {
-        *transportStatusCode = PEPTransportStatusCodeConnectionDown;
+    if (self.directStartupErrorCode) {
+        *transportStatusCode = self.directStartupErrorCode.integerValue;
         if (error) {
             *error = [NSError errorWithDomain:g_ErrorDomain
-                                         code:PEPTransportStatusCodeConnectionDown
+                                         code:self.directStartupErrorCode.integerValue
                                      userInfo:nil];
         }
         return NO;
     }
+
+    // Successful startup (so far)
 
     *transportStatusCode = PEPTransportStatusCodeConnectionUp;
 

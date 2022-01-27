@@ -37,7 +37,6 @@
     XCTAssertNil(error);
 
     error = nil;
-    self.transport.startupShouldSucceed = YES;
     PEPTransportStatusCode statusCode;
     BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
     XCTAssertTrue(success);
@@ -78,12 +77,17 @@
     XCTAssertNil(error);
 
     error = nil;
-    transport.startupShouldSucceed = NO;
+
+    // Make it fail directly on startup.
+    PEPTransportStatusCode errorCode = PEPTransportStatusCodeConnectionDown;
+    transport.directStartupErrorCode = [NSNumber numberWithInteger:errorCode];
+
     PEPTransportStatusCode statusCode;
     BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];
     XCTAssertFalse(success);
     XCTAssertNotNil(error);
-    XCTAssertEqual(statusCode, PEPTransportStatusCodeConnectionDown);
+    XCTAssertEqual(error.code, errorCode);
+    XCTAssertEqual(statusCode, errorCode);
     XCTAssertEqual(statusChangeDelegate.statusChanges.count, 0);
     NSNumber *num = [statusChangeDelegate.statusChanges firstObject];
     XCTAssertNil(num);

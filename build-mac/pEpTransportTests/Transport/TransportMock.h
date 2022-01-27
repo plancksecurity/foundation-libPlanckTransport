@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// A mock of `PEPTransportProtocol`.
 @interface TransportMock : NSObject <PEPTransportProtocol>
 
-/// If this is `NO`, startup will simulate a failure.
-@property (nonatomic) BOOL startupShouldSucceed;
+/// If this is set, startup will fail immediately with this status code and corresponding error.
+@property (nonatomic, nullable) NSNumber *directStartupErrorCode;
 
 /// Simulate the case that a message is received by this transport, and offered to the client.
 - (void)pushReceivedMessage:(PEPMessage *)message;
