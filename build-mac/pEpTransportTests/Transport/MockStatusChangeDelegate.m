@@ -12,9 +12,7 @@
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     @synchronized (self) {
-        NSMutableArray *array = [NSMutableArray arrayWithArray:self.statusChanges];
-        [array addObject:[NSNumber numberWithInteger:statusCode]];
-        self.statusChanges = [NSArray arrayWithArray:array];
+        self.statusChanges = [self.statusChanges arrayByAddingObject:[NSNumber numberWithInteger:statusCode]];
     }
 
     [self.expectationStatusChanged fulfill];
