@@ -96,6 +96,7 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
         return YES;
     } else {
         // We are able to start up immediately and know it's a success.
+        // No message to the delegate.
         *transportStatusCode = PEPTransportStatusCodeConnectionUp;
         return YES;
     }

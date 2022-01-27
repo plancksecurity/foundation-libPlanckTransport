@@ -25,10 +25,7 @@
 #pragma mark - Setup, Teardown
 
 - (void)setUp {
-    XCTestExpectation *expectationStatusChanged = [self expectationWithDescription:@"expectationStatusChange"];
     self.statusChangeDelegate = [MockStatusChangeDelegate new];
-    self.statusChangeDelegate.expectationStatusChanged = expectationStatusChanged;
-
     self.incomingMessageDelegate = [MockIncomingMessageDelegate new];
 
     NSError *error = nil;
@@ -45,11 +42,6 @@
     BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
     XCTAssertTrue(success);
     XCTAssertNil(error);
-
-    [self waitForExpectations:@[expectationStatusChanged] timeout:TestUtilsDefaultTimeout];
-
-    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp]];
-    XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
 }
 
 - (void)tearDown {
