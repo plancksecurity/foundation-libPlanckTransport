@@ -35,7 +35,7 @@
 		43C24EFD27A29957000E90FF /* TestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24EFC27A29957000E90FF /* TestUtils.m */; };
 		43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */; };
 		43C24F1827A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1727A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m */; };
-		43C24F1C27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m */; };
+		43C24F5927A3F9CD000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -447,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C24F5927A3F9CD000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m in Sources */,
 				43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,7 +465,6 @@
 			files = (
 				43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */,
 				43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */,
-				43C24F1C27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m in Sources */,
 				43C24F1827A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m in Sources */,
 				43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */,
 				43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */,
