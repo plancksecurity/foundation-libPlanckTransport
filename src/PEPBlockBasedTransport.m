@@ -15,6 +15,8 @@
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
 @property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
 
+// TODO: Use on ordered mutable set? We sometimes have to remove a callback just added,
+// and can't rely on it being the last (async modifications by other threads etc.)
 @property (nonatomic, nonnull) NSMutableArray<PEPTransportStatusCallbacks *> *startupCallbacks;
 
 @end
@@ -47,11 +49,27 @@
 - (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
+    // This is slightly awkward:
+    // We add our callbacks, just in case the async transport implementation
+    // is so fast that it "overtakes" us and wants to report something before
+    // even left this method.
     PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
                                              callbacksWithSuccessCallback:successCallback
                                              errorCallback:errorCallback];
     @synchronized (self.startupCallbacks) {
         [self.startupCallbacks addObject:callback];
+    }
+
+    PEPTransportStatusCode statusCode;
+    NSError *error = nil;
+    BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
+
+    if (!success) {
+        // We have to remove our, and only our, callbacks, that we just installed.
+        // Awkward, because it's an array.
+        @synchronized (self.startupCallbacks) {
+            [self.startupCallbacks removeObject:callback];
+        }
     }
 }
 
