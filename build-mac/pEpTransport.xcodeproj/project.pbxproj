@@ -27,7 +27,6 @@
 		43C24D0E27A14B1B000E90FF /* PEPBlockBasedTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */; };
 		43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */; };
 		43C24D9027A14D36000E90FF /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */; };
-		43C24DE627A15C81000E90FF /* pEpTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DE527A15C81000E90FF /* pEpTransportTests.m */; };
 		43C24DE727A15C81000E90FF /* libpEpTransport_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */; };
 		43C24DF427A15F03000E90FF /* TransportMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF327A15F03000E90FF /* TransportMock.m */; };
 		43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF527A1793D000E90FF /* TransportDelegateTests.m */; };
@@ -106,7 +105,6 @@
 		43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPBlockBasedTransport.m; sourceTree = "<group>"; };
 		43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPObjCTypes.xcodeproj; path = "../../pEpObjCAdapter/Subprojects/PEPObjCTypes/build-mac/PEPObjCTypes.xcodeproj"; sourceTree = "<group>"; };
 		43C24DE327A15C81000E90FF /* pEpTransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pEpTransportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		43C24DE527A15C81000E90FF /* pEpTransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pEpTransportTests.m; sourceTree = "<group>"; };
 		43C24DF227A15F03000E90FF /* TransportMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportMock.h; sourceTree = "<group>"; };
 		43C24DF327A15F03000E90FF /* TransportMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportMock.m; sourceTree = "<group>"; };
 		43C24DF527A1793D000E90FF /* TransportDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportDelegateTests.m; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 			children = (
 				43C24EF727A2994A000E90FF /* TestUtils */,
 				43C24DEE27A15EF2000E90FF /* Transport */,
-				43C24DE527A15C81000E90FF /* pEpTransportTests.m */,
 				43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */,
 			);
 			path = pEpTransportTests;
@@ -450,7 +447,6 @@
 				43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */,
 				43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */,
 				43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */,
-				43C24DE627A15C81000E90FF /* pEpTransportTests.m in Sources */,
 				43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */,
 				43C24DF427A15F03000E90FF /* TransportMock.m in Sources */,
 				43C24EFD27A29957000E90FF /* TestUtils.m in Sources */,
