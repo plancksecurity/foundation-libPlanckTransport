@@ -50,9 +50,10 @@
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
     // This is slightly awkward:
-    // We add our callbacks, just in case the async transport implementation
+    // We have to add our callbacks before invoking the transport,
+    // just in case its async implementation
     // is so fast that it "overtakes" us and wants to report something before
-    // even left this method.
+    // we even left this method.
     PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
                                              callbacksWithSuccessCallback:successCallback
                                              errorCallback:errorCallback];
