@@ -49,13 +49,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// from `PEPTransportProtocol`, which has similar semantics.
 /// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
 - (void)startupWithOnSuccess:(void (^)(PEPTransportStatusCode statusCode))successCallback
-                     onError:(void (^)(PEPTransportStatusCode statusCode, NSError *))errorCallback;
+                     onError:(void (^)(PEPTransportStatusCode statusCode, NSError *error))errorCallback;
 
 /// Async shut down with error and success callback, _both_ also conveying a status code in order to not lose anything
 /// from `PEPTransportProtocol`, which has similar semantics.
 /// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
 - (void)shutdownOnSuccess:(void (^)(PEPTransportStatusCode))successCallback
-                  onError:(void (^)(PEPTransportStatusCode, NSError *))errorCallback;
+                  onError:(void (^)(PEPTransportStatusCode, NSError *error))errorCallback;
 
 /// Async send message with error and success callback, _both_ also conveying a status code in order to not lose anything
 /// from `PEPTransportProtocol`, which has similar semantics.
@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sendMessage:(PEPMessage *)msg
      withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(void (^)(PEPTransportStatusCode))successCallback
-            onError:(void (^)(PEPTransportStatusCode, NSError *))errorCallback;
+            onError:(void (^)(PEPTransportStatusCode, NSError *error))errorCallback;
 
 @end
 
