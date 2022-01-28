@@ -7,6 +7,8 @@
 
 #import "PEPBlockBasedTransport.h"
 
+#import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
+
 @interface PEPBlockBasedTransport ()
 
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
@@ -22,6 +24,8 @@
     self = [super init];
     if (self) {
         _transport = transport;
+        _transport.signalStatusChangeDelegate = self;
+
         _transportDelegate = transportDelegate;
     }
     return self;
