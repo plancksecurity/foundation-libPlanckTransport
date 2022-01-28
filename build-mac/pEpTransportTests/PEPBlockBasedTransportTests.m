@@ -10,6 +10,7 @@
 #import "PEPBlockBasedTransport.h"
 #import "TransportMock.h"
 #import "MockBlockBasedTransportDelegate.h"
+#import "TestUtils.h"
 
 @interface PEPBlockBasedTransportTests : XCTestCase
 
@@ -38,6 +39,15 @@
     self.blockTransport = [[PEPBlockBasedTransport alloc]
                            initWithTransport:self.transport
                            transportDelegate:self.transportDelegate];
+
+    XCTestExpectation *expStartup = [self expectationWithDescription:@"expStartup"];
+    [self.blockTransport startupWithOnSuccess:^(PEPTransportStatusCode statusCode) {
+        [expStartup fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        [expStartup fulfill];
+    }];
+
+    [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
 }
 
 - (void)tearDown {
