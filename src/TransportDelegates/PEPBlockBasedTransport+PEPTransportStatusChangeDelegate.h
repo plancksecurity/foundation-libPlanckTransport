@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
+@interface PEPBlockBasedTransport (PEPTransportStatusChangeDelegate) <PEPTransportStatusChangeDelegate>
 
 @end
 
