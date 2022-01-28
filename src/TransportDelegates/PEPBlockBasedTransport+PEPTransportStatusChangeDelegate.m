@@ -9,4 +9,9 @@
 
 @implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
 
+- (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
+                               statusCode:(PEPTransportStatusCode)statusCode {
+    // TODO
+}
+
 @end
