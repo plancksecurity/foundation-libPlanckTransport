@@ -23,6 +23,8 @@
 
 @implementation PEPBlockBasedTransport
 
+#pragma mark - PEPBlockBasedTransportProtocol
+
 /// @note The delegate is stored as `weak`.
 - (instancetype _Nullable)initWithTransport:(nonnull id<PEPTransportProtocol>)transport
                           transportDelegate:(nonnull id<PEPBlockBasedTransportDelegate>)transportDelegate {
@@ -65,12 +67,19 @@
     NSError *error = nil;
     BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
 
-    if (!success) {
-        // We have to remove our, and only our, callbacks, that we just installed.
-        // Awkward, because it's an array.
-        @synchronized (self.startupCallbacks) {
-            [self.startupCallbacks removeObject:callback];
+    if (success) {
+        if (statusCode == PEPTransportStatusCodeConnectionUp) {
+            // This is already up, so assume there's no need to wait for more.
+            // Remove our callbacks, and inform the caller.
+            [self removeCallbacks:callback];
+            successCallback(statusCode);
+        } else {
+            // The connection is not yet up, so wait for it, and handle it in the delegate.
         }
+    } else {
+        // We have to remove our, and only our, callbacks, that we just installed.
+        [self removeCallbacks:callback];
+        errorCallback(statusCode, error);
     }
 }
 
@@ -83,6 +92,14 @@
      withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
             onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
+}
+
+#pragma mark - PEPBlockBasedTransportProtocol
+
+- (void)removeCallbacks:(PEPTransportStatusCallbacks *)callbacks {
+    @synchronized (self.startupCallbacks) {
+        [self.startupCallbacks removeObject:callbacks];
+    }
 }
 
 @end
