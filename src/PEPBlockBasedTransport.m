@@ -8,14 +8,14 @@
 #import "PEPBlockBasedTransport.h"
 
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
-#import "PEPTransportStatusErrorCallbacks.h"
+#import "PEPTransportStatusCallbacks.h"
 
 @interface PEPBlockBasedTransport ()
 
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
 @property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
 
-@property (nonatomic, nonnull) NSMutableArray<PEPTransportStatusErrorCallbacks *> *startupCallbacks;
+@property (nonatomic, nonnull) NSMutableArray<PEPTransportStatusCallbacks *> *startupCallbacks;
 
 @end
 
@@ -47,9 +47,9 @@
 - (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
-    PEPTransportStatusErrorCallbacks *callback = [[PEPTransportStatusErrorCallbacks alloc]
-                                                  initWithSuccessCallback:successCallback
-                                                  errorCallback:errorCallback];
+    PEPTransportStatusCallbacks *callback = [[PEPTransportStatusCallbacks alloc]
+                                             initWithSuccessCallback:successCallback
+                                             errorCallback:errorCallback];
     @synchronized (self.startupCallbacks) {
         [self.startupCallbacks addObject:callback];
     }

@@ -5,9 +5,9 @@
 //  Created by Dirk Zimmermann on 25.01.22.
 //
 
-#import "PEPTransportStatusErrorCallbacks.h"
+#import "PEPTransportStatusCallbacks.h"
 
-@implementation PEPTransportStatusErrorCallbacks
+@implementation PEPTransportStatusCallbacks
 
 - (instancetype)initWithSuccessCallback:(void (^)(PEPTransportStatusCode))successCallback
                           errorCallback:(void (^)(PEPTransportStatusCode, NSError *))errorCallback {

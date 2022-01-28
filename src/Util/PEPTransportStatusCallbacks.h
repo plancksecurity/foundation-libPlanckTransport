@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PEPTransportStatusErrorCallbacks : NSObject
+@interface PEPTransportStatusCallbacks : NSObject
 
 @property (nonatomic, nonnull, readonly) void (^successCallback)(PEPTransportStatusCode);
 @property (nonatomic, nonnull, readonly) void (^errorCallback)(PEPTransportStatusCode, NSError *);
