@@ -9,10 +9,12 @@
 
 #import "PEPBlockBasedTransport.h"
 #import "TransportMock.h"
+#import "MockBlockBasedTransportDelegate.h"
 
 @interface PEPBlockBasedTransportTests : XCTestCase
 
 @property (nonatomic) TransportMock *transport;
+@property (nonatomic) MockBlockBasedTransportDelegate *transportDelegate;
 @property (nonatomic) PEPBlockBasedTransport *blockTransport;
 
 @end
@@ -30,6 +32,12 @@
                       error:&error];
     XCTAssertNotNil(self.transport);
     XCTAssertNil(error);
+
+    self.transportDelegate = [MockBlockBasedTransportDelegate new];
+
+    self.blockTransport = [[PEPBlockBasedTransport alloc]
+                           initWithTransport:self.transport
+                           transportDelegate:self.transportDelegate];
 }
 
 - (void)tearDown {
