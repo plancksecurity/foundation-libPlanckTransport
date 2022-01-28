@@ -94,7 +94,7 @@
             onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
 }
 
-#pragma mark - PEPBlockBasedTransportProtocol
+#pragma mark - Helpers
 
 - (void)removeFromStartupCallbacks:(PEPTransportStatusCallbacks *)callbacks {
     @synchronized (self.startupCallbacks) {
