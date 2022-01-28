@@ -71,14 +71,14 @@
         if (statusCode == PEPTransportStatusCodeConnectionUp) {
             // This is already up, so assume there's no need to wait for more.
             // Remove our callbacks, and inform the caller.
-            [self removeCallbacks:callback];
+            [self removeFromStartupCallbacks:callback];
             successCallback(statusCode);
         } else {
             // The connection is not yet up, so wait for it, and handle it in the delegate.
         }
     } else {
         // We have to remove our, and only our, callbacks, that we just installed.
-        [self removeCallbacks:callback];
+        [self removeFromStartupCallbacks:callback];
         errorCallback(statusCode, error);
     }
 }
@@ -96,7 +96,7 @@
 
 #pragma mark - PEPBlockBasedTransportProtocol
 
-- (void)removeCallbacks:(PEPTransportStatusCallbacks *)callbacks {
+- (void)removeFromStartupCallbacks:(PEPTransportStatusCallbacks *)callbacks {
     @synchronized (self.startupCallbacks) {
         [self.startupCallbacks removeObject:callbacks];
     }
