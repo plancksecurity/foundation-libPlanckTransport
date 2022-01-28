@@ -35,6 +35,7 @@
 		43C24EFD27A29957000E90FF /* TestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24EFC27A29957000E90FF /* TestUtils.m */; };
 		43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */; };
 		43C24F1827A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1727A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m */; };
+		43C24F1C27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPBlockBasedTransportTests.m; sourceTree = "<group>"; };
 		43C24F1627A3E8A3000E90FF /* MockBlockBasedTransportDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockBlockBasedTransportDelegate.h; sourceTree = "<group>"; };
 		43C24F1727A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockBlockBasedTransportDelegate.m; sourceTree = "<group>"; };
+		43C24F1A27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"; sourceTree = "<group>"; };
+		43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,7 @@
 		43C24CEA27A14978000E90FF /* src */ = {
 			isa = PBXGroup;
 			children = (
+				43C24F1927A3F5EA000E90FF /* TransportDelegates */,
 				43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */,
 				43C24CF727A14978000E90FF /* PEPTransportProtocol.h */,
 				43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */,
@@ -241,6 +245,15 @@
 				43C24EFC27A29957000E90FF /* TestUtils.m */,
 			);
 			path = TestUtils;
+			sourceTree = "<group>";
+		};
+		43C24F1927A3F5EA000E90FF /* TransportDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				43C24F1A27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h */,
+				43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m */,
+			);
+			path = TransportDelegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +464,7 @@
 			files = (
 				43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */,
 				43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */,
+				43C24F1C27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m in Sources */,
 				43C24F1827A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m in Sources */,
 				43C24DF627A1793D000E90FF /* TransportDelegateTests.m in Sources */,
 				43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */,
