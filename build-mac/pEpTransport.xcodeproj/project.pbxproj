@@ -209,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				43C24EF727A2994A000E90FF /* TestUtils */,
-				43C24DEE27A15EF2000E90FF /* Transport */,
 				43C24DF527A1793D000E90FF /* TransportDelegateTests.m */,
 				43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */,
 			);
@@ -232,6 +231,7 @@
 		43C24EF727A2994A000E90FF /* TestUtils */ = {
 			isa = PBXGroup;
 			children = (
+				43C24DEE27A15EF2000E90FF /* Transport */,
 				43C24EFB27A29957000E90FF /* TestUtils.h */,
 				43C24EFC27A29957000E90FF /* TestUtils.m */,
 			);
