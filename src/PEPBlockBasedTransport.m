@@ -47,8 +47,8 @@
 - (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
-    PEPTransportStatusCallbacks *callback = [[PEPTransportStatusCallbacks alloc]
-                                             initWithSuccessCallback:successCallback
+    PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
+                                             callbacksWithSuccessCallback:successCallback
                                              errorCallback:errorCallback];
     @synchronized (self.startupCallbacks) {
         [self.startupCallbacks addObject:callback];

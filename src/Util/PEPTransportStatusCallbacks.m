@@ -9,6 +9,12 @@
 
 @implementation PEPTransportStatusCallbacks
 
++ (instancetype)callbacksWithSuccessCallback:(void (^)(PEPTransportStatusCode))successCallback
+                               errorCallback:(void (^)(PEPTransportStatusCode, NSError *))errorCallback {
+    return [[self alloc] initWithSuccessCallback:successCallback
+                                   errorCallback:errorCallback];
+}
+
 - (instancetype)initWithSuccessCallback:(void (^)(PEPTransportStatusCode))successCallback
                           errorCallback:(void (^)(PEPTransportStatusCode, NSError *))errorCallback {
     self = [super init];

@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull, readonly) void (^successCallback)(PEPTransportStatusCode);
 @property (nonatomic, nonnull, readonly) void (^errorCallback)(PEPTransportStatusCode, NSError *);
 
+/// Static convenience initializer for the corresponding `init` version.
++ (instancetype)callbacksWithSuccessCallback:(void (^)(PEPTransportStatusCode))successCallback
+                               errorCallback:(void (^)(PEPTransportStatusCode, NSError *))errorCallback;
+
 - (instancetype)initWithSuccessCallback:(void (^)(PEPTransportStatusCode))successCallback
                           errorCallback:(void (^)(PEPTransportStatusCode, NSError *))errorCallback;
 
