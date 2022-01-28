@@ -210,6 +210,7 @@
 			children = (
 				43C24EF727A2994A000E90FF /* TestUtils */,
 				43C24DEE27A15EF2000E90FF /* Transport */,
+				43C24DF527A1793D000E90FF /* TransportDelegateTests.m */,
 				43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */,
 			);
 			path = pEpTransportTests;
@@ -224,7 +225,6 @@
 				43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */,
 				43C24DF227A15F03000E90FF /* TransportMock.h */,
 				43C24DF327A15F03000E90FF /* TransportMock.m */,
-				43C24DF527A1793D000E90FF /* TransportDelegateTests.m */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
