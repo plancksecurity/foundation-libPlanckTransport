@@ -71,6 +71,8 @@
 }
 
 - (void)testStartupWithDirectError {
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeConnectionDown;
+
     NSError *error = nil;
     TransportMock *transport = [[TransportMock alloc]
                                 initWithSignalStatusChangeDelegate:nil
@@ -79,6 +81,7 @@
                                 error:&error];
     XCTAssertNotNil(transport);
     XCTAssertNil(error);
+    transport.directStartupErrorCode = [NSNumber numberWithInteger:expectedStatusCode];
 
     self.transportDelegate = [MockBlockBasedTransportDelegate new];
 
@@ -89,9 +92,10 @@
     XCTestExpectation *expStartup = [self expectationWithDescription:@"expStartup"];
     [blockTransport startupWithOnSuccess:^(PEPTransportStatusCode statusCode) {
         [expStartup fulfill];
-    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
-        [expStartup fulfill];
         XCTFail();
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTAssertEqual(statusCode, expectedStatusCode);
+        [expStartup fulfill];
     }];
 
     [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
