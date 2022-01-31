@@ -101,4 +101,35 @@
     [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
 }
 
+- (void)testStartupWithDelayedError {
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeConnectionDown;
+
+    NSError *error = nil;
+    TransportMock *transport = [[TransportMock alloc]
+                                initWithSignalStatusChangeDelegate:nil
+                                signalSendToResultDelegate:nil
+                                signalIncomingMessageDelegate:nil
+                                error:&error];
+    XCTAssertNotNil(transport);
+    XCTAssertNil(error);
+    transport.delayedStartupStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
+
+    self.transportDelegate = [MockBlockBasedTransportDelegate new];
+
+    PEPBlockBasedTransport *blockTransport = [[PEPBlockBasedTransport alloc]
+                                              initWithTransport:transport
+                                              transportDelegate:self.transportDelegate];
+
+    XCTestExpectation *expStartup = [self expectationWithDescription:@"expStartup"];
+    [blockTransport startupWithOnSuccess:^(PEPTransportStatusCode statusCode) {
+        [expStartup fulfill];
+        XCTFail();
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTAssertEqual(statusCode, expectedStatusCode);
+        [expStartup fulfill];
+    }];
+
+    [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
+}
+
 @end
