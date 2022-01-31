@@ -19,6 +19,9 @@
 // and can't rely on it being the last (async modifications by other threads etc.)
 @property (nonatomic, nonnull) NSMutableArray<PEPTransportStatusCallbacks *> *startupCallbacks;
 
+// TODO: Same as for `startupCallbacks`.
+@property (nonatomic, nonnull) NSMutableArray<PEPTransportStatusCallbacks *> *shutdownCallbacks;
+
 @end
 
 @implementation PEPBlockBasedTransport
@@ -31,6 +34,7 @@
     self = [super init];
     if (self) {
         _startupCallbacks = [NSMutableArray new];
+        _shutdownCallbacks = [NSMutableArray new];
 
         _transport = transport;
         _transport.signalStatusChangeDelegate = self;
@@ -86,6 +90,30 @@
 - (void)shutdownOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                   onError:(nonnull void (^)(PEPTransportStatusCode,
                                             NSError * _Nonnull))errorCallback {
+    PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
+                                             callbacksWithSuccessCallback:successCallback
+                                             errorCallback:errorCallback];
+    @synchronized (self.shutdownCallbacks) {
+        [self.shutdownCallbacks addObject:callback];
+    }
+
+    PEPTransportStatusCode statusCode;
+    NSError *error = nil;
+    BOOL success = [self.transport shutdownWithTransportStatusCode:&statusCode
+                                                             error:&error];
+
+    if (success) {
+        if (statusCode == PEPTransportStatusCodeConnectionDown) {
+            [self removeFromShutdownCallbacks:callback];
+            successCallback(statusCode);
+        } else {
+            // The connection is not yet shut down, so wait for it, and handle it in the delegate.
+        }
+    } else {
+        // We have to remove our, and only our, callbacks, that we just installed.
+        [self removeFromShutdownCallbacks:callback];
+        errorCallback(statusCode, error);
+    }
 }
 
 - (void)sendMessage:(nonnull PEPMessage *)msg
@@ -99,6 +127,12 @@
 - (void)removeFromStartupCallbacks:(PEPTransportStatusCallbacks *)callbacks {
     @synchronized (self.startupCallbacks) {
         [self.startupCallbacks removeObject:callbacks];
+    }
+}
+
+- (void)removeFromShutdownCallbacks:(PEPTransportStatusCallbacks *)callbacks {
+    @synchronized (self.shutdownCallbacks) {
+        [self.shutdownCallbacks removeObject:callbacks];
     }
 }
 
