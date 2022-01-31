@@ -45,12 +45,22 @@
         [expStartup fulfill];
     } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
         [expStartup fulfill];
+        XCTFail();
     }];
 
     [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
 }
 
 - (void)tearDown {
+    XCTestExpectation *expShutdown = [self expectationWithDescription:@"expShutdown"];
+    [self.blockTransport shutdownOnSuccess:^(PEPTransportStatusCode statusCode) {
+        [expShutdown fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTFail();
+        [expShutdown fulfill];
+    }];
+
+    [self waitForExpectations:@[expShutdown] timeout:TestUtilsDefaultTimeout];
 }
 
 #pragma mark - Tests
