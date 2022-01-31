@@ -169,11 +169,11 @@
 
 @implementation PEPBlockBasedTransport (Callbacks)
 
-- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+- (BOOL)invokePendingStartCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
     return [self invokePendingCallbacks:self.startupCallbacks statusCode:statusCode];
 }
 
-- (BOOL)invokePendingShutdownSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+- (BOOL)invokePendingShutdownCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
     return [self invokePendingCallbacks:self.shutdownCallbacks statusCode:statusCode];
 }
 

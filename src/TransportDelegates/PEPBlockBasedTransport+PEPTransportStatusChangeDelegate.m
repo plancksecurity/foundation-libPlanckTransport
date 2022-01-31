@@ -14,10 +14,10 @@
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     BOOL invoked = NO;
-    invoked = [self invokePendingStartSuccessCallbacksWithStatusCode:statusCode];
+    invoked = [self invokePendingStartCallbacksWithStatusCode:statusCode];
 
     if (!invoked) {
-        invoked = [self invokePendingShutdownSuccessCallbacksWithStatusCode:statusCode];
+        invoked = [self invokePendingShutdownCallbacksWithStatusCode:statusCode];
     }
 
     if (!invoked) {
