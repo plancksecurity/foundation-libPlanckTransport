@@ -11,7 +11,7 @@
 
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
-    // TODO
+    NSLog(@"*** signal status changed");
 }
 
 @end
