@@ -173,4 +173,8 @@
     return [self invokePendingCallbacks:self.startupCallbacks statusCode:statusCode];
 }
 
+- (BOOL)invokePendingShutdownSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+    return [self invokePendingCallbacks:self.shutdownCallbacks statusCode:statusCode];
+}
+
 @end

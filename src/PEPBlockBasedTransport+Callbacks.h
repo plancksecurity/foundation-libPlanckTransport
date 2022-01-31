@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return `YES` if at least one callback was invoked, `NO` otherwise.
 - (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode;
 
+/// Tries to find pending shutdown callbacks and informs them of the given status code, marking it as a success.
+/// @return `YES` if at least one callback was invoked, `NO` otherwise.
+- (BOOL)invokePendingShutdownSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode;
+
 @end
 
 NS_ASSUME_NONNULL_END

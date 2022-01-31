@@ -17,7 +17,7 @@
     if (statusCode == PEPTransportStatusCodeConnectionUp) {
         invoked = [self invokePendingStartSuccessCallbacksWithStatusCode:statusCode];
     } else if (statusCode == PEPTransportStatusCodeConnectionDown) {
-        // TODO: Try to inform pending callbacks from shutdown
+        invoked = [self invokePendingShutdownSuccessCallbacksWithStatusCode:statusCode];
     } else {
         // TODO: What could this mean? Inform the general delegate
     }
