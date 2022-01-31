@@ -23,7 +23,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
 
 // TODO: Same as for `startupCallbacks`.
-@property (nonatomic, nonnull) NSMutableArray<PEPTransportStatusCallbacks *> *shutdownCallbacks;
+@property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
 @end
 
@@ -36,8 +36,6 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
                           transportDelegate:(nonnull id<PEPBlockBasedTransportDelegate>)transportDelegate {
     self = [super init];
     if (self) {
-        _shutdownCallbacks = [NSMutableArray new];
-
         _transport = transport;
         _transport.signalStatusChangeDelegate = self;
 
@@ -74,6 +72,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
             successCallback(statusCode);
         } else {
             // The connection is not yet up, so wait for it, and handle it in the delegate.
+            // Nothing to be done here.
         }
     } else {
         // Remove our callback, and inform the caller.
@@ -88,9 +87,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
     PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
                                              callbacksWithSuccessCallback:successCallback
                                              errorCallback:errorCallback];
-    @synchronized (self.shutdownCallbacks) {
-        [self.shutdownCallbacks addObject:callback];
-    }
+    self.shutdownCallback = callback;
 
     PEPTransportStatusCode statusCode;
     NSError *error = nil;
@@ -99,14 +96,15 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 
     if (success) {
         if (statusCode == PEPTransportStatusCodeConnectionDown) {
-            [self removeFromShutdownCallbacks:callback];
+            self.shutdownCallback = nil;
             successCallback(statusCode);
         } else {
             // The connection is not yet shut down, so wait for it, and handle it in the delegate.
+            // Nothing to be done here.
         }
     } else {
         // We have to remove our, and only our, callbacks, that we just installed.
-        [self removeFromShutdownCallbacks:callback];
+        self.shutdownCallback = nil;
         errorCallback(statusCode, error);
     }
 }
@@ -115,14 +113,6 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
      withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
             onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
-}
-
-#pragma mark - Helpers
-
-- (void)removeFromShutdownCallbacks:(PEPTransportStatusCallbacks *)callbacks {
-    @synchronized (self.shutdownCallbacks) {
-        [self.shutdownCallbacks removeObject:callbacks];
-    }
 }
 
 @end
@@ -181,8 +171,21 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
     return NO;
 }
 
-- (BOOL)invokePendingShutdownCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
-    return [self invokePendingCallbacks:self.shutdownCallbacks statusCode:statusCode];
+- (BOOL)invokePendingShutdownCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
+    if (self.shutdownCallback) {
+        if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+            self.shutdownCallback.successCallback(statusCode);
+        } else {
+            NSError *error = [NSError errorWithDomain:s_ErrorDomain
+                                                 code:statusCode
+                                             userInfo:nil];
+            self.shutdownCallback.errorCallback(statusCode, error);
+        }
+        self.shutdownCallback = nil;
+        return YES;
+    }
+
+    return NO;
 }
 
 @end

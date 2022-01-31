@@ -22,7 +22,7 @@
     invoked = [self invokePendingStartCallbackWithStatusCode:statusCode];
 
     if (!invoked) {
-        invoked = [self invokePendingShutdownCallbacksWithStatusCode:statusCode];
+        invoked = [self invokePendingShutdownCallbackWithStatusCode:statusCode];
     }
 
     if (!invoked) {
