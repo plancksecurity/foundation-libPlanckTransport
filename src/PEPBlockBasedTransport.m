@@ -10,6 +10,10 @@
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
 #import "PEPBlockBasedTransport+Callbacks.h"
 #import "PEPTransportStatusCallbacks.h"
+#import "PEPTransportStatusCodeUtil.h"
+
+/// Own error domain for the case when we want to create `NSError`s from a transport status code.
+static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 
 @interface PEPBlockBasedTransport ()
 
@@ -152,7 +156,14 @@
 
     BOOL callbackInvoked = NO;
     for (PEPTransportStatusCallbacks *callback in callbacks) {
-        callback.successCallback(statusCode);
+        if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+            callback.successCallback(statusCode);
+        } else {
+            NSError *error = [NSError errorWithDomain:s_ErrorDomain
+                                                 code:statusCode
+                                             userInfo:nil];
+            callback.errorCallback(statusCode, error);
+        }
         callbackInvoked = YES;
     }
 
