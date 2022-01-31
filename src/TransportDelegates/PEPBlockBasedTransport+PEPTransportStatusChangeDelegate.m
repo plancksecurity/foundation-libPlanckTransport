@@ -11,7 +11,13 @@
 
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
-    NSLog(@"*** signal status changed");
+    if (statusCode == PEPTransportStatusCodeConnectionUp) {
+        // TODO: Try to inform pending callbacks from startup
+    } else if (statusCode == PEPTransportStatusCodeConnectionDown) {
+        // TODO: Try to inform pending callbacks from shutdown
+    } else {
+        // TODO: What could this mean? Inform the general delegate
+    }
 }
 
 @end
