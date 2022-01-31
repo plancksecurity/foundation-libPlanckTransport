@@ -55,6 +55,8 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 - (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
+    NSAssert(self.startupCallback, @"startup invoked with callback already set");
+
     PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
                                              callbacksWithSuccessCallback:successCallback
                                              errorCallback:errorCallback];
@@ -84,6 +86,8 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 - (void)shutdownOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                   onError:(nonnull void (^)(PEPTransportStatusCode,
                                             NSError * _Nonnull))errorCallback {
+    NSAssert(self.shutdownCallback, @"shutdown invoked with callback already set");
+
     PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
                                              callbacksWithSuccessCallback:successCallback
                                              errorCallback:errorCallback];
