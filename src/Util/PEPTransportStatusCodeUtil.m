@@ -11,7 +11,7 @@
 
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode {
     // Treat a set 0x00800000 as an error
-    return statusCode & 0x00800000;
+    return (statusCode & 0x00800000) != 0;
 }
 
 @end
