@@ -138,3 +138,13 @@
 }
 
 @end
+
+#pragma mark - Internal methods, called by delegate implementations from class extensions
+
+@implementation PEPBlockBasedTransport (Callbacks)
+
+- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+    return NO;
+}
+
+@end
