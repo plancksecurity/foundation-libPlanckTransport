@@ -139,14 +139,15 @@
 
 @end
 
-#pragma mark - Internal methods, called by delegate implementations from class extensions
+#pragma mark - Internal methods for supporting the delegate callbacks
 
-@implementation PEPBlockBasedTransport (Callbacks)
+@implementation PEPBlockBasedTransport (CallbacksInternals)
 
-- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
-    NSArray *callbacks = nil;
-    @synchronized (self.startupCallbacks) {
-        callbacks = [NSArray arrayWithArray:self.startupCallbacks];
+- (BOOL)invokePendingCallbacks:(NSMutableArray *)callbacks
+                    statusCode:(PEPTransportStatusCode)statusCode {
+    NSArray *tmpCallbacks = nil;
+    @synchronized (callbacks) {
+        tmpCallbacks = [NSArray arrayWithArray:callbacks];
     }
 
     BOOL callbackInvoked = NO;
@@ -155,11 +156,21 @@
         callbackInvoked = YES;
     }
 
-    @synchronized (self.startupCallbacks) {
-        [self.startupCallbacks removeObjectsInArray:callbacks];
+    @synchronized (callbacks) {
+        [callbacks removeObjectsInArray:tmpCallbacks];
     }
 
     return callbackInvoked;
+}
+
+@end
+
+#pragma mark - Internal methods, called by delegate implementations from class extensions
+
+@implementation PEPBlockBasedTransport (Callbacks)
+
+- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+    return [self invokePendingCallbacks:self.startupCallbacks statusCode:statusCode];
 }
 
 @end
