@@ -125,6 +125,7 @@
 		43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m"; sourceTree = "<group>"; };
 		43C24F9C27A4015D000E90FF /* PEPTransportStatusCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportStatusCallbacks.h; sourceTree = "<group>"; };
 		43C24F9D27A4015D000E90FF /* PEPTransportStatusCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEPTransportStatusCallbacks.m; sourceTree = "<group>"; };
+		43C2508427A7F330000E90FF /* PEPBlockBasedTransport+Callbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEPBlockBasedTransport+Callbacks.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +185,7 @@
 				43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */,
 				43C24CF727A14978000E90FF /* PEPTransportProtocol.h */,
 				43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */,
+				43C2508427A7F330000E90FF /* PEPBlockBasedTransport+Callbacks.h */,
 				43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */,
 			);
 			name = src;

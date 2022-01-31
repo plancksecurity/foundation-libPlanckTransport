@@ -8,6 +8,7 @@
 #import "PEPBlockBasedTransport.h"
 
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
+#import "PEPBlockBasedTransport+Callbacks.h"
 #import "PEPTransportStatusCallbacks.h"
 
 @interface PEPBlockBasedTransport ()

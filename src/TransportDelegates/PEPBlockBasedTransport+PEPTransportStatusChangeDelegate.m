@@ -7,6 +7,8 @@
 
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
 
+#import "PEPBlockBasedTransport+Callbacks.h"
+
 @implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
 
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
