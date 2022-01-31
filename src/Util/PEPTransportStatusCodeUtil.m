@@ -10,7 +10,8 @@
 @implementation PEPTransportStatusCodeUtil
 
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode {
-    return NO;
+    // Treat a set 0x00800000 as an error
+    return statusCode & 0x00800000;
 }
 
 @end
