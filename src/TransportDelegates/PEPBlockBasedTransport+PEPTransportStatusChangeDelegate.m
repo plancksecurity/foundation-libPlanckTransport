@@ -14,12 +14,14 @@
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     BOOL invoked = NO;
-    if (statusCode == PEPTransportStatusCodeConnectionUp) {
-        invoked = [self invokePendingStartSuccessCallbacksWithStatusCode:statusCode];
-    } else if (statusCode == PEPTransportStatusCodeConnectionDown) {
+    invoked = [self invokePendingStartSuccessCallbacksWithStatusCode:statusCode];
+
+    if (!invoked) {
         invoked = [self invokePendingShutdownSuccessCallbacksWithStatusCode:statusCode];
-    } else {
-        // TODO: What could this mean? Inform the general delegate
+    }
+
+    if (!invoked) {
+        // TODO: What could this mean? Inform the general delegate.
     }
 }
 
