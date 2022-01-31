@@ -66,7 +66,8 @@
 #pragma mark - Tests
 
 - (void)testSuccessfulStartupAndShutdown {
-    // Basically handled by setUp and tearDown.
+    // Basically handled by setUp and tearDown,
+    // covers the simplest possible startup and shutdown without issues.
 }
 
 @end
