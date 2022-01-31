@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PEPBlockBasedTransport (Callbacks)
 
 /// Tries to find pending startup callbacks and informs them of the given status code, marking it as a success.
-- (void)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode;
+/// @return `YES` if at least one callback was invoked, `NO` otherwise.
+- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode;
 
 @end
 

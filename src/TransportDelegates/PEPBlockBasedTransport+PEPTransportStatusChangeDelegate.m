@@ -13,8 +13,9 @@
 
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
+    BOOL invoked = NO;
     if (statusCode == PEPTransportStatusCodeConnectionUp) {
-        [self invokePendingStartSuccessCallbacksWithStatusCode:statusCode];
+        invoked = [self invokePendingStartSuccessCallbacksWithStatusCode:statusCode];
     } else if (statusCode == PEPTransportStatusCodeConnectionDown) {
         // TODO: Try to inform pending callbacks from shutdown
     } else {

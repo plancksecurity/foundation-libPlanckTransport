@@ -143,7 +143,7 @@
 
 @implementation PEPBlockBasedTransport (Callbacks)
 
-- (void)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
     NSArray *callbacks = nil;
     @synchronized (self.startupCallbacks) {
         callbacks = [NSArray arrayWithArray:self.startupCallbacks];
@@ -158,6 +158,8 @@
     @synchronized (self.startupCallbacks) {
         [self.startupCallbacks removeObjectsInArray:callbacks];
     }
+
+    return callbackInvoked;
 }
 
 @end
