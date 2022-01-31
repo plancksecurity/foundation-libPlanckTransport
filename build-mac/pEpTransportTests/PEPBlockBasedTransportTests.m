@@ -70,4 +70,31 @@
     // covers the simplest possible startup and shutdown without issues.
 }
 
+- (void)testStartupWithDirectError {
+    NSError *error = nil;
+    TransportMock *transport = [[TransportMock alloc]
+                                initWithSignalStatusChangeDelegate:nil
+                                signalSendToResultDelegate:nil
+                                signalIncomingMessageDelegate:nil
+                                error:&error];
+    XCTAssertNotNil(transport);
+    XCTAssertNil(error);
+
+    self.transportDelegate = [MockBlockBasedTransportDelegate new];
+
+    PEPBlockBasedTransport *blockTransport = [[PEPBlockBasedTransport alloc]
+                                              initWithTransport:transport
+                                              transportDelegate:self.transportDelegate];
+
+    XCTestExpectation *expStartup = [self expectationWithDescription:@"expStartup"];
+    [blockTransport startupWithOnSuccess:^(PEPTransportStatusCode statusCode) {
+        [expStartup fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        [expStartup fulfill];
+        XCTFail();
+    }];
+
+    [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
+}
+
 @end
