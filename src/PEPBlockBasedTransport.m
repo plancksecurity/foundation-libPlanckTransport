@@ -143,8 +143,8 @@
 
 @implementation PEPBlockBasedTransport (Callbacks)
 
-- (BOOL)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
-    return NO;
+- (void)invokePendingStartSuccessCallbacksWithStatusCode:(PEPTransportStatusCode)statusCode {
+    // TODO
 }
 
 @end
