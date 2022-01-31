@@ -19,7 +19,7 @@
     // or "in the middle".
     // That's the basis for figuring out which stored callbacks to call, if any.
     BOOL invoked = NO;
-    invoked = [self invokePendingStartCallbacksWithStatusCode:statusCode];
+    invoked = [self invokePendingStartCallbackWithStatusCode:statusCode];
 
     if (!invoked) {
         invoked = [self invokePendingShutdownCallbacksWithStatusCode:statusCode];
