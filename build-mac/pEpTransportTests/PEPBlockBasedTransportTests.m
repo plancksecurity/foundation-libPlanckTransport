@@ -11,6 +11,7 @@
 #import "TransportMock.h"
 #import "MockBlockBasedTransportDelegate.h"
 #import "TestUtils.h"
+#import "PEPObjCTypes.h"
 
 @interface PEPBlockBasedTransportTests : XCTestCase
 
@@ -130,6 +131,24 @@
     }];
 
     [self waitForExpectations:@[expStartup] timeout:TestUtilsDefaultTimeout];
+}
+
+- (void)testSendMessageImmediateError {
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeConnectionDown;
+    self.transport.directMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
+
+    PEPMessage *msg = [PEPMessage new];
+
+    XCTestExpectation *expStartup = [self expectationWithDescription:@"expStartup"];
+    [self.blockTransport sendMessage:msg
+                      withPEPSession:nil
+                           onSuccess:^(PEPTransportStatusCode statusCode) {
+        XCTFail();
+        [expStartup fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTAssertEqual(statusCode, expectedStatusCode);
+        [expStartup fulfill];
+    }];
 }
 
 @end
