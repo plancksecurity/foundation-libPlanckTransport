@@ -22,7 +22,6 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
 
-// TODO: Same as for `startupCallbacks`.
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
 @end
