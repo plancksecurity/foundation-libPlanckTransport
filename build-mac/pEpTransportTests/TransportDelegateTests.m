@@ -83,7 +83,7 @@
 
     // Make it fail directly on startup.
     PEPTransportStatusCode errorCode = PEPTransportStatusCodeConnectionDown;
-    transport.directStartupErrorCode = [NSNumber numberWithInteger:errorCode];
+    transport.directStartupStatusCode = [NSNumber numberWithInteger:errorCode];
 
     PEPTransportStatusCode statusCode;
     BOOL success = [transport startupWithTransportStatusCode:&statusCode error:&error];

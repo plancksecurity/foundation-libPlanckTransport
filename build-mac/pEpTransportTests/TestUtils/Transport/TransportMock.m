@@ -73,12 +73,12 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
 - (BOOL)startupWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                  error:(NSError * _Nullable __autoreleasing * _Nullable)error {
-    if (self.directStartupErrorCode) {
+    if (self.directStartupStatusCode) {
         // Fail immediately, don't invoke the delegate for a status change.
-        *transportStatusCode = self.directStartupErrorCode.integerValue;
+        *transportStatusCode = self.directStartupStatusCode.integerValue;
         if (error) {
             *error = [NSError errorWithDomain:g_ErrorDomain
-                                         code:self.directStartupErrorCode.integerValue
+                                         code:self.directStartupStatusCode.integerValue
                                      userInfo:nil];
         }
         return NO;

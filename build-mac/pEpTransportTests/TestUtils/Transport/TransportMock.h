@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// A mock of `PEPTransportProtocol`.
 @interface TransportMock : NSObject <PEPTransportProtocol>
 
-/// If this is set, startup will fail immediately with this status code and corresponding error.
-@property (nonatomic, nullable) NSNumber *directStartupErrorCode;
+/// If this is set, startup will _fail immediately_ with this status code and corresponding error.
+@property (nonatomic, nullable) NSNumber *directStartupStatusCode;
 
 /// If this is set, startup will first return a generic "ready" status code and then later invoke the delegate with
 /// the given status code.

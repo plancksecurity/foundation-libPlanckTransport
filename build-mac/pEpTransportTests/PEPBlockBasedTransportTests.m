@@ -81,7 +81,7 @@
                                 error:&error];
     XCTAssertNotNil(transport);
     XCTAssertNil(error);
-    transport.directStartupErrorCode = [NSNumber numberWithInteger:expectedStatusCode];
+    transport.directStartupStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
 
     self.transportDelegate = [MockBlockBasedTransportDelegate new];
 
