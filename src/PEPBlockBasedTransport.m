@@ -160,7 +160,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 
 - (BOOL)invokePendingStartCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
     if (self.startupCallback) {
-        if (![PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+        if (![PEPTransportStatusCodeUtil isStartupErrorStatusCode:statusCode]) {
             self.startupCallback.successCallback(statusCode);
         } else {
             NSError *error = [NSError errorWithDomain:s_ErrorDomain
@@ -177,7 +177,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 
 - (BOOL)invokePendingShutdownCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
     if (self.shutdownCallback) {
-        if (![PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+        if (![PEPTransportStatusCodeUtil isShutdownErrorStatusCode:statusCode]) {
             self.shutdownCallback.successCallback(statusCode);
         } else {
             NSError *error = [NSError errorWithDomain:s_ErrorDomain
