@@ -55,10 +55,9 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 - (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
-    // Treat concurrent startups from different threads as a developer error
+    // Treat concurrent startups from different threads as a developer error,
+    // and also report it in production.
     NSAssert(self.startupCallback == nil, @"startup invoked with callback already set");
-
-    // Report concurrent startups from different threads as error
     if (self.startupCallback != nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
@@ -99,10 +98,9 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 - (void)shutdownOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                   onError:(nonnull void (^)(PEPTransportStatusCode,
                                             NSError * _Nonnull))errorCallback {
-    // Treat concurrent shutdowns from different threads as a developer error
+    // Treat concurrent shutdowns from different threads as a developer error,
+    // and also report it in production.
     NSAssert(self.shutdownCallback == nil, @"shutdown invoked with callback already set");
-
-    // Report concurrent shutdowns from different threads as error
     if (self.startupCallback != nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
