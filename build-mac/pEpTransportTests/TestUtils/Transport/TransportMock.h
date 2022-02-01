@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// the given status code.
 @property (nonatomic, nullable) NSNumber *delayedStartupStatusCode;
 
+/// If this is set, sending a message will _fail immediately_ with this status code and corresponding error.
+@property (nonatomic, nullable) NSNumber *directMessageSendStatusCode;
+
 /// Simulate the case that a message is received by this transport, and offered to the client.
 - (void)pushReceivedMessage:(PEPMessage *)message;
 
