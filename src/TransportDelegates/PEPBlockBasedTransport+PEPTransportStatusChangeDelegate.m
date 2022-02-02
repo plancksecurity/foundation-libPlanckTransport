@@ -7,7 +7,7 @@
 
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
 
-#import "PEPBlockBasedTransport+Callbacks.h"
+#import "PEPBlockBasedTransport+ForDelegates.h"
 
 @implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
 

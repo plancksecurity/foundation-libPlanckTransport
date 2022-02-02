@@ -9,7 +9,7 @@
 
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
 #import "PEPBlockBasedTransport+PEPTransportSendToResultDelegate.h"
-#import "PEPBlockBasedTransport+Callbacks.h"
+#import "PEPBlockBasedTransport+ForDelegates.h"
 #import "PEPTransportStatusCallbacks.h"
 #import "PEPTransportStatusCodeUtil.h"
 #import "PEPBlockBasedTransport+Error.h"
