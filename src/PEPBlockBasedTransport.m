@@ -92,6 +92,7 @@
         }
     } else {
         // Immediate error. Remove our callback, and inform the caller.
+        // Transport could not be started.
         self.startupCallback = nil;
         errorCallback(statusCode, error);
     }
@@ -128,10 +129,14 @@
             successCallback(statusCode);
         } else {
             // The connection is not yet shut down, so wait for it, and handle it in the delegate.
-            // Nothing to be done here.
+            // Note the assumptions similar to startup:
+            //   * No error has occurred, but the transport is not yet shut down.
+            //   * We don't report that intermediate step.
+            //   * We wait for further delegate notifications.
         }
     } else {
-        // We have to remove our, and only our, callbacks, that we just installed.
+        // Immediate error. Remove our callback, and inform the caller.
+        // Transport could not be shut down.
         self.shutdownCallback = nil;
         errorCallback(statusCode, error);
     }
