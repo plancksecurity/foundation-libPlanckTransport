@@ -157,8 +157,10 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
 
         return YES;
     } else {
+        PEPTransportStatusCode statusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        *transportStatusCode = statusCode;
         if (error) {
-            *error = [self errorWithTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong];
+            *error = [self errorWithTransportStatusCode:statusCode];
         }
         return NO;
     }
