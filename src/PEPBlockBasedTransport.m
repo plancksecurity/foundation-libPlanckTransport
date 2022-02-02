@@ -23,6 +23,9 @@
 
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
+/// Callbacks for message send calls.
+@property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
+
 @end
 
 @implementation PEPBlockBasedTransport
@@ -37,6 +40,8 @@
         _transport = transport;
         _transport.signalStatusChangeDelegate = self;
         _transport.signalSendToResultDelegate = self;
+
+        _messageCallbacks = [NSMutableDictionary dictionary];
 
         _transportDelegate = transportDelegate;
     }
