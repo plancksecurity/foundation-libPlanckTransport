@@ -134,11 +134,27 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     if (self.directMessageSendStatusCode) {
         *transportStatusCode = self.directMessageSendStatusCode.integerValue;
+
         if (error) {
             *error = [self errorWithTransportStatusCode:self.directStartupStatusCode.integerValue];
         }
+
         return NO;
+    } else if (self.delayedMessageSendStatusCode) {
+        *transportStatusCode = PEPTransportStatusCodeReady;
+
+        dispatch_async(self.queue, ^{
+            [self.signalSendToResultDelegate
+             signalSendToResultWithTransportID:g_transportID
+             messageID:@"" // TODO
+             address:@"" // TODO
+             pEpRating:PEPRatingUndefined
+             statusCode:self.delayedMessageSendStatusCode.integerValue];
+        });
+
+        return YES;
     }
+
     return NO;
 }
 
