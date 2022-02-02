@@ -134,6 +134,15 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
          pEpSession:(PEPSession * _Nullable)pEpSession
 transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    if (self.directMessageSendStatusCode) {
+        *transportStatusCode = self.directMessageSendStatusCode.integerValue;
+        if (error) {
+            *error = [NSError errorWithDomain:g_ErrorDomain
+                                         code:self.directStartupStatusCode.integerValue
+                                     userInfo:nil];
+        }
+        return NO;
+    }
     return NO;
 }
 
