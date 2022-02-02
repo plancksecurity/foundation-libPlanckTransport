@@ -7,7 +7,9 @@
 
 #import "PEPBlockBasedTransport+PEPTransportSendToResultDelegate.h"
 
+#import "PEPBlockBasedTransport+Error.h"
 #import "PEPBlockBasedTransport+ForDelegates.h"
+#import "PEPTransportStatusCodeUtil.h"
 
 @implementation PEPBlockBasedTransport (PEPTransportSendToResultDelegate)
 
@@ -20,6 +22,12 @@
 
     // That would look like a developer error.
     NSAssert(callbacks != nil, @"Got called with message send result, but no callback");
+
+    if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+        callbacks.errorCallback(statusCode, [self errorWithTransportStatusCode:statusCode]);
+    } else {
+        callbacks.successCallback(statusCode);
+    }
 }
 
 @end
