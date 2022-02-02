@@ -53,17 +53,15 @@
 }
 
 - (void)tearDown {
-    if (self.blockTransport) {
-        XCTestExpectation *expShutdown = [self expectationWithDescription:@"expShutdown"];
-        [self.blockTransport shutdownOnSuccess:^(PEPTransportStatusCode statusCode) {
-            [expShutdown fulfill];
-        } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
-            XCTFail();
-            [expShutdown fulfill];
-        }];
+    XCTestExpectation *expShutdown = [self expectationWithDescription:@"expShutdown"];
+    [self.blockTransport shutdownOnSuccess:^(PEPTransportStatusCode statusCode) {
+        [expShutdown fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTFail();
+        [expShutdown fulfill];
+    }];
 
-        [self waitForExpectations:@[expShutdown] timeout:TestUtilsDefaultTimeout];
-    }
+    [self waitForExpectations:@[expShutdown] timeout:TestUtilsDefaultTimeout];
 }
 
 #pragma mark - Tests
