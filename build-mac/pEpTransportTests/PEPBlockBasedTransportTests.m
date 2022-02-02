@@ -179,4 +179,23 @@
     [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
 }
 
+- (void)testSendMessageDelayedSuccess {
+    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
+    PEPMessage *msg = [PEPMessage new];
+    msg.messageID = @"blarg11";
+    msg.to = @[to];
+
+    XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
+    [self.blockTransport sendMessage:msg
+                      withPEPSession:nil
+                           onSuccess:^(PEPTransportStatusCode statusCode) {
+        [expMessageSent fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTFail();
+        [expMessageSent fulfill];
+    }];
+
+    [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
+}
+
 @end
