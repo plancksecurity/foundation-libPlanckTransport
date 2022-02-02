@@ -252,7 +252,14 @@
 }
 
 - (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID {
-    return nil;
+    PEPTransportStatusCallbacks *callbacks = nil;
+
+    @synchronized (self.messageCallbacks) {
+        callbacks = [self.messageCallbacks objectForKey:messageID];
+        [self.messageCallbacks removeObjectForKey:messageID];
+    }
+
+    return callbacks;
 }
 
 @end
