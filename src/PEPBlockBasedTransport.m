@@ -69,10 +69,10 @@
         return;
     }
 
-    PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
-                                             callbacksWithSuccessCallback:successCallback
-                                             errorCallback:errorCallback];
-    self.startupCallback = callback;
+    PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
+                                              callbacksWithSuccessCallback:successCallback
+                                              errorCallback:errorCallback];
+    self.startupCallback = callbacks;
 
     PEPTransportStatusCode statusCode;
     NSError *error = nil;
@@ -110,10 +110,10 @@
         return;
     }
 
-    PEPTransportStatusCallbacks *callback = [PEPTransportStatusCallbacks
-                                             callbacksWithSuccessCallback:successCallback
-                                             errorCallback:errorCallback];
-    self.shutdownCallback = callback;
+    PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
+                                              callbacksWithSuccessCallback:successCallback
+                                              errorCallback:errorCallback];
+    self.shutdownCallback = callbacks;
 
     PEPTransportStatusCode statusCode;
     NSError *error = nil;
@@ -198,12 +198,12 @@
     }
 
     BOOL callbackInvoked = NO;
-    for (PEPTransportStatusCallbacks *callback in callbacks) {
+    for (PEPTransportStatusCallbacks *theCallbacks in callbacks) {
         if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
-            callback.successCallback(statusCode);
+            theCallbacks.successCallback(statusCode);
         } else {
             NSError *error = [self errorWithTransportStatusCode:statusCode];
-            callback.errorCallback(statusCode, error);
+            theCallbacks.errorCallback(statusCode, error);
         }
         callbackInvoked = YES;
     }
