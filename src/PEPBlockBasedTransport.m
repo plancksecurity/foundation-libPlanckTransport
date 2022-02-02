@@ -139,9 +139,11 @@
      withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
             onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
+    NSString *messageID = message.messageID;
+
     // Messages without a message ID cannot be correctly sent by this transport
-    NSAssert(message.messageID != nil, @"A message to send must have an ID");
-    if (message.messageID == nil) {
+    NSAssert(messageID != nil, @"A message to send must have an ID");
+    if (messageID == nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
@@ -152,7 +154,7 @@
 
     // Message IDs must be unique, or we'll have problems. Let's find out rather sooner,
     // during development, than later.
-    PEPTransportStatusCallbacks *existingCallbacks = [self.messageCallbacks objectForKey:message.messageID];
+    PEPTransportStatusCallbacks *existingCallbacks = [self.messageCallbacks objectForKey:messageID];
     NSAssert(existingCallbacks == nil,
              @"Sending a message with a message ID that is currently in the process of sending is not supported");
     if (existingCallbacks != nil) {
@@ -164,6 +166,11 @@
         return;
     }
 
+    PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
+                                              callbacksWithSuccessCallback:successCallback
+                                              errorCallback:errorCallback];
+    [self.messageCallbacks setObject:callbacks forKey:messageID];
+
     NSError *error = nil;
     PEPTransportStatusCode statusCode;
     BOOL success = [self.transport sendMessage:message
@@ -171,6 +178,7 @@
                            transportStatusCode:&statusCode
                                          error:&error];
     if (!success) {
+        [self.messageCallbacks removeObjectForKey:messageID];
         errorCallback(statusCode, error);
         return;
     }
