@@ -180,6 +180,9 @@
 }
 
 - (void)testSendMessageDelayedSuccess {
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeMessageDelivered;
+    self.transport.delayedMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
+
     PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
     PEPMessage *msg = [PEPMessage new];
     msg.messageID = @"blarg11";
@@ -189,6 +192,7 @@
     [self.blockTransport sendMessage:msg
                       withPEPSession:nil
                            onSuccess:^(PEPTransportStatusCode statusCode) {
+        XCTAssertEqual(statusCode, expectedStatusCode);
         [expMessageSent fulfill];
     } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
         XCTFail();
