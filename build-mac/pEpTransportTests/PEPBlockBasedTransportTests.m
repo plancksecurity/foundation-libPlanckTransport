@@ -138,6 +138,7 @@
     self.transport.directMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
 
     PEPMessage *msg = [PEPMessage new];
+    msg.messageID = @"blarg1";
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
