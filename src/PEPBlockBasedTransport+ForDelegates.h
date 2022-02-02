@@ -8,6 +8,8 @@
 #ifndef PEPBlockBasedTransport_ForDelegates_h
 #define PEPBlockBasedTransport_ForDelegates_h
 
+#import "PEPTransportStatusCallbacks.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 /// The interface that is used by the various delegate implementations (in class extensions),
@@ -24,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Tries to find pending shutdown callbacks and informs them of the given status code, marking it as a success.
 /// @return `YES` if at least one callback was invoked, `NO` otherwise.
 - (BOOL)invokePendingShutdownCallbackWithStatusCode:(PEPTransportStatusCode)statusCode;
+
+/// @return The message callbacks (error and success), if any, defined for the given message ID.
+- (PEPTransportStatusCallbacks * _Nullable)callbacksForMessageID:(NSString *)messageID;
 
 @end
 

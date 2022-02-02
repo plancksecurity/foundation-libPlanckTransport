@@ -179,6 +179,10 @@
     return callbackInvoked;
 }
 
+- (PEPTransportStatusCallbacks * _Nullable)callbacksForMessageID:(NSString *)messageID {
+    return nil;
+}
+
 @end
 
 #pragma mark - Internal methods, called by delegate implementations from class extensions
