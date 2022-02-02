@@ -153,4 +153,27 @@
     [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
 }
 
+- (void)testSendMessageDelayedError {
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeSomeRecipientsUnreachable;
+    self.transport.delayedMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
+
+    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
+    PEPMessage *msg = [PEPMessage new];
+    msg.messageID = @"blarg11";
+    msg.to = @[to];
+
+    XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
+    [self.blockTransport sendMessage:msg
+                      withPEPSession:nil
+                           onSuccess:^(PEPTransportStatusCode statusCode) {
+        XCTFail();
+        [expMessageSent fulfill];
+    } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
+        XCTAssertEqual(statusCode, expectedStatusCode);
+        [expMessageSent fulfill];
+    }];
+
+    [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
+}
+
 @end
