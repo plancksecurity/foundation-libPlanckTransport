@@ -85,8 +85,10 @@
             self.startupCallback = nil;
             successCallback(statusCode);
         } else {
-            // The connection is not yet up, so wait for it, and handle it in the delegate.
-            // Nothing to be done here.
+            // Note the assumptions here:
+            //   * No error has occurred, but the transport is not yet up.
+            //   * We don't report that, since we consider it an intermediate step.
+            //   * Instead, we wait for further delegate notifications.
         }
     } else {
         // Remove our callback, and inform the caller.
