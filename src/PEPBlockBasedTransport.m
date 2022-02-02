@@ -18,9 +18,7 @@
 
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
 @property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
-
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
-
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
 /// Callbacks for message send calls.
