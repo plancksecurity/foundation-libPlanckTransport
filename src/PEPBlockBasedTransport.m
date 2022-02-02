@@ -150,9 +150,9 @@
 
 @end
 
-#pragma mark - Internal methods for supporting the delegate callbacks
+#pragma mark - Internal helper methods for _supporting_ the delegate callbacks
 
-@implementation PEPBlockBasedTransport (CallbacksInternals)
+@implementation PEPBlockBasedTransport (HelpersForDelegates)
 
 - (BOOL)invokePendingCallbacks:(NSMutableArray *)callbacks
                     statusCode:(PEPTransportStatusCode)statusCode {
@@ -179,15 +179,11 @@
     return callbackInvoked;
 }
 
-- (PEPTransportStatusCallbacks * _Nullable)callbacksForMessageID:(NSString *)messageID {
-    return nil;
-}
-
 @end
 
 #pragma mark - Internal methods, called by delegate implementations from class extensions
 
-@implementation PEPBlockBasedTransport (Callbacks)
+@implementation PEPBlockBasedTransport (ForDelegates)
 
 - (BOOL)invokePendingStartCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
     if (self.startupCallback) {
@@ -217,6 +213,10 @@
     }
 
     return NO;
+}
+
+- (PEPTransportStatusCallbacks * _Nullable)callbacksForMessageID:(NSString *)messageID {
+    return nil;
 }
 
 @end
