@@ -139,16 +139,18 @@
 
     PEPMessage *msg = [PEPMessage new];
 
-    XCTestExpectation *expStartup = [self expectationWithDescription:@"expStartup"];
+    XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
                       withPEPSession:nil
                            onSuccess:^(PEPTransportStatusCode statusCode) {
         XCTFail();
-        [expStartup fulfill];
+        [expMessageSent fulfill];
     } onError:^(PEPTransportStatusCode statusCode, NSError * _Nonnull error) {
         XCTAssertEqual(statusCode, expectedStatusCode);
-        [expStartup fulfill];
+        [expMessageSent fulfill];
     }];
+
+    [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
 }
 
 @end
