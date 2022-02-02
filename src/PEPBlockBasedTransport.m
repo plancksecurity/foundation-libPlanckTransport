@@ -91,7 +91,7 @@
             //   * Instead, we wait for further delegate notifications.
         }
     } else {
-        // Remove our callback, and inform the caller.
+        // Immediate error. Remove our callback, and inform the caller.
         self.startupCallback = nil;
         errorCallback(statusCode, error);
     }
