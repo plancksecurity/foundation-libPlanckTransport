@@ -27,8 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return `YES` if at least one callback was invoked, `NO` otherwise.
 - (BOOL)invokePendingShutdownCallbackWithStatusCode:(PEPTransportStatusCode)statusCode;
 
+/// Finds the callbacks for a given message ID and removes them.
 /// @return The message callbacks (error and success), if any, defined for the given message ID.
-- (PEPTransportStatusCallbacks * _Nullable)callbacksForMessageID:(NSString *)messageID;
+- (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID;
 
 @end
 

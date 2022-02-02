@@ -215,7 +215,7 @@
     return NO;
 }
 
-- (PEPTransportStatusCallbacks * _Nullable)callbacksForMessageID:(NSString *)messageID {
+- (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID {
     return nil;
 }
 
