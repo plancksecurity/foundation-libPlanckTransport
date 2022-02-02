@@ -7,6 +7,8 @@
 
 #import "PEPBlockBasedTransport+PEPTransportSendToResultDelegate.h"
 
+#import "PEPBlockBasedTransport+ForDelegates.h"
+
 @implementation PEPBlockBasedTransport (PEPTransportSendToResultDelegate)
 
 - (void)signalSendToResultWithTransportID:(PEPTransportID)transportID
@@ -14,6 +16,10 @@
                                   address:(nonnull NSString *)address
                                 pEpRating:(PEPRating)pEpRating
                                statusCode:(PEPTransportStatusCode)statusCode {
+    PEPTransportStatusCallbacks *callbacks = [self findAndRemoveCallbacksForMessageID:messageID];
+
+    // That would look like a developer error.
+    NSAssert(callbacks != nil, @"Got called with message send result, but no callback");
 }
 
 @end
