@@ -128,7 +128,7 @@ const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
     return newMessage;
 }
 
-- (BOOL)sendMessage:(nonnull PEPMessage *)msg
+- (BOOL)sendMessage:(nonnull PEPMessage *)message
          pEpSession:(PEPSession * _Nullable)pEpSession
 transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
               error:(NSError * _Nullable __autoreleasing * _Nullable)error {
@@ -143,11 +143,14 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
     } else if (self.delayedMessageSendStatusCode) {
         *transportStatusCode = PEPTransportStatusCodeReady;
 
+        // For tests, for now we assume that all messages have an existing TO defined
+        PEPIdentity * _Nonnull destination = [message.to firstObject];
+
         dispatch_async(self.queue, ^{
             [self.signalSendToResultDelegate
              signalSendToResultWithTransportID:g_transportID
-             messageID:@"" // TODO
-             address:@"" // TODO
+             messageID:message.messageID
+             address:destination.address
              pEpRating:PEPRatingUndefined
              statusCode:self.delayedMessageSendStatusCode.integerValue];
         });
