@@ -7,6 +7,7 @@
 
 #import "PEPBlockBasedTransport.h"
 
+#import "PEPBlockBasedTransport+Internal.h"
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
 #import "PEPBlockBasedTransport+Callbacks.h"
 #import "PEPTransportStatusCallbacks.h"
@@ -60,9 +61,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
     if (self.startupCallback != nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
-        NSError *error = [NSError errorWithDomain:s_ErrorDomain
-                                             code:invalidStateStatusCode
-                                         userInfo:nil];
+        NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
         errorCallback(invalidStateStatusCode, error);
 
         return;
@@ -103,9 +102,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
     if (self.startupCallback != nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
-        NSError *error = [NSError errorWithDomain:s_ErrorDomain
-                                             code:invalidStateStatusCode
-                                         userInfo:nil];
+        NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
         errorCallback(invalidStateStatusCode, error);
 
         return;
@@ -144,6 +141,16 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
 
 @end
 
+#pragma mark - Internal methods
+
+@implementation PEPBlockBasedTransport (Internals)
+
+- (NSError *)errorWithTransportStatusCode:(PEPTransportStatusCode)statusCode {
+    return [NSError errorWithDomain:s_ErrorDomain code:statusCode userInfo:nil];
+}
+
+@end
+
 #pragma mark - Internal methods for supporting the delegate callbacks
 
 @implementation PEPBlockBasedTransport (CallbacksInternals)
@@ -160,9 +167,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
         if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
             callback.successCallback(statusCode);
         } else {
-            NSError *error = [NSError errorWithDomain:s_ErrorDomain
-                                                 code:statusCode
-                                             userInfo:nil];
+            NSError *error = [self errorWithTransportStatusCode:statusCode];
             callback.errorCallback(statusCode, error);
         }
         callbackInvoked = YES;
@@ -186,9 +191,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
         if (![PEPTransportStatusCodeUtil isStartupErrorStatusCode:statusCode]) {
             self.startupCallback.successCallback(statusCode);
         } else {
-            NSError *error = [NSError errorWithDomain:s_ErrorDomain
-                                                 code:statusCode
-                                             userInfo:nil];
+            NSError *error = [self errorWithTransportStatusCode:statusCode];
             self.startupCallback.errorCallback(statusCode, error);
         }
         self.startupCallback = nil;
@@ -203,9 +206,7 @@ static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
         if (![PEPTransportStatusCodeUtil isShutdownErrorStatusCode:statusCode]) {
             self.shutdownCallback.successCallback(statusCode);
         } else {
-            NSError *error = [NSError errorWithDomain:s_ErrorDomain
-                                                 code:statusCode
-                                             userInfo:nil];
+            NSError *error = [self errorWithTransportStatusCode:statusCode];
             self.shutdownCallback.errorCallback(statusCode, error);
         }
         self.shutdownCallback = nil;

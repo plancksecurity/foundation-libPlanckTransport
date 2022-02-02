@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		433A533E27AA81B0004069D7 /* PEPBlockBasedTransport+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 433A533A27AA81B0004069D7 /* PEPBlockBasedTransport+Internal.h */; };
 		43C24D0127A14978000E90FF /* PEPTransportStatusCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43C24D0227A14978000E90FF /* PEPTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24CF727A14978000E90FF /* PEPTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43C24D0B27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -102,6 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		433A533A27AA81B0004069D7 /* PEPBlockBasedTransport+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PEPBlockBasedTransport+Internal.h"; sourceTree = "<group>"; };
 		43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpTransport_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B263CF272AC13400EE82BC /* libpEpTransport_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpTransport_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportStatusCode.h; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */,
 				43C24CF727A14978000E90FF /* PEPTransportProtocol.h */,
 				43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */,
+				433A533A27AA81B0004069D7 /* PEPBlockBasedTransport+Internal.h */,
 				43C2508427A7F330000E90FF /* PEPBlockBasedTransport+Callbacks.h */,
 				43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */,
 			);
@@ -291,6 +294,7 @@
 				43C24D0227A14978000E90FF /* PEPTransportProtocol.h in Headers */,
 				43C24D0E27A14B1B000E90FF /* PEPBlockBasedTransport.h in Headers */,
 				43C24D0127A14978000E90FF /* PEPTransportStatusCode.h in Headers */,
+				433A533E27AA81B0004069D7 /* PEPBlockBasedTransport+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
