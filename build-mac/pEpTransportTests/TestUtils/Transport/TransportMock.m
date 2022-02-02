@@ -6,9 +6,9 @@
 //
 
 #import "TransportMock.h"
+#import "TransportMock+Error.h"
 
 const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
-NSString *g_ErrorDomain = @"TransportMockErrorDomain";
 
 @interface TransportMock ()
 
@@ -77,9 +77,7 @@ NSString *g_ErrorDomain = @"TransportMockErrorDomain";
         // Fail immediately, don't invoke the delegate for a status change.
         *transportStatusCode = self.directStartupStatusCode.integerValue;
         if (error) {
-            *error = [NSError errorWithDomain:g_ErrorDomain
-                                         code:self.directStartupStatusCode.integerValue
-                                     userInfo:nil];
+            *error = [self errorWithTransportStatusCode:self.directStartupStatusCode.integerValue];
         }
         return NO;
     } else if (self.delayedStartupStatusCode) {
@@ -137,9 +135,7 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
     if (self.directMessageSendStatusCode) {
         *transportStatusCode = self.directMessageSendStatusCode.integerValue;
         if (error) {
-            *error = [NSError errorWithDomain:g_ErrorDomain
-                                         code:self.directStartupStatusCode.integerValue
-                                     userInfo:nil];
+            *error = [self errorWithTransportStatusCode:self.directStartupStatusCode.integerValue];
         }
         return NO;
     }
