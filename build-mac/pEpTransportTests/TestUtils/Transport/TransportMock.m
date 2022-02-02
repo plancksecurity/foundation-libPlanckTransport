@@ -156,9 +156,12 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
         });
 
         return YES;
+    } else {
+        if (error) {
+            *error = [self errorWithTransportStatusCode:PEPTransportStatusCodeConfigIncompleteOrWrong];
+        }
+        return NO;
     }
-
-    return NO;
 }
 
 @end
