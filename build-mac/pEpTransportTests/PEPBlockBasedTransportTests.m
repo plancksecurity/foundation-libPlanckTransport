@@ -137,8 +137,10 @@
     PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeConnectionDown;
     self.transport.directMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
 
+    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
     PEPMessage *msg = [PEPMessage new];
-    msg.messageID = @"blarg1";
+    msg.messageID = @"blarg11";
+    msg.to = @[to];
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
