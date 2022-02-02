@@ -8,6 +8,7 @@
 #import "PEPBlockBasedTransport.h"
 
 #import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
+#import "PEPBlockBasedTransport+PEPTransportSendToResultDelegate.h"
 #import "PEPBlockBasedTransport+Callbacks.h"
 #import "PEPTransportStatusCallbacks.h"
 #import "PEPTransportStatusCodeUtil.h"
@@ -35,6 +36,7 @@
     if (self) {
         _transport = transport;
         _transport.signalStatusChangeDelegate = self;
+        _transport.signalSendToResultDelegate = self;
 
         _transportDelegate = transportDelegate;
     }
