@@ -130,10 +130,20 @@
     }
 }
 
-- (void)sendMessage:(nonnull PEPMessage *)msg
+- (void)sendMessage:(nonnull PEPMessage *)message
      withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
             onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
+    NSError *error = nil;
+    PEPTransportStatusCode statusCode;
+    BOOL success = [self.transport sendMessage:message
+                                    pEpSession:pEpSession
+                           transportStatusCode:&statusCode
+                                         error:&error];
+    if (!success) {
+        errorCallback(statusCode, error);
+        return;
+    }
 }
 
 @end
