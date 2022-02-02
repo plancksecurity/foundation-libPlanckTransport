@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PEPBlockBasedTransport (Error)
 
+- (NSError *)errorWithTransportStatusCode:(PEPTransportStatusCode)statusCode;
+
 @end
 
 NS_ASSUME_NONNULL_END
