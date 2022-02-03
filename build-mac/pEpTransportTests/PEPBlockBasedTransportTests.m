@@ -203,15 +203,25 @@
 }
 
 - (void)testStatusChangeWithErrorOutsideStartupOrShutdown {
-    XCTestExpectation *expConnectionStopped = [self expectationWithDescription:@"expConnectionStopped"];
-    self.transportDelegate.expConnectionStopped = expConnectionStopped;
+    NSArray<NSNumber *> *someErrorStatusCodes = @[
+        [NSNumber numberWithInteger:PEPTransportStatusCodeConnectionDown],
+        [NSNumber numberWithInteger:PEPTransportStatusCodeSomeRecipientsUnreachable],
+        [NSNumber numberWithInteger:PEPTransportStatusCodeNetworkTimeout],
+        [NSNumber numberWithInteger:PEPTransportStatusCodeCouldNotDeliverGivingUp],
+        [NSNumber numberWithInteger:PEPTransportStatusCodeTxQueueOverflow]
+    ];
 
-    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeNetworkTimeout;
-    [self.transport pushStatusChange:expectedStatusCode];
+    for (NSNumber *numStatusCode in someErrorStatusCodes) {
+        XCTestExpectation *expConnectionStopped = [self expectationWithDescription:@"expConnectionStopped"];
+        self.transportDelegate.expConnectionStopped = expConnectionStopped;
 
-    [self waitForExpectations:@[expConnectionStopped] timeout:TestUtilsDefaultTimeout];
+        PEPTransportStatusCode expectedStatusCode = numStatusCode.integerValue;
+        [self.transport pushStatusChange:expectedStatusCode];
 
-    XCTAssertEqual(self.transportDelegate.lastConnectionStoppedStatusCode, expectedStatusCode);
+        [self waitForExpectations:@[expConnectionStopped] timeout:TestUtilsDefaultTimeout];
+
+        XCTAssertEqual(self.transportDelegate.lastConnectionStoppedStatusCode, expectedStatusCode);
+    }
 }
 
 @end
