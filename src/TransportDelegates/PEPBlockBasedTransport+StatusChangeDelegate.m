@@ -18,21 +18,21 @@
 - (void)signalErrorWithStatusCode:(PEPTransportStatusCode)statusCode
                       toCallbacks:(NSMutableSet<PEPTransportStatusCallbacks *> *)callbackSet {
     NSError *error = [self errorWithTransportStatusCode:statusCode];
-    NSSet *allCallbacks = nil;
+    NSSet *localCallbacks = nil;
 
     // Copy the current outstanding callbacks
     @synchronized (callbackSet) {
-        allCallbacks = [NSSet setWithSet:callbackSet];
+        localCallbacks = [NSSet setWithSet:callbackSet];
     }
 
     // Invoke all callbacks
-    for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+    for (PEPTransportStatusCallbacks *callbacks in localCallbacks) {
         callbacks.errorCallback(statusCode, error);
     }
 
     // Remove the invoked callbacks
     @synchronized (callbackSet) {
-        for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+        for (PEPTransportStatusCallbacks *callbacks in localCallbacks) {
             [callbackSet removeObject:callbacks];
         }
     }
@@ -40,21 +40,21 @@
 
 - (void)signalSuccessWithStatusCode:(PEPTransportStatusCode)statusCode
                         toCallbacks:(NSMutableSet<PEPTransportStatusCallbacks *> *)callbackSet {
-    NSSet *allCallbacks = nil;
+    NSSet *localCallbacks = nil;
 
     // Copy the current outstanding callbacks
     @synchronized (callbackSet) {
-        allCallbacks = [NSSet setWithSet:callbackSet];
+        localCallbacks = [NSSet setWithSet:callbackSet];
     }
 
     // Invoke all callbacks
-    for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+    for (PEPTransportStatusCallbacks *callbacks in localCallbacks) {
         callbacks.successCallback(statusCode);
     }
 
     // Remove the invoked callbacks
     @synchronized (callbackSet) {
-        for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+        for (PEPTransportStatusCallbacks *callbacks in localCallbacks) {
             [callbackSet removeObject:callbacks];
         }
     }
