@@ -17,11 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @note All instance variables declared here shadow the real ones declared in the class itself.
 @interface PEPBlockBasedTransport (ForDelegates)
 
-@property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
-@property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
-@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
-@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
-@property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
+@property (nonatomic, nonnull, readonly) id<PEPTransportProtocol> transport;
+@property (nonatomic, nonnull, readonly) id<PEPBlockBasedTransportDelegate> transportDelegate;
+@property (nonatomic, nonnull, readonly) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
+@property (nonatomic, nonnull,readonly) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
+@property (nonatomic, nonnull, readonly) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
 
 @end
 
