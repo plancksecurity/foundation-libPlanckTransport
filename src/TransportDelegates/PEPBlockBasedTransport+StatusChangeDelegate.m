@@ -11,6 +11,22 @@
 #import "PEPTransportStatusCodeUtil.h"
 #import "PEPBlockBasedTransport+Error.h"
 
+#pragma mark - PEPTransportStatusChangeDelegate Helpers
+
+@implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegateHelpers)
+
+- (void)signalErrorWithStatusCode:(PEPTransportStatusCode)statusCode
+                      toCallbacks:(NSSet<PEPTransportStatusCallbacks *> *)callbacks {
+    // TODO
+}
+
+- (void)signalSuccessWithStatusCode:(PEPTransportStatusCode)statusCode
+                        toCallbacks:(NSSet<PEPTransportStatusCallbacks *> *)callbacks {
+    // TODO
+}
+
+@end
+
 #pragma mark - PEPTransportStatusChangeDelegate
 
 @implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
@@ -18,16 +34,16 @@
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     if (statusCode == PEPTransportStatusCodeConnectionDown) {
-        // TODO: Signal an error to all pending startup callbacks
-        // TODO: Signal success to all pending shutdown callbacks
+        [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
+        [self signalSuccessWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else if (statusCode == PEPTransportStatusCodeConnectionUp) {
-        // TODO: Signal success to all pending startup callbacks
-        // TODO: Signal an error to all pending shutdown callbacks
+        [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
+        [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
-        // TODO: Signal an error to all pending startup callbacks
-        // TODO: Signal an error to all pending shutdown callbacks
+        [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
+        [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else {
-        // TODO: Signal success to all pending startup callbacks
+        [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
     }
 }
 
