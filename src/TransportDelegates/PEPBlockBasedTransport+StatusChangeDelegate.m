@@ -81,7 +81,9 @@
         [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else {
-        [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
+        // Any non-error status code would land here. Nothing to do, since:
+        //  * startup only cares for connection up, or errors
+        //  * shutdown only cares for connection down, or errors
     }
 }
 
