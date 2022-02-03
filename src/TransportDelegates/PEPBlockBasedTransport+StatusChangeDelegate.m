@@ -69,12 +69,15 @@
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
     if (statusCode == PEPTransportStatusCodeConnectionDown) {
+        // Connection down is an error for startup, but success for shutdown.
         [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         [self signalSuccessWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else if (statusCode == PEPTransportStatusCodeConnectionUp) {
+        // Connection up is success for any startup, but an error for shutdown.
         [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+        // Consider other errors as errors for either type of pending callbacks.
         [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
     } else {
