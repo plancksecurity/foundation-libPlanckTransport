@@ -11,26 +11,9 @@
 #import "PEPTransportStatusCodeUtil.h"
 #import "PEPBlockBasedTransport+Error.h"
 
-@implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
+#pragma mark - Internal Helpers
 
-- (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
-                               statusCode:(PEPTransportStatusCode)statusCode {
-    // The general idea here is, that a transport is either in "startup mode"
-    // (that is, the user is waiting for the startup to succeed or fail),
-    // or it is in "shutdown mode" (like "startup mode", but when shutting down,
-    // or "in the middle".
-    // That's the basis for figuring out which stored callbacks to call, if any.
-    BOOL invoked = NO;
-    invoked = [self invokePendingStartCallbackWithStatusCode:statusCode];
-
-    if (!invoked) {
-        invoked = [self invokePendingShutdownCallbackWithStatusCode:statusCode];
-    }
-
-    if (!invoked) {
-        // TODO: What could this mean? Inform the general delegate.
-    }
-}
+@implementation PEPBlockBasedTransport (Internal)
 
 /// Tries to find pending startup callbacks and informs them of the given status code, marking it as a success.
 /// @return `YES` if at least one callback was invoked, `NO` otherwise.
@@ -66,5 +49,29 @@
     return NO;
 }
 
+@end
+
+#pragma mark - PEPTransportStatusChangeDelegate
+
+@implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
+
+- (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
+                               statusCode:(PEPTransportStatusCode)statusCode {
+    // The general idea here is, that a transport is either in "startup mode"
+    // (that is, the user is waiting for the startup to succeed or fail),
+    // or it is in "shutdown mode" (like "startup mode", but when shutting down,
+    // or "in the middle".
+    // That's the basis for figuring out which stored callbacks to call, if any.
+    BOOL invoked = NO;
+    invoked = [self invokePendingStartCallbackWithStatusCode:statusCode];
+
+    if (!invoked) {
+        invoked = [self invokePendingShutdownCallbackWithStatusCode:statusCode];
+    }
+
+    if (!invoked) {
+        // TODO: What could this mean? Inform the general delegate.
+    }
+}
 
 @end
