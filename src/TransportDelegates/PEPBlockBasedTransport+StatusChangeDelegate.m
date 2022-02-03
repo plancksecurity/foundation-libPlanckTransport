@@ -17,7 +17,18 @@
 
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
-    // TODO
+    if (statusCode == PEPTransportStatusCodeConnectionDown) {
+        // TODO: Signal an error to all pending startup callbacks
+        // TODO: Signal success to all pending shutdown callbacks
+    } else if (statusCode == PEPTransportStatusCodeConnectionUp) {
+        // TODO: Signal success to all pending startup callbacks
+        // TODO: Signal an error to all pending shutdown callbacks
+    } else if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+        // TODO: Signal an error to all pending startup callbacks
+        // TODO: Signal an error to all pending shutdown callbacks
+    } else {
+        // TODO: Signal success to all pending startup callbacks
+    }
 }
 
 @end
