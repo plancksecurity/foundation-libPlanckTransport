@@ -223,14 +223,3 @@
 }
 
 @end
-
-#pragma mark - Internal methods, called by delegate implementations from class extensions
-
-@implementation PEPBlockBasedTransport (ForDelegates)
-
-- (void)signalIncomingMessageFromDelegateWithTransportID:(PEPTransportID)transportID
-                                              statusCode:(PEPTransportStatusCode)statusCode {
-    // TODO
-}
-
-@end

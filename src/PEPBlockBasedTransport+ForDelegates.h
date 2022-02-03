@@ -26,9 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Shadows the definition in the class extension, in order to give the delegate acces to this instance variable.
 @property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
 
-/// Signals an incoming message to the delegate.
-- (void)signalIncomingMessageFromDelegateWithTransportID:(PEPTransportID)transportID
-                                              statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
 NS_ASSUME_NONNULL_END
