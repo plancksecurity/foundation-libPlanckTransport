@@ -224,4 +224,16 @@
     }
 }
 
+- (void)notestIncomingMessage {
+    XCTestExpectation *expIncomingMessage = [self expectationWithDescription:@"expMessageReceived"];
+    self.transportDelegate.expIncomingMessage = expIncomingMessage;
+
+    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
+    PEPMessage *msg = [PEPMessage new];
+    msg.messageID = @"blarg11";
+    msg.to = @[to];
+
+    [self waitForExpectations:@[expIncomingMessage] timeout:TestUtilsDefaultTimeout];
+}
+
 @end
