@@ -1,5 +1,5 @@
 //
-//  PEPBlockBasedTransport+PEPTransportSendToResultDelegate.h
+//  PEPBlockBasedTransport+SendToResultDelegate.h
 //  pEpTransportTests
 //
 //  Created by Dirk Zimmermann on 02.02.22.

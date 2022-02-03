@@ -1,11 +1,11 @@
 //
-//  PEPBlockBasedTransport+PEPTransportSendToResultDelegate.m
+//  PEPBlockBasedTransport+SendToResultDelegate.m
 //  pEpTransportTests
 //
 //  Created by Dirk Zimmermann on 02.02.22.
 //
 
-#import "PEPBlockBasedTransport+PEPTransportSendToResultDelegate.h"
+#import "PEPBlockBasedTransport+SendToResultDelegate.h"
 
 #import "PEPBlockBasedTransport+Error.h"
 #import "PEPBlockBasedTransport+ForDelegates.h"
