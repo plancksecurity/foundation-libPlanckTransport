@@ -8,7 +8,7 @@
 #import "TransportMock.h"
 #import "TransportMock+Error.h"
 
-const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
+static const PEPTransportID s_transportID = PEPTransportIDTransportAuto;
 
 @interface TransportMock ()
 
@@ -39,7 +39,7 @@ const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
     }
 
     [self.signalIncomingMessageDelegate
-     signalIncomingMessageWithTransportID:g_transportID
+     signalIncomingMessageWithTransportID:s_transportID
      statusCode:PEPTransportStatusCodeMessageDelivered];
 }
 
@@ -87,7 +87,7 @@ const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
 
         dispatch_async(self.queue, ^{
             [self.signalStatusChangeDelegate
-             signalStatusChangeWithTransportID:g_transportID
+             signalStatusChangeWithTransportID:s_transportID
              statusCode:self.delayedStartupStatusCode.integerValue];
         });
 
@@ -106,7 +106,7 @@ const PEPTransportID g_transportID = PEPTransportIDTransportAuto;
     
     dispatch_async(self.queue, ^{
         [self.signalStatusChangeDelegate
-         signalStatusChangeWithTransportID:g_transportID
+         signalStatusChangeWithTransportID:s_transportID
          statusCode:PEPTransportStatusCodeConnectionDown];
     });
 
@@ -148,7 +148,7 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
 
         dispatch_async(self.queue, ^{
             [self.signalSendToResultDelegate
-             signalSendToResultWithTransportID:g_transportID
+             signalSendToResultWithTransportID:s_transportID
              messageID:message.messageID
              address:destination.address
              pEpRating:PEPRatingUndefined
@@ -167,7 +167,7 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
 }
 
 - (void)pushStatusChange:(PEPTransportStatusCode)statusCode {
-    [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:g_transportID
+    [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:s_transportID
                                                             statusCode:statusCode];
 }
 
