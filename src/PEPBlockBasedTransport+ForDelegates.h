@@ -22,10 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
-/// Tries to find pending shutdown callbacks and informs them of the given status code, marking it as a success.
-/// @return `YES` if at least one callback was invoked, `NO` otherwise.
-- (BOOL)invokePendingShutdownCallbackWithStatusCode:(PEPTransportStatusCode)statusCode;
-
 /// Finds the callbacks for a given message ID and removes them.
 /// @return The message callbacks (error and success), if any, defined for the given message ID.
 - (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID;
