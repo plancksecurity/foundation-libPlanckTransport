@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return The message callbacks (error and success), if any, defined for the given message ID.
 - (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID;
 
+/// Signals an incoming message to the delegate.
+- (void)signalIncomingMessageFromDelegateWithTransportID:(PEPTransportID)transportID
+                                              statusCode:(PEPTransportStatusCode)statusCode;
 @end
 
 NS_ASSUME_NONNULL_END

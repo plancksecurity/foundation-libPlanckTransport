@@ -269,4 +269,9 @@
     return callbacks;
 }
 
+- (void)signalIncomingMessageFromDelegateWithTransportID:(PEPTransportID)transportID
+                                              statusCode:(PEPTransportStatusCode)statusCode {
+    // TODO
+}
+
 @end

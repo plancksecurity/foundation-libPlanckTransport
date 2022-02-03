@@ -7,11 +7,14 @@
 
 #import "PEPBlockBasedTransport+IncomingMessageDelegate.h"
 
+#import "PEPBlockBasedTransport+ForDelegates.h"
+
 @implementation PEPBlockBasedTransport (IncomingMessageDelegate)
 
 - (void)signalIncomingMessageWithTransportID:(PEPTransportID)transportID
                                   statusCode:(PEPTransportStatusCode)statusCode {
-    // TODO
+    // relay this to the main class
+    [self signalIncomingMessageFromDelegateWithTransportID:transportID statusCode:statusCode];
 }
 
 @end
