@@ -62,18 +62,6 @@
 - (void)startupWithOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                      onError:(nonnull void (^)(PEPTransportStatusCode,
                                                NSError * _Nonnull))errorCallback {
-    // Treat concurrent startups from different threads as a developer error,
-    // and also report it in production.
-    NSAssert(self.startupCallbacks == nil, @"startup invoked with callback already set");
-    if (self.startupCallbacks != nil) {
-        // TODO: Find a better status code
-        PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
-        NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
-        errorCallback(invalidStateStatusCode, error);
-
-        return;
-    }
-
     PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
                                               callbacksWithSuccessCallback:successCallback
                                               errorCallback:errorCallback];
@@ -106,17 +94,6 @@
 - (void)shutdownOnSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
                   onError:(nonnull void (^)(PEPTransportStatusCode,
                                             NSError * _Nonnull))errorCallback {
-    // Treat concurrent shutdowns from different threads as a developer error,
-    // and also report it in production.
-    NSAssert(self.shutdownCallbacks == nil, @"shutdown invoked with callback already set");
-    if (self.startupCallbacks != nil) {
-        // TODO: Find a better status code
-        PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
-        NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
-        errorCallback(invalidStateStatusCode, error);
-
-        return;
-    }
 
     PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
                                               callbacksWithSuccessCallback:successCallback
