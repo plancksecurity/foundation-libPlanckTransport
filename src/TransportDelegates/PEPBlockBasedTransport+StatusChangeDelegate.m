@@ -74,29 +74,27 @@
 
 - (void)signalStatusChangeWithTransportID:(PEPTransportID)transportID
                                statusCode:(PEPTransportStatusCode)statusCode {
-    BOOL delivered1 = NO;
-    BOOL delivered2 = NO;
+    BOOL delivered = NO;
 
-    if (statusCode == PEPTransportStatusCodeConnectionDown) {
-        // Connection down is an error for startup, but success for shutdown.
-        delivered1 = [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
-        delivered2 = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
-    } else if (statusCode == PEPTransportStatusCodeConnectionUp) {
-        // Connection up is success for any startup, but an error for shutdown.
-        delivered1 = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
-        delivered2 = [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
+    if (statusCode == PEPTransportStatusCodeConnectionUp) {
+        // Expected success for any startup, but an error for shutdown.
+        delivered = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
+        delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
+    } else if (statusCode == PEPTransportStatusCodeShutDown) {
+        // Expected success for shutdown, but an error for startup.
+        delivered = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
+        delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
     } else if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
-        // Consider other errors as errors for either type of pending callbacks.
-        delivered1 = [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
-        delivered2 = [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
-    } else {
-        // Any non-error status code would land here. Nothing to do, since:
-        //  * startup only cares for connection up, or errors
-        //  * shutdown only cares for connection down, or errors
-    }
+        // If there is any kind of error,
+        // try to first deliver it to any pending startup/shutdown callbacks
+        delivered = [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
+        delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
 
-    if (!delivered1 && !delivered2) {
-        // We haven't delivered that status code to anyone.
+        if (!delivered) {
+            // If not yet delivered to anyone, assume it's fatal and tell the delegate
+            [self.transportDelegate connectionStoppedWithtransportID:transportID
+                                                          statusCode:statusCode];
+        }
     }
 }
 
