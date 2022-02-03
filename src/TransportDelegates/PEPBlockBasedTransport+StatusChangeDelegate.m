@@ -16,13 +16,38 @@
 @implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegateHelpers)
 
 - (void)signalErrorWithStatusCode:(PEPTransportStatusCode)statusCode
-                      toCallbacks:(NSSet<PEPTransportStatusCallbacks *> *)callbacks {
-    // TODO
+                      toCallbacks:(NSMutableSet<PEPTransportStatusCallbacks *> *)callbackSet {
+    NSError *error = [self errorWithTransportStatusCode:statusCode];
+    NSSet *allCallbacks = [NSSet setWithSet:callbackSet];
+
+    @synchronized (callbackSet) {
+        for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+            callbacks.errorCallback(statusCode, error);
+        }
+    }
+
+    @synchronized (callbackSet) {
+        for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+            [callbackSet removeObject:callbacks];
+        }
+    }
 }
 
 - (void)signalSuccessWithStatusCode:(PEPTransportStatusCode)statusCode
-                        toCallbacks:(NSSet<PEPTransportStatusCallbacks *> *)callbacks {
-    // TODO
+                        toCallbacks:(NSMutableSet<PEPTransportStatusCallbacks *> *)callbackSet {
+    NSSet *allCallbacks = [NSSet setWithSet:callbackSet];
+
+    @synchronized (callbackSet) {
+        for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+            callbacks.successCallback(statusCode);
+        }
+    }
+
+    @synchronized (callbackSet) {
+        for (PEPTransportStatusCallbacks *callbacks in allCallbacks) {
+            [callbackSet removeObject:callbacks];
+        }
+    }
 }
 
 @end
