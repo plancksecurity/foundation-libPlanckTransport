@@ -18,8 +18,8 @@
 
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
 @property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
-@property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
-@property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
+@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
+@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
 
 /// Callbacks for message send calls.
 @property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
@@ -38,6 +38,10 @@
         _transport = transport;
         _transport.signalStatusChangeDelegate = self;
         _transport.signalSendToResultDelegate = self;
+        // TODO: Set the delegate for incoming messages
+
+        _startupCallbacks = [NSMutableSet set];
+        _shutdownCallbacks = [NSMutableSet set];
 
         _messageCallbacks = [NSMutableDictionary dictionary];
 
@@ -59,8 +63,8 @@
                                                NSError * _Nonnull))errorCallback {
     // Treat concurrent startups from different threads as a developer error,
     // and also report it in production.
-    NSAssert(self.startupCallback == nil, @"startup invoked with callback already set");
-    if (self.startupCallback != nil) {
+    NSAssert(self.startupCallbacks == nil, @"startup invoked with callback already set");
+    if (self.startupCallbacks != nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
@@ -72,7 +76,7 @@
     PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
                                               callbacksWithSuccessCallback:successCallback
                                               errorCallback:errorCallback];
-    self.startupCallback = callbacks;
+    [self.startupCallbacks addObject:callbacks];
 
     PEPTransportStatusCode statusCode;
     NSError *error = nil;
@@ -82,7 +86,7 @@
         if (statusCode == PEPTransportStatusCodeConnectionUp) {
             // This is already up, so assume there's no need to wait for more.
             // Remove our callback, and inform the caller.
-            self.startupCallback = nil;
+            [self.startupCallbacks removeObject:callbacks];
             successCallback(statusCode);
         } else {
             // Note the assumptions here:
@@ -93,7 +97,7 @@
     } else {
         // Immediate error. Remove our callback, and inform the caller.
         // Transport could not be started.
-        self.startupCallback = nil;
+        [self.startupCallbacks removeObject:callbacks];
         errorCallback(statusCode, error);
     }
 }
@@ -103,8 +107,8 @@
                                             NSError * _Nonnull))errorCallback {
     // Treat concurrent shutdowns from different threads as a developer error,
     // and also report it in production.
-    NSAssert(self.shutdownCallback == nil, @"shutdown invoked with callback already set");
-    if (self.startupCallback != nil) {
+    NSAssert(self.shutdownCallbacks == nil, @"shutdown invoked with callback already set");
+    if (self.startupCallbacks != nil) {
         // TODO: Find a better status code
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
@@ -116,7 +120,7 @@
     PEPTransportStatusCallbacks *callbacks = [PEPTransportStatusCallbacks
                                               callbacksWithSuccessCallback:successCallback
                                               errorCallback:errorCallback];
-    self.shutdownCallback = callbacks;
+    [self.shutdownCallbacks addObject:callbacks];
 
     PEPTransportStatusCode statusCode;
     NSError *error = nil;
@@ -125,7 +129,7 @@
 
     if (success) {
         if (statusCode == PEPTransportStatusCodeConnectionDown) {
-            self.shutdownCallback = nil;
+            [self.shutdownCallbacks removeObject:callbacks];
             successCallback(statusCode);
         } else {
             // The connection is not yet shut down, so wait for it, and handle it in the delegate.
@@ -137,7 +141,7 @@
     } else {
         // Immediate error. Remove our callback, and inform the caller.
         // Transport could not be shut down.
-        self.shutdownCallback = nil;
+        [self.shutdownCallbacks removeObject:callbacks];
         errorCallback(statusCode, error);
     }
 }

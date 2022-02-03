@@ -18,13 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PEPBlockBasedTransport (ForDelegates)
 
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
-
 @property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
-
-@property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
-
-@property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
-
+@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
+@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
 @property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
 
 @end
