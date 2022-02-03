@@ -23,9 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Shadows the definition in the class extension, in order to give the delegate acces to this instance variable.
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
-/// Finds the callbacks for a given message ID and removes them.
-/// @return The message callbacks (error and success), if any, defined for the given message ID.
-- (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID;
+/// Shadows the definition in the class extension, in order to give the delegate acces to this instance variable.
+@property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
 
 /// Signals an incoming message to the delegate.
 - (void)signalIncomingMessageFromDelegateWithTransportID:(PEPTransportID)transportID

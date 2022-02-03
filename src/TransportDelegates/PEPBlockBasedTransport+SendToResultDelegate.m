@@ -30,4 +30,17 @@
     }
 }
 
+/// Finds the callbacks for a given message ID and removes them.
+/// @return The message callbacks (error and success), if any, defined for the given message ID.
+- (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID {
+    PEPTransportStatusCallbacks *callbacks = nil;
+
+    @synchronized (self.messageCallbacks) {
+        callbacks = [self.messageCallbacks objectForKey:messageID];
+        [self.messageCallbacks removeObjectForKey:messageID];
+    }
+
+    return callbacks;
+}
+
 @end

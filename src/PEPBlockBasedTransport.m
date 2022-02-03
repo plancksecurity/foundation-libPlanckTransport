@@ -228,17 +228,6 @@
 
 @implementation PEPBlockBasedTransport (ForDelegates)
 
-- (PEPTransportStatusCallbacks * _Nullable)findAndRemoveCallbacksForMessageID:(NSString *)messageID {
-    PEPTransportStatusCallbacks *callbacks = nil;
-
-    @synchronized (self.messageCallbacks) {
-        callbacks = [self.messageCallbacks objectForKey:messageID];
-        [self.messageCallbacks removeObjectForKey:messageID];
-    }
-
-    return callbacks;
-}
-
 - (void)signalIncomingMessageFromDelegateWithTransportID:(PEPTransportID)transportID
                                               statusCode:(PEPTransportStatusCode)statusCode {
     // TODO
