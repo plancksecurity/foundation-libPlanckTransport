@@ -137,10 +137,7 @@
     PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeConnectionDown;
     self.transport.directMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
 
-    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
-    PEPMessage *msg = [PEPMessage new];
-    msg.messageID = @"blarg11";
-    msg.to = @[to];
+    PEPMessage *msg = [self sendableTestMessage];
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
@@ -160,10 +157,7 @@
     PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeSomeRecipientsUnreachable;
     self.transport.delayedMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
 
-    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
-    PEPMessage *msg = [PEPMessage new];
-    msg.messageID = @"blarg11";
-    msg.to = @[to];
+    PEPMessage *msg = [self sendableTestMessage];
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
@@ -183,10 +177,7 @@
     PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeMessageDelivered;
     self.transport.delayedMessageSendStatusCode = [NSNumber numberWithInteger:expectedStatusCode];
 
-    PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
-    PEPMessage *msg = [PEPMessage new];
-    msg.messageID = @"blarg11";
-    msg.to = @[to];
+    PEPMessage *msg = [self sendableTestMessage];
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
@@ -228,12 +219,19 @@
     XCTestExpectation *expIncomingMessage = [self expectationWithDescription:@"expMessageReceived"];
     self.transportDelegate.expIncomingMessage = expIncomingMessage;
 
+    PEPMessage *msg = [self sendableTestMessage];
+
+    [self waitForExpectations:@[expIncomingMessage] timeout:TestUtilsDefaultTimeout];
+}
+
+#pragma mark - Util
+
+- (PEPMessage *)sendableTestMessage {
     PEPIdentity *to = [[PEPIdentity alloc] initWithAddress:@"blarg1@home"];
     PEPMessage *msg = [PEPMessage new];
     msg.messageID = @"blarg11";
     msg.to = @[to];
-
-    [self waitForExpectations:@[expIncomingMessage] timeout:TestUtilsDefaultTimeout];
+    return msg;
 }
 
 @end
