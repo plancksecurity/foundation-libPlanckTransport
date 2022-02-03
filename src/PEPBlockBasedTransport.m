@@ -9,6 +9,7 @@
 
 #import "PEPBlockBasedTransport+StatusChangeDelegate.h"
 #import "PEPBlockBasedTransport+SendToResultDelegate.h"
+#import "PEPBlockBasedTransport+IncomingMessageDelegate.h"
 #import "PEPBlockBasedTransport+ForDelegates.h"
 #import "PEPTransportStatusCallbacks.h"
 #import "PEPTransportStatusCodeUtil.h"
@@ -38,7 +39,7 @@
         _transport = transport;
         _transport.signalStatusChangeDelegate = self;
         _transport.signalSendToResultDelegate = self;
-        // TODO: Set the delegate for incoming messages
+        _transport.signalIncomingMessageDelegate = self;
 
         _startupCallbacks = [NSMutableSet set];
         _shutdownCallbacks = [NSMutableSet set];
