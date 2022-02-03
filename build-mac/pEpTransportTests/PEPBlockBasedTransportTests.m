@@ -206,9 +206,12 @@
     XCTestExpectation *expConnectionStopped = [self expectationWithDescription:@"expConnectionStopped"];
     self.transportDelegate.expConnectionStopped = expConnectionStopped;
 
-    // TODO
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeNetworkTimeout;
+    [self.transport pushStatusChange:expectedStatusCode];
 
     [self waitForExpectations:@[expConnectionStopped] timeout:TestUtilsDefaultTimeout];
+
+    XCTAssertEqual(self.transportDelegate.lastConnectionDownStatusCode, expectedStatusCode);
 }
 
 @end
