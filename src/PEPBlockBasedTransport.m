@@ -192,34 +192,3 @@
 }
 
 @end
-
-#pragma mark - Internal helper methods for _supporting_ the delegate callbacks
-
-@implementation PEPBlockBasedTransport (HelpersForDelegates)
-
-- (BOOL)invokePendingCallbacks:(NSMutableArray *)callbacks
-                    statusCode:(PEPTransportStatusCode)statusCode {
-    NSArray *tmpCallbacks = nil;
-    @synchronized (callbacks) {
-        tmpCallbacks = [NSArray arrayWithArray:callbacks];
-    }
-
-    BOOL callbackInvoked = NO;
-    for (PEPTransportStatusCallbacks *theCallbacks in callbacks) {
-        if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
-            theCallbacks.successCallback(statusCode);
-        } else {
-            NSError *error = [self errorWithTransportStatusCode:statusCode];
-            theCallbacks.errorCallback(statusCode, error);
-        }
-        callbackInvoked = YES;
-    }
-
-    @synchronized (callbacks) {
-        [callbacks removeObjectsInArray:tmpCallbacks];
-    }
-
-    return callbackInvoked;
-}
-
-@end
