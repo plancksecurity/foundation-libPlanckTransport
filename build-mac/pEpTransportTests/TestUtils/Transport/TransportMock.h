@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Simulate the case that a message is received by this transport, and offered to the client.
 - (void)pushReceivedMessage:(PEPMessage *)message;
 
+/// Manually push a status code to the status change delegate.
+- (void)pushStatusChange:(PEPTransportStatusCode)statusCode;
+
 @end
 
 NS_ASSUME_NONNULL_END

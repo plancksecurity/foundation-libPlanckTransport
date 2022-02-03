@@ -166,4 +166,9 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
     }
 }
 
+- (void)pushStatusChange:(PEPTransportStatusCode)statusCode {
+    [self.signalStatusChangeDelegate signalStatusChangeWithTransportID:g_transportID
+                                                            statusCode:statusCode];
+}
+
 @end
