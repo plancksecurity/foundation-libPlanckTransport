@@ -215,13 +215,18 @@
     }
 }
 
-- (void)notestIncomingMessage {
+- (void)testIncomingMessage {
     XCTestExpectation *expIncomingMessage = [self expectationWithDescription:@"expMessageReceived"];
     self.transportDelegate.expIncomingMessage = expIncomingMessage;
 
     PEPMessage *msg = [self sendableTestMessage];
+    [self.transport pushReceivedMessage:msg];
 
     [self waitForExpectations:@[expIncomingMessage] timeout:TestUtilsDefaultTimeout];
+
+    XCTAssertEqualObjects(self.transportDelegate.lastMessageReceived, msg);
+    XCTAssertEqual(self.transportDelegate.lastMessageReceivedStatusCode,
+                   PEPTransportStatusCodeMessageDelivered);
 }
 
 #pragma mark - Util
