@@ -18,7 +18,7 @@
 - (void)connectionStoppedWithtransportID:(PEPTransportID)transportID
                               statusCode:(PEPTransportStatusCode)statusCode {
     self.lastConnectionDownStatusCode = statusCode;
-    [self.expConnectionDown fulfill];
+    [self.expConnectionStopped fulfill];
 }
 
 - (void)signalIncomingMessage:(nonnull PEPMessage *)message

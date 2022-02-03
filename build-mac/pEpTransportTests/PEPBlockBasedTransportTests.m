@@ -204,7 +204,7 @@
 
 - (void)testGeneralProblems {
     XCTestExpectation *expConnectionStopped = [self expectationWithDescription:@"expConnectionStopped"];
-    self.transportDelegate.expConnectionDown = expConnectionStopped;
+    self.transportDelegate.expConnectionStopped = expConnectionStopped;
 
     // TODO
 

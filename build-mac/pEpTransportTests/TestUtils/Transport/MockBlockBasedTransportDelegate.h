@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MockBlockBasedTransportDelegate : NSObject <PEPBlockBasedTransportDelegate>
 
-@property (nonatomic, nullable) XCTestExpectation *expConnectionDown;
+@property (nonatomic, nullable) XCTestExpectation *expConnectionStopped;
 @property (nonatomic, nullable) XCTestExpectation *expIncomingMessage;
 
 @property (nonatomic, readonly) PEPMessage *lastMessageReceived;
