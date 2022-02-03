@@ -13,7 +13,20 @@
 
 - (void)signalIncomingMessageWithTransportID:(PEPTransportID)transportID
                                   statusCode:(PEPTransportStatusCode)statusCode {
-    // TODO
+    PEPTransportStatusCode statusCodeFromUnderlyingTransport;
+    NSError *error = nil;
+    PEPMessage *message = [self.transport nextMessageWithPEPSession:nil
+                                                transportStatusCode:&statusCodeFromUnderlyingTransport
+                                                              error:&error];
+    if (message == nil) {
+        // Weird case, but nothing to relay to the delegate.
+        // For now, assume implementation error.
+        NSAssert(NO, @"Underlying transport signaled new message, but could not read it");
+    } else {
+        [self.transportDelegate signalIncomingMessage:message
+                                          transportID:transportID
+                                           statusCode:statusCode];
+    }
 }
 
 @end

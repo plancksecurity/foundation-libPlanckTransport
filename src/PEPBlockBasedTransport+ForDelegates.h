@@ -12,10 +12,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Instance variable declared in the class that need to be accessed by implementation in delegates.
+/// Instance variable declared in the class that need to be accessed by delegates, implemented in category extensions.
 ///
 /// @note All instance variables declared here shadow the real ones declared in the class itself.
 @interface PEPBlockBasedTransport (ForDelegates)
+
+@property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
 
 @property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
 
