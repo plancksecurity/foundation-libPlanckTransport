@@ -19,9 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// since they use internal instance variables. Otherwise a pure class-extension could have been used.
 @interface PEPBlockBasedTransport (ForDelegates)
 
-/// Tries to find pending startup callbacks and informs them of the given status code, marking it as a success.
-/// @return `YES` if at least one callback was invoked, `NO` otherwise.
-- (BOOL)invokePendingStartCallbackWithStatusCode:(PEPTransportStatusCode)statusCode;
+@property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
+@property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
 /// Tries to find pending shutdown callbacks and informs them of the given status code, marking it as a success.
 /// @return `YES` if at least one callback was invoked, `NO` otherwise.

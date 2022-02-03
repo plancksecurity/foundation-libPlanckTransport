@@ -228,21 +228,6 @@
 
 @implementation PEPBlockBasedTransport (ForDelegates)
 
-- (BOOL)invokePendingStartCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
-    if (self.startupCallback) {
-        if (![PEPTransportStatusCodeUtil isStartupErrorStatusCode:statusCode]) {
-            self.startupCallback.successCallback(statusCode);
-        } else {
-            NSError *error = [self errorWithTransportStatusCode:statusCode];
-            self.startupCallback.errorCallback(statusCode, error);
-        }
-        self.startupCallback = nil;
-        return YES;
-    }
-
-    return NO;
-}
-
 - (BOOL)invokePendingShutdownCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
     if (self.shutdownCallback) {
         if (![PEPTransportStatusCodeUtil isShutdownErrorStatusCode:statusCode]) {

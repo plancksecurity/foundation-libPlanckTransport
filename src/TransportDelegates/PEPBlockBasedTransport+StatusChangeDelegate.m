@@ -8,6 +8,8 @@
 #import "PEPBlockBasedTransport+StatusChangeDelegate.h"
 
 #import "PEPBlockBasedTransport+ForDelegates.h"
+#import "PEPTransportStatusCodeUtil.h"
+#import "PEPBlockBasedTransport+Error.h"
 
 @implementation PEPBlockBasedTransport (PEPTransportStatusChangeDelegate)
 
@@ -29,5 +31,23 @@
         // TODO: What could this mean? Inform the general delegate.
     }
 }
+
+/// Tries to find pending startup callbacks and informs them of the given status code, marking it as a success.
+/// @return `YES` if at least one callback was invoked, `NO` otherwise.
+- (BOOL)invokePendingStartCallbackWithStatusCode:(PEPTransportStatusCode)statusCode {
+    if (self.startupCallback) {
+        if (![PEPTransportStatusCodeUtil isStartupErrorStatusCode:statusCode]) {
+            self.startupCallback.successCallback(statusCode);
+        } else {
+            NSError *error = [self errorWithTransportStatusCode:statusCode];
+            self.startupCallback.errorCallback(statusCode, error);
+        }
+        self.startupCallback = nil;
+        return YES;
+    }
+
+    return NO;
+}
+
 
 @end
