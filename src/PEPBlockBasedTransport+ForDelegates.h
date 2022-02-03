@@ -12,18 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// The interface that is used by the various delegate implementations (in class extensions),
-/// that need to use, e.g., instance variables of the class, that by nature can only be defined
-/// in the class itself.
+/// Instance variable declared in the class that need to be accessed by implementation in delegates.
+///
+/// @note All instance variables declared here shadow the real ones declared in the class itself.
 @interface PEPBlockBasedTransport (ForDelegates)
 
-/// Shadows the definition in the class extension, in order to give the delegate acces to this instance variable.
+@property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
+
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *startupCallback;
 
-/// Shadows the definition in the class extension, in order to give the delegate acces to this instance variable.
 @property (nonatomic, nullable) PEPTransportStatusCallbacks *shutdownCallback;
 
-/// Shadows the definition in the class extension, in order to give the delegate acces to this instance variable.
 @property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
 
 @end
