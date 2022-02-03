@@ -107,7 +107,7 @@ static const PEPTransportID s_transportID = PEPTransportIDTransportAuto;
     dispatch_async(self.queue, ^{
         [self.signalStatusChangeDelegate
          signalStatusChangeWithTransportID:s_transportID
-         statusCode:PEPTransportStatusCodeConnectionDown];
+         statusCode:PEPTransportStatusCodeShutDown];
     });
 
     return YES;
