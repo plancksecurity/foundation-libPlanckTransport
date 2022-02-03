@@ -202,7 +202,7 @@
     [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
 }
 
-- (void)notestStatusChangeOutsideStartupOrShutdown {
+- (void)testStatusChangeWithErrorOutsideStartupOrShutdown {
     XCTestExpectation *expConnectionStopped = [self expectationWithDescription:@"expConnectionStopped"];
     self.transportDelegate.expConnectionStopped = expConnectionStopped;
 
