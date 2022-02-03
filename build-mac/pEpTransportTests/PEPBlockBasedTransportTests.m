@@ -211,7 +211,7 @@
 
     [self waitForExpectations:@[expConnectionStopped] timeout:TestUtilsDefaultTimeout];
 
-    XCTAssertEqual(self.transportDelegate.lastConnectionDownStatusCode, expectedStatusCode);
+    XCTAssertEqual(self.transportDelegate.lastConnectionStoppedStatusCode, expectedStatusCode);
 }
 
 @end

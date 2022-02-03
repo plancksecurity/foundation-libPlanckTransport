@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) PEPMessage *lastMessageReceived;
 @property (nonatomic) PEPTransportStatusCode lastMessageReceivedStatusCode;
-@property (nonatomic) PEPTransportStatusCode lastConnectionDownStatusCode;
+@property (nonatomic) PEPTransportStatusCode lastConnectionStoppedStatusCode;
 
 @end
 
