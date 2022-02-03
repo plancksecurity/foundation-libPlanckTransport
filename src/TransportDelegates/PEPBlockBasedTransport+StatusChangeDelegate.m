@@ -1,11 +1,11 @@
 //
-//  PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.m
+//  PEPBlockBasedTransport+StatusChangeDelegate.m
 //  pEpTransportTests
 //
 //  Created by Dirk Zimmermann on 28.01.22.
 //
 
-#import "PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h"
+#import "PEPBlockBasedTransport+StatusChangeDelegate.h"
 
 #import "PEPBlockBasedTransport+ForDelegates.h"
 

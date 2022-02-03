@@ -1,5 +1,5 @@
 //
-//  PEPBlockBasedTransport+PEPTransportStatusChangeDelegate.h
+//  PEPBlockBasedTransport+StatusChangeDelegate.h
 //  pEpTransportTests
 //
 //  Created by Dirk Zimmermann on 28.01.22.
