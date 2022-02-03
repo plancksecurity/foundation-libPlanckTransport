@@ -58,7 +58,7 @@
 
     [self waitForExpectations:@[expShutDown] timeout:TestUtilsDefaultTimeout];
 
-    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeConnectionDown]];
+    NSArray *expectedStatus = @[[NSNumber numberWithInteger:PEPTransportStatusCodeShutDown]];
     XCTAssertEqualObjects(self.statusChangeDelegate.statusChanges, expectedStatus);
 }
 
