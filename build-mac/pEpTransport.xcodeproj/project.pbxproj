@@ -322,6 +322,7 @@
 				43B2634C272AA95000EE82BC /* Headers */,
 				43B2634D272AA95000EE82BC /* Sources */,
 				43B2634E272AA95000EE82BC /* Frameworks */,
+				435C6F3827AD6A3F00EC5AE4 /* Copy artifacts to custom build dir */,
 			);
 			buildRules = (
 			);
@@ -455,6 +456,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		435C6F3827AD6A3F00EC5AE4 /* Copy artifacts to custom build dir */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy artifacts to custom build dir";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "CUSTOM_BUILD_DIR=${PROJECT_DIR}/build\nmkdir -p ${CUSTOM_BUILD_DIR}\nCUSTOM_INCLUDE_DIR=${PROJECT_DIR}/build/include\nmkdir -p ${CUSTOM_INCLUDE_DIR}\n\ncp \"${PROJECT_DIR}/../PublicHeaders\"/* ${CUSTOM_INCLUDE_DIR}\n";
+		};
 		43B263D1272AC14700EE82BC /* Generate Code */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
