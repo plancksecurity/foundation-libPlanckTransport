@@ -194,7 +194,6 @@
 				43C24F1927A3F5EA000E90FF /* TransportDelegates */,
 				43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */,
 				43C24CF727A14978000E90FF /* PEPTransportProtocol.h */,
-				43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */,
 				43C2508427A7F330000E90FF /* PEPBlockBasedTransport+ForDelegates.h */,
 				433A534027AA8256004069D7 /* PEPBlockBasedTransport+Error.h */,
 				433A534127AA8256004069D7 /* PEPBlockBasedTransport+Error.m */,
@@ -208,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */,
+				43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */,
 			);
 			name = PublicHeaders;
 			path = ../PublicHeaders;
