@@ -7,8 +7,8 @@
 
 #import "PEPBlockBasedTransport+Error.h"
 
-/// Own error domain for the case when we want to create `NSError`s from a transport status code.
-static NSString * const s_ErrorDomain = @"PEPBlockBasedTransport";
+/// PEPBlockBasedTransport error domain `NSError`s derived from a transport status code.
+static NSString * const s_ErrorDomain = @"PEPBlockBasedTransportStatusCode";
 
 @implementation PEPBlockBasedTransport (Error)
 

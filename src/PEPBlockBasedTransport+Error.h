@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PEPBlockBasedTransport (Error)
 
+/// Creates an error from a status code, with the matching domain.
 - (NSError *)errorWithTransportStatusCode:(PEPTransportStatusCode)statusCode;
 
 @end
