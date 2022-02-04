@@ -35,8 +35,6 @@
 		43C24D9027A14D36000E90FF /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */; };
 		43C24DE727A15C81000E90FF /* libpEpTransport_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */; };
 		43C24DF427A15F03000E90FF /* TransportMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF327A15F03000E90FF /* TransportMock.m */; };
-		43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */; };
-		43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */; };
 		43C24EFD27A29957000E90FF /* TestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24EFC27A29957000E90FF /* TestUtils.m */; };
 		43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */; };
 		43C24F1827A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1727A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m */; };
@@ -126,10 +124,6 @@
 		43C24DE327A15C81000E90FF /* pEpTransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pEpTransportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C24DF227A15F03000E90FF /* TransportMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportMock.h; sourceTree = "<group>"; };
 		43C24DF327A15F03000E90FF /* TransportMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportMock.m; sourceTree = "<group>"; };
-		43C24DF727A17988000E90FF /* MockStatusChangeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockStatusChangeDelegate.h; sourceTree = "<group>"; };
-		43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockStatusChangeDelegate.m; sourceTree = "<group>"; };
-		43C24DFA27A18D98000E90FF /* MockIncomingMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockIncomingMessageDelegate.h; sourceTree = "<group>"; };
-		43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockIncomingMessageDelegate.m; sourceTree = "<group>"; };
 		43C24EFB27A29957000E90FF /* TestUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtils.h; sourceTree = "<group>"; };
 		43C24EFC27A29957000E90FF /* TestUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUtils.m; sourceTree = "<group>"; };
 		43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPBlockBasedTransportTests.m; sourceTree = "<group>"; };
@@ -249,10 +243,6 @@
 		43C24DEE27A15EF2000E90FF /* Transport */ = {
 			isa = PBXGroup;
 			children = (
-				43C24DF727A17988000E90FF /* MockStatusChangeDelegate.h */,
-				43C24DF827A17988000E90FF /* MockStatusChangeDelegate.m */,
-				43C24DFA27A18D98000E90FF /* MockIncomingMessageDelegate.h */,
-				43C24DFB27A18D98000E90FF /* MockIncomingMessageDelegate.m */,
 				433A534727AA844C004069D7 /* TransportMock+Error.h */,
 				433A534827AA844C004069D7 /* TransportMock+Error.m */,
 				43C24DF227A15F03000E90FF /* TransportMock.h */,
@@ -514,10 +504,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */,
-				43C24DF927A17988000E90FF /* MockStatusChangeDelegate.m in Sources */,
 				43C24F1827A3E8A3000E90FF /* MockBlockBasedTransportDelegate.m in Sources */,
 				433A534927AA844C004069D7 /* TransportMock+Error.m in Sources */,
-				43C24DFC27A18D98000E90FF /* MockIncomingMessageDelegate.m in Sources */,
 				43C24DF427A15F03000E90FF /* TransportMock.m in Sources */,
 				43C24EFD27A29957000E90FF /* TestUtils.m in Sources */,
 			);
