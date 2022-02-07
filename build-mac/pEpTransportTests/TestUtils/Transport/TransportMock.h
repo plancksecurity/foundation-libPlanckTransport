@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// If this is set, sending a message will _fail immediately_ with this status code and corresponding error.
 @property (nonatomic, nullable) NSNumber *directMessageSendStatusCode;
 
-/// If this is set, startup will first return a generic "ready" status code and then later invoke the delegate with
-/// the given status code.
+/// If this is set, sending a message will first return a generic "ready" status code
+/// and then later invoke the delegate with the given status code.
 @property (nonatomic, nullable) NSNumber *delayedMessageSendStatusCode;
 
 /// Simulate the case that a message is received by this transport, and offered to the client.
