@@ -7,7 +7,7 @@
 
 #import "TransportMock+Error.h"
 
-NSString *s_ErrorDomain = @"TransportMockErrorDomain";
+NSString *const s_ErrorDomain = @"TransportMockErrorDomain";
 
 @implementation TransportMock (Error)
 
