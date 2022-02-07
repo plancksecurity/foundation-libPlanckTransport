@@ -136,7 +136,7 @@ transportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
         *transportStatusCode = self.directMessageSendStatusCode.integerValue;
 
         if (error) {
-            *error = [self errorWithTransportStatusCode:self.directStartupStatusCode.integerValue];
+            *error = [self errorWithTransportStatusCode:self.directMessageSendStatusCode.integerValue];
         }
 
         return NO;
