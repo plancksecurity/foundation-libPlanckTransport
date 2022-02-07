@@ -7,8 +7,8 @@
 
 #import "PEPBlockBasedTransport+SendToResultDelegate.h"
 
-#import "PEPBlockBasedTransport+Error.h"
 #import "PEPBlockBasedTransport+ForDelegates.h"
+#import "PEPBlockBasedTransport+Error.h"
 #import "PEPTransportStatusCodeUtil.h"
 
 #pragma mark - Internal Helpers
