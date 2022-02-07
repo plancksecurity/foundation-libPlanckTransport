@@ -12,16 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Instance variable declared in the class that need to be accessed by delegates, implemented in category extensions.
-///
-/// @note All instance variables declared here shadow the real ones declared in the class itself.
-@interface PEPBlockBasedTransport (ForDelegates)
+/// Extension with delegate(s) that can be accessed by categories as well,
+/// as long as this header is included.
+@interface PEPBlockBasedTransport ()
 
-@property (nonatomic, nonnull, readonly) id<PEPTransportProtocol> transport;
-@property (nonatomic, nonnull, readonly) id<PEPBlockBasedTransportDelegate> transportDelegate;
-@property (nonatomic, nonnull, readonly) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
-@property (nonatomic, nonnull,readonly) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
-@property (nonatomic, nonnull, readonly) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
+@property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
+@property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
+@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
+@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
+
+/// Callbacks for message send calls.
+@property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
 
 @end
 

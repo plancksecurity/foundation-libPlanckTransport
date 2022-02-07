@@ -15,18 +15,6 @@
 #import "PEPTransportStatusCodeUtil.h"
 #import "PEPBlockBasedTransport+Error.h"
 
-@interface PEPBlockBasedTransport ()
-
-@property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
-@property (nonatomic, weak) id<PEPBlockBasedTransportDelegate> transportDelegate;
-@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *startupCallbacks;
-@property (nonatomic, nonnull) NSMutableSet<PEPTransportStatusCallbacks *> *shutdownCallbacks;
-
-/// Callbacks for message send calls.
-@property (nonatomic, nonnull) NSMutableDictionary<NSString *, PEPTransportStatusCallbacks *> *messageCallbacks;
-
-@end
-
 @implementation PEPBlockBasedTransport
 
 #pragma mark - PEPBlockBasedTransportProtocol
