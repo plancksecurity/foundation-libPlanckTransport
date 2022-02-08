@@ -121,7 +121,7 @@
     // Messages without a message ID cannot be correctly sent by this transport
     NSAssert(messageID != nil, @"A message to send must have an ID");
     if (messageID == nil) {
-        // TODO: Find a better status code
+        // Similar status code as PEPIPsecControlChannel
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
         errorCallback(invalidStateStatusCode, error);
@@ -135,7 +135,7 @@
     NSAssert(existingCallbacks == nil,
              @"Sending a message with a message ID that is currently in the process of sending is not supported");
     if (existingCallbacks != nil) {
-        // TODO: Find a better status code
+        // Similar status code as PEPIPsecControlChannel
         PEPTransportStatusCode invalidStateStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
         NSError *error = [self errorWithTransportStatusCode:invalidStateStatusCode];
         errorCallback(invalidStateStatusCode, error);
