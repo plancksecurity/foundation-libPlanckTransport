@@ -103,7 +103,7 @@ static const PEPTransportID s_transportID = PEPTransportIDTransportAuto;
 - (BOOL)shutdownWithTransportStatusCode:(out PEPTransportStatusCode * _Nonnull)transportStatusCode
                                   error:(NSError * _Nullable __autoreleasing * _Nullable)error {
     *transportStatusCode = PEPTransportStatusCodeReady;
-    
+
     dispatch_async(self.queue, ^{
         [self.signalStatusChangeDelegate
          signalStatusChangeWithTransportID:s_transportID
