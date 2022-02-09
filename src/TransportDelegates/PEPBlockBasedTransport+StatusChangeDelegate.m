@@ -95,6 +95,9 @@
             [self.transportDelegate connectionStoppedWithtransportID:transportID
                                                           statusCode:statusCode];
         }
+    } else {
+        // TODO: We know it's not an error, and note one of the codes handled above.
+        // What to do with it?
     }
 }
 
