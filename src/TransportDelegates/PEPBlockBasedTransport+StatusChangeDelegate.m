@@ -96,7 +96,7 @@
                                                           statusCode:statusCode];
         }
     } else {
-        // TODO: We know it's not an error, and note one of the codes handled above.
+        // TODO: We know it's not an error, and not one of the codes handled above.
         // What to do with it?
     }
 }
