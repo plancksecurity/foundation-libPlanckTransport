@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /// Wraps any `id<PEPTransportProtocol>` into a version with callbacks instead of delegates,
-/// wherever possible.
+/// wherever possible (a little bit of delegating is still needed).
 @protocol PEPBlockBasedTransportProtocol <NSObject>
 
 /// Initializes the block based wrapper for the given `PEPTransportProtocol` and with a
