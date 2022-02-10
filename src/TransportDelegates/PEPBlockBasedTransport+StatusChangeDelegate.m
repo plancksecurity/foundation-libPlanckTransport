@@ -96,8 +96,8 @@
                                                           statusCode:statusCode];
         }
     } else {
-        // TODO: We know it's not an error, and not one of the codes handled above.
-        // What to do with it?
+        // We received a status code that was _not_ an error, and not directly
+        // related to start or stop. Ignore.
     }
 }
 
