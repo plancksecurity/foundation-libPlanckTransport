@@ -193,7 +193,11 @@
     [self waitForExpectations:@[expMessageSent] timeout:TestUtilsDefaultTimeout];
 }
 
-- (void)testStatusChangeWithErrorOutsideStartupOrShutdown {
+- (void)testStatusChangeWithCriticalErrorOutsideStartupOrShutdown {
+    // This test will only work with critical errors, and at this stage,
+    // PEPTransportStatusCodeShutDown is the only one.
+    // It will not hurt to test with a couple of others in the future,
+    // if there are any.
     NSArray<NSNumber *> *someErrorStatusCodes = @[
         [NSNumber numberWithInteger:PEPTransportStatusCodeShutDown],
     ];
