@@ -80,6 +80,7 @@
         // Expected success for any startup, but an error for shutdown.
         delivered = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
+        NSLog(@"*** here 1");
     } else if (statusCode == PEPTransportStatusCodeShutDown) {
         // Expected success for shutdown, but an error for startup.
         delivered = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
@@ -90,6 +91,7 @@
             [self.transportDelegate connectionStoppedWithtransportID:transportID
                                                           statusCode:statusCode];
         }
+        NSLog(@"*** here 2");
     } else if ([PEPTransportStatusCodeUtil isCriticalErrorStatusCode:statusCode]) {
         // The special critical error, PEPTransportStatusCodeShutDown, is handled above.
         // Handle any other critical error.
@@ -101,11 +103,13 @@
             [self.transportDelegate connectionStoppedWithtransportID:transportID
                                                           statusCode:statusCode];
         }
+        NSLog(@"*** here 3");
     } else {
         // We received a status code that was _not_ a critical error, and not directly
         // related to start or stop.
         // Even if it's a non-critical error, the transport is supposed to "heal itself".
         // Ignore.
+        NSLog(@"*** here 4");
     }
 }
 
