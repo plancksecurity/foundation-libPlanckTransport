@@ -22,6 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return `YES` if  the given status code is an error, `NO` if it isn't.
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode;
 
+/// Is the given status code a critical error?
+/// @note A transport emitting this is _not_ supposed to be able to "heal itself".
+/// @return `YES` if  the given status code is a critical error, `NO` if it isn't.
++ (BOOL)isCriticalErrorStatusCode:(PEPTransportStatusCode)statusCode;
+
 @end
 
 NS_ASSUME_NONNULL_END
