@@ -13,10 +13,6 @@
     return (statusCode >> 16) & 0xff;
 }
 
-+ (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode {
-    return [self severityFromStatusCode:statusCode] == 0x80;
-}
-
 + (BOOL)isCriticalErrorStatusCode:(PEPTransportStatusCode)statusCode {
     return [self severityFromStatusCode:statusCode] == 0xff;
 }
