@@ -195,11 +195,7 @@
 
 - (void)testStatusChangeWithErrorOutsideStartupOrShutdown {
     NSArray<NSNumber *> *someErrorStatusCodes = @[
-        [NSNumber numberWithInteger:PEPTransportStatusCodeConnectionDown],
-        [NSNumber numberWithInteger:PEPTransportStatusCodeSomeRecipientsUnreachable],
-        [NSNumber numberWithInteger:PEPTransportStatusCodeNetworkTimeout],
-        [NSNumber numberWithInteger:PEPTransportStatusCodeCouldNotDeliverGivingUp],
-        [NSNumber numberWithInteger:PEPTransportStatusCodeTxQueueOverflow]
+        [NSNumber numberWithInteger:PEPTransportStatusCodeShutDown],
     ];
 
     for (NSNumber *numStatusCode in someErrorStatusCodes) {
