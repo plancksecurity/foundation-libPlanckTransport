@@ -194,12 +194,11 @@
 }
 
 - (void)testStatusChangeWithCriticalErrorOutsideStartupOrShutdown {
-    // This test will only work with critical errors, and at this stage,
-    // PEPTransportStatusCodeShutDown is the only one.
-    // It will not hurt to test with a couple of others in the future,
-    // if there are any.
+    // This test will only succeed with critical errors. If it fails,
+    // the reason may be that a status code changed its severity.
     NSArray<NSNumber *> *someErrorStatusCodes = @[
         [NSNumber numberWithInteger:PEPTransportStatusCodeShutDown],
+        [NSNumber numberWithInteger:PEPTransportStatusCodeSctpUnkownError],
     ];
 
     for (NSNumber *numStatusCode in someErrorStatusCodes) {
