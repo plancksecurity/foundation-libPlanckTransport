@@ -97,8 +97,9 @@
         }
     } else {
         // We received a status code that was _not_ a critical error, and not directly
-        // related to start or stop. Ignore.
-        // If it's a non-critical error, the transport is supposed to "heal itself".
+        // related to start or stop.
+        // Even if it's a non-critical error, the transport is supposed to "heal itself".
+        // Ignore.
     }
 }
 
