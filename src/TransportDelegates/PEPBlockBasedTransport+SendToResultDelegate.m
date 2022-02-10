@@ -44,7 +44,8 @@
     // That would look like a developer error.
     NSAssert(callbacks != nil, @"Got called with message send result, but no callback");
 
-    if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
+    if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode] ||
+        [PEPTransportStatusCodeUtil isCriticalErrorStatusCode:statusCode]) {
         callbacks.errorCallback(statusCode, [self errorWithTransportStatusCode:statusCode]);
     } else {
         callbacks.successCallback(statusCode);
