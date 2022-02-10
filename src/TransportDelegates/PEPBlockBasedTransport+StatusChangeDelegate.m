@@ -93,7 +93,7 @@
     } else if ([PEPTransportStatusCodeUtil isCriticalErrorStatusCode:statusCode]) {
         // Note: At the time of writing, PEPTransportStatusCodeShutDown
         // is the only critical error, and it's handled above.
-        // If there is any other kind of critical error, first try
+        // If there is ever any other kind of critical error, first try
         // to deliver it to any pending startup/shutdown callbacks.
         delivered = [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
