@@ -26,6 +26,9 @@
                     severityFromStatusCode:PEPTransportStatusCodeShutDown],
                    0xff);
     XCTAssertEqual([PEPTransportStatusCodeUtil
+                    severityFromStatusCode:PEPTransportStatusCodeSctpUnkownError],
+                   0xff);
+    XCTAssertEqual([PEPTransportStatusCodeUtil
                     severityFromStatusCode:PEPTransportStatusCodeMessageOnTheWay],
                    0x00);
 }
