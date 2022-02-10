@@ -14,8 +14,7 @@
 }
 
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode {
-    // Treat a set bit of 0x00800000 as an error
-    return (statusCode & 0x00800000) != 0;
+    return [self severityFromStatusCode:statusCode] == 0x80;
 }
 
 @end
