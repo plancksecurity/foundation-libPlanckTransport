@@ -10,7 +10,7 @@
 @implementation PEPTransportStatusCodeUtil
 
 + (NSUInteger)severityFromStatusCode:(PEPTransportStatusCode)statusCode {
-    return 0;
+    return (statusCode >> 16) & 0xff;
 }
 
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode {
