@@ -84,20 +84,21 @@
         // Expected success for shutdown, but an error for startup.
         delivered = [self signalSuccessWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
         delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
-    } else if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode]) {
-        // If there is any kind of error,
-        // try to first deliver it to any pending startup/shutdown callbacks
+    } else if ([PEPTransportStatusCodeUtil isCriticalErrorStatusCode:statusCode]) {
+        // If there is any kind of critical error, first try
+        // to deliver it to any pending startup/shutdown callbacks.
         delivered = [self signalErrorWithStatusCode:statusCode toCallbacks:self.startupCallbacks];
         delivered |= [self signalErrorWithStatusCode:statusCode toCallbacks:self.shutdownCallbacks];
 
         if (!delivered) {
-            // If not yet delivered to anyone, assume it's fatal and tell the delegate
+            // If not yet delivered to anyone, tell the delegate (it's critical after all).
             [self.transportDelegate connectionStoppedWithtransportID:transportID
                                                           statusCode:statusCode];
         }
     } else {
-        // We received a status code that was _not_ an error, and not directly
+        // We received a status code that was _not_ a critical error, and not directly
         // related to start or stop. Ignore.
+        // If it's a non-critical error, the transport is supposed to "heal itself".
     }
 }
 
