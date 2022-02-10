@@ -16,6 +16,18 @@
 @implementation PEPTransportStatusCodeUtilTests
 
 - (void)testSeverity {
+    XCTAssertEqual([PEPTransportStatusCodeUtil
+                    severityFromStatusCode:PEPTransportStatusCodeConnectionDown],
+                   0x80);
+    XCTAssertEqual([PEPTransportStatusCodeUtil
+                    severityFromStatusCode:PEPTransportStatusCodeRxQueueUnderrun],
+                   0x80);
+    XCTAssertEqual([PEPTransportStatusCodeUtil
+                    severityFromStatusCode:PEPTransportStatusCodeShutDown],
+                   0xff);
+    XCTAssertEqual([PEPTransportStatusCodeUtil
+                    severityFromStatusCode:PEPTransportStatusCodeMessageOnTheWay],
+                   0x00);
 }
 
 @end
