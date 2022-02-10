@@ -9,6 +9,10 @@
 
 @implementation PEPTransportStatusCodeUtil
 
++ (NSUInteger)severityFromStatusCode:(PEPTransportStatusCode)statusCode {
+    return 0;
+}
+
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode {
     // Treat a set bit of 0x00800000 as an error
     return (statusCode & 0x00800000) != 0;
