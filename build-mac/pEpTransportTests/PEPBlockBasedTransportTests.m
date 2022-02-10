@@ -103,7 +103,7 @@
 }
 
 - (void)testStartupWithDelayedError {
-    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeConnectionDown;
+    PEPTransportStatusCode expectedStatusCode = PEPTransportStatusCodeShutDown;
 
     NSError *error = nil;
     TransportMock *transport = [[TransportMock alloc]
