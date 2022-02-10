@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSUInteger)severityFromStatusCode:(PEPTransportStatusCode)statusCode;
 
 /// Is the given status code an error?
-/// @note A transport emitting this is supposed to "head itself".
+/// @note A transport emitting this is supposed to "heal itself".
 /// @return `YES` if  the given status code is an error, `NO` if it isn't.
 + (BOOL)isErrorStatusCode:(PEPTransportStatusCode)statusCode;
 
