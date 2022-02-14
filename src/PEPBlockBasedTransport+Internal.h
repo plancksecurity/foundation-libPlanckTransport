@@ -12,8 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Extension with delegate(s) that can be accessed by categories as well,
-/// as long as this header is included.
+/// Class extension that is usable by the delegates, which are implemented as categories.
 @interface PEPBlockBasedTransport ()
 
 @property (nonatomic, nonnull) id<PEPTransportProtocol> transport;
