@@ -7,7 +7,7 @@
 
 #import "TestUtils.h"
 
-const NSTimeInterval TestUtilsDefaultTimeout = 3000.0;
+const NSTimeInterval TestUtilsDefaultTimeout = 3.0;
 
 @implementation TestUtils
 
