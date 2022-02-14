@@ -134,7 +134,7 @@
 		43C24F1B27A3F689000E90FF /* PEPBlockBasedTransport+StatusChangeDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPBlockBasedTransport+StatusChangeDelegate.m"; sourceTree = "<group>"; };
 		43C24F9C27A4015D000E90FF /* PEPTransportStatusCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportStatusCallbacks.h; sourceTree = "<group>"; };
 		43C24F9D27A4015D000E90FF /* PEPTransportStatusCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEPTransportStatusCallbacks.m; sourceTree = "<group>"; };
-		43C2508427A7F330000E90FF /* PEPBlockBasedTransport+ForDelegates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEPBlockBasedTransport+ForDelegates.h"; sourceTree = "<group>"; };
+		43C2508427A7F330000E90FF /* PEPBlockBasedTransport+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEPBlockBasedTransport+Internal.h"; sourceTree = "<group>"; };
 		43C2508527A820FE000E90FF /* PEPTransportStatusCodeUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPTransportStatusCodeUtil.h; sourceTree = "<group>"; };
 		43C2508627A820FE000E90FF /* PEPTransportStatusCodeUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPTransportStatusCodeUtil.m; sourceTree = "<group>"; };
 		43E9470727B5363F00EC8BE1 /* PEPTransportStatusCodeUtilTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPTransportStatusCodeUtilTests.m; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				43C24F1927A3F5EA000E90FF /* TransportDelegates */,
 				43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */,
 				43C24CF727A14978000E90FF /* PEPTransportProtocol.h */,
-				43C2508427A7F330000E90FF /* PEPBlockBasedTransport+ForDelegates.h */,
+				43C2508427A7F330000E90FF /* PEPBlockBasedTransport+Internal.h */,
 				433A534027AA8256004069D7 /* PEPBlockBasedTransport+Error.h */,
 				433A534127AA8256004069D7 /* PEPBlockBasedTransport+Error.m */,
 				43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */,
