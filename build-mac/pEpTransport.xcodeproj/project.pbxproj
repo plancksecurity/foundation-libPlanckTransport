@@ -116,7 +116,7 @@
 		433A53D127ABC64E004069D7 /* PEPBlockBasedTransport+IncomingMessageDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPBlockBasedTransport+IncomingMessageDelegate.m"; sourceTree = "<group>"; };
 		43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpTransport_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B263CF272AC13400EE82BC /* libpEpTransport_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpTransport_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportStatusCode.h; sourceTree = "<group>"; };
+		43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEPTransportStatusCode.h; path = "../build-mac/Build/include/pEp/PEPTransportStatusCode.h"; sourceTree = "<group>"; };
 		43C24CF727A14978000E90FF /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportProtocol.h; sourceTree = "<group>"; };
 		43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransportProtocol.h; sourceTree = "<group>"; };
 		43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransport.h; sourceTree = "<group>"; };
