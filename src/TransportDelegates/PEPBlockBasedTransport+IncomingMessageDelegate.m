@@ -7,7 +7,7 @@
 
 #import "PEPBlockBasedTransport+IncomingMessageDelegate.h"
 
-#import "PEPBlockBasedTransport+ForDelegates.h"
+#import "PEPBlockBasedTransport+Internal.h"
 
 @implementation PEPBlockBasedTransport (IncomingMessageDelegate)
 

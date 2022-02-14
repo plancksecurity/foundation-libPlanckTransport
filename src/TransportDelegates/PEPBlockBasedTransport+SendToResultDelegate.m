@@ -7,7 +7,7 @@
 
 #import "PEPBlockBasedTransport+SendToResultDelegate.h"
 
-#import "PEPBlockBasedTransport+ForDelegates.h"
+#import "PEPBlockBasedTransport+Internal.h"
 #import "PEPBlockBasedTransport+Error.h"
 #import "PEPTransportStatusCodeUtil.h"
 
