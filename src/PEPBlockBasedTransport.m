@@ -113,7 +113,6 @@
 }
 
 - (void)sendMessage:(nonnull PEPMessage *)message
-     withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(nonnull void (^)(PEPTransportStatusCode))successCallback
             onError:(nonnull void (^)(PEPTransportStatusCode, NSError * _Nonnull))errorCallback {
     NSString *messageID = message.messageID;
@@ -151,7 +150,7 @@
     NSError *error = nil;
     PEPTransportStatusCode statusCode;
     BOOL success = [self.transport sendMessage:message
-                                    pEpSession:pEpSession
+                                    pEpSession:nil
                            transportStatusCode:&statusCode
                                          error:&error];
     if (!success) {

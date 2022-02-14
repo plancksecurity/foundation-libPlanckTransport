@@ -141,7 +141,6 @@
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
-                      withPEPSession:nil
                            onSuccess:^(PEPTransportStatusCode statusCode) {
         XCTFail();
         [expMessageSent fulfill];
@@ -161,7 +160,6 @@
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
-                      withPEPSession:nil
                            onSuccess:^(PEPTransportStatusCode statusCode) {
         XCTFail();
         [expMessageSent fulfill];
@@ -181,7 +179,6 @@
 
     XCTestExpectation *expMessageSent = [self expectationWithDescription:@"expMessageSent"];
     [self.blockTransport sendMessage:msg
-                      withPEPSession:nil
                            onSuccess:^(PEPTransportStatusCode statusCode) {
         XCTAssertEqual(statusCode, expectedStatusCode);
         [expMessageSent fulfill];

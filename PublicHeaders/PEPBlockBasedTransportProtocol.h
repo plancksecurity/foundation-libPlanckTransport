@@ -61,7 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// from `PEPTransportProtocol`, which has similar semantics.
 /// For details, please see `PEPTransportProtocol` or the transport that is wrapped.
 - (void)sendMessage:(PEPMessage *)msg
-     withPEPSession:(PEPSession * _Nullable)pEpSession
           onSuccess:(void (^)(PEPTransportStatusCode statusCode))successCallback
             onError:(void (^)(PEPTransportStatusCode statusCode, NSError *error))errorCallback;
 
