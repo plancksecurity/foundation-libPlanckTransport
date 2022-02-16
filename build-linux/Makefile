@@ -6,7 +6,8 @@ HEADERS = $(call find-headers,../PublicHeaders/)
 
 # Dependencies *within* this repo (other headers should be installed and found in $PREFIX).
 INCLUDES = \
-  $(call find-includes,..)
+  $(call find-includes,..) \
+	-I$(PEP_INCLUDE) \
 
 # Only for making .so libs. Libs for static linking are defined with the final binary.
 LIBS = 
