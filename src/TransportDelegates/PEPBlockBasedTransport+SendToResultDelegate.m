@@ -41,8 +41,12 @@
                                statusCode:(PEPTransportStatusCode)statusCode {
     PEPTransportStatusCallbacks *callbacks = [self findAndRemoveCallbacksForMessageID:messageID];
 
-    // That would look like a developer error.
+    // If we don't find the matching callbacks for this message ID,
+    // there's nothing we can do.
     NSAssert(callbacks != nil, @"Got called with message send result, but no callback");
+    if (callbacks == nil) {
+        return;
+    }
 
     if ([PEPTransportStatusCodeUtil isErrorStatusCode:statusCode] ||
         [PEPTransportStatusCodeUtil isCriticalErrorStatusCode:statusCode]) {

@@ -19,9 +19,8 @@
                                                 transportStatusCode:&statusCodeFromUnderlyingTransport
                                                               error:&error];
     if (message == nil) {
-        // Weird case, but nothing to relay to the delegate.
-        // For now, assume implementation error.
-        NSAssert(NO, @"Underlying transport signaled new message, but could not read it");
+        // Weird case, but nothing to relay to the delegate, so ignore.
+        NSAssert(NO, @"Underlying transport signaled new message, but there was none");
     } else {
         [self.transportDelegate signalIncomingMessage:message
                                           transportID:transportID
