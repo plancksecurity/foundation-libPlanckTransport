@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "PEPObjCTypes.h"
+#import <PEPEngineTypes.h>
 #import "PEPTransportStatusCode.h"
 
 @class PEPTransportConfig;

@@ -8,6 +8,8 @@
 #import "TransportMock.h"
 #import "TransportMock+Error.h"
 
+#import <PEPObjCTypes.h>
+
 static const PEPTransportID s_transportID = PEPTransportIDTransportAuto;
 
 @interface TransportMock ()

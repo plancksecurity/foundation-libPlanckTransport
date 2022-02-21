@@ -7,6 +7,8 @@
 
 #import "PEPBlockBasedTransport.h"
 
+#import <PEPObjCTypes.h>
+
 #import "PEPBlockBasedTransport+StatusChangeDelegate.h"
 #import "PEPBlockBasedTransport+SendToResultDelegate.h"
 #import "PEPBlockBasedTransport+IncomingMessageDelegate.h"

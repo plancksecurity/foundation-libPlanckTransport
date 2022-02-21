@@ -9,10 +9,10 @@
 
 #import "PEPTransportProtocol.h"
 #import "PEPTransportStatusCode.h"
-#import "PEPObjCTypes.h"
 
 @class PEPTransportConfig;
 @class PEPSession;
+@class PEPMessage;
 
 NS_ASSUME_NONNULL_BEGIN
 
