@@ -6,6 +6,7 @@ PREFIX?=$(HOME)
 TARGET=transport_status_code.h transport_status_code.c PEPTransportStatusCode.h TransportStatusCode.kt TransportStatusCode.cs
 
 HEADERS=$(wildcard *.hh *.hxx *.h *.cs)
+HEADERS+=$(wildcard ../PublicHeaders/*.h)
 TSC=$(wildcard *.tsc)
 
 .PHONY: install uninstall clean
