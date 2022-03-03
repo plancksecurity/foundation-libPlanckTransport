@@ -62,8 +62,8 @@
     BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
 
     if (success) {
-        // Since it was successful, the transport is required to inform the delegate about
-        // PEPTransportStatusCodeConnectionUp, so wait for that to happen asynchronously.
+        // In case of success, the transport is required to inform the delegate about
+        // PEPTransportStatusCodeConnectionUp asynchronously. Nothing left to do here.
     } else {
         // Immediate error. Remove our callback, and inform the caller.
         // Transport could not be started.
