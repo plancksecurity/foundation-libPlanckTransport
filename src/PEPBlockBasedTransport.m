@@ -130,8 +130,7 @@
         return;
     }
 
-    // Message IDs must be unique, or we'll have problems. Let's find out rather sooner,
-    // during development, than later.
+    // Make sure there are not already callbacks existing for the message ID.
     PEPTransportStatusCallbacks *existingCallbacks = [self.messageCallbacks objectForKey:messageID];
     NSAssert(existingCallbacks == nil,
              @"Sending a message with a message ID that is currently in the process of sending is not supported");
