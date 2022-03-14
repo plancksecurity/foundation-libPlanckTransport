@@ -62,17 +62,8 @@
     BOOL success = [self.transport startupWithTransportStatusCode:&statusCode error:&error];
 
     if (success) {
-        if (statusCode == PEPTransportStatusCodeConnectionUp) {
-            // This is already up, so assume there's no need to wait for more.
-            // Remove our callback, and inform the caller.
-            [self.startupCallbacks removeObject:callbacks];
-            successCallback(statusCode);
-        } else {
-            // Note the assumptions here:
-            //   * No error has occurred, but the transport is not yet up.
-            //   * We don't report that, since we consider it an intermediate step.
-            //   * Instead, we wait for further delegate notifications.
-        }
+        // In case of success, the transport is required to inform the delegate about
+        // PEPTransportStatusCodeConnectionUp asynchronously. Nothing left to do here.
     } else {
         // Immediate error. Remove our callback, and inform the caller.
         // Transport could not be started.

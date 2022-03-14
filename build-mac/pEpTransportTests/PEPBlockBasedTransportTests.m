@@ -34,6 +34,7 @@
                       error:&error];
     XCTAssertNotNil(self.transport);
     XCTAssertNil(error);
+    self.transport.delayedStartupStatusCode = [NSNumber numberWithInteger:PEPTransportStatusCodeConnectionUp];
 
     self.transportDelegate = [MockBlockBasedTransportDelegate new];
 

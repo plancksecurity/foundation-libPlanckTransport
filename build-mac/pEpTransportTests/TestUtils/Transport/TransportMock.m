@@ -95,10 +95,9 @@ static const PEPTransportID s_transportID = PEPTransportIDTransportAuto;
 
         return YES;
     } else {
-        // We are able to start up immediately and know it's a success.
-        // No message to the delegate.
-        *transportStatusCode = PEPTransportStatusCodeConnectionUp;
-        return YES;
+        NSAssert(NO, @"TransportMock must be configured with either directStartupStatusCode or delayedStartupStatusCode");
+        *transportStatusCode = PEPTransportStatusCodeConfigIncompleteOrWrong;
+        return NO;
     }
 }
 
