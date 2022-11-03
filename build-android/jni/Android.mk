@@ -7,8 +7,8 @@ include $(CLEAR_VARS)
 LOCAL_MODULE    := pEpTransport
 
 
-LOCAL_CPP_FEATURES += exceptions
-LOCAL_CPPFLAGS += -std=c++14 -DANDROID_STL=c++_shared
+#LOCAL_CPP_FEATURES += exceptions
+LOCAL_CPPFLAGS += -std=c99
 
 #FIXME: WORKAROUND
 STUB = $(shell sh $(LOCAL_PATH)/../takeOutHeaderFiles.sh $(LOCAL_PATH)/../../../pEpEngine/ $(LOCAL_PATH)/../../)
