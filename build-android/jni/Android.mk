@@ -16,7 +16,8 @@ $(info $(STUB))
 
 LIB_PEP_TRANSPORT_INCLUDE_FILES := $(wildcard $(LOCAL_PATH)/../../src/*.h*)
 
-LOCAL_C_INCLUDES += $(LIB_PEP_TRANSPORT_INCLUDE_FILES:%=%)
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../pEpEngine/build-android/include \
+				$(LIB_PEP_TRANSPORT_INCLUDE_FILES:%=%)
 
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)../include
 
