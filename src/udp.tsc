@@ -2,9 +2,14 @@ doc > transport status codes for pEp over UDP (0x05)
 
 hex udp_no_suitable_network_for_sending     0x05801001;
 hex udp_socket_error_for_sending            0x05801002;
-hex udp_dgram_exceeds_mtu                   0x05801003;
+hex udp_could_not_encrypt                   0x05801003;
+hex udp_error_sending_message               0x05801004;
+hex udp_dgram_exceeds_mtu                   0x05801005;
 hex udp_no_suitable_network_for_listening   0x05802001;
 hex udp_socket_error_for_listening          0x05802002;
-hex udp_error_receiving_message             0x05802003;
-hex udp_could_not_decrypt                   0x05802004;
+hex udp_could_not_decrypt                   0x05802003;
+hex udp_error_receiving_message             0x05802004;
+hex udp_no_suitable_network                 0x05803001;
+hex udp_socket_error                        0x05803002;
+hex udp_general_startup_error               0x05803003;
 hex udp_unkown_error                        0x05ffffff;
