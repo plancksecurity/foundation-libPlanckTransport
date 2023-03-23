@@ -1,4 +1,4 @@
-# libpEpTransport
+# libpEpTransport (v1.0)
 
 Interfacing between transports written in different programming languages
 
