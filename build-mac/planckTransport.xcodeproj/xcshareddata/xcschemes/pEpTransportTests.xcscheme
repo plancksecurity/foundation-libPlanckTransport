@@ -17,9 +17,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43C24DE227A15C81000E90FF"
-               BuildableName = "pEpTransportTests.xctest"
-               BlueprintName = "pEpTransportTests"
-               ReferencedContainer = "container:pEpTransport.xcodeproj">
+               BuildableName = "planckTransportTests.xctest"
+               BlueprintName = "planckTransportTests"
+               ReferencedContainer = "container:planckTransport.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

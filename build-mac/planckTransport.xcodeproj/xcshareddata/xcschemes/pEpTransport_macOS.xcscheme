@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43B2634F272AA95000EE82BC"
-               BuildableName = "libpEpTransport_macOS.a"
-               BlueprintName = "pEpTransport_macOS"
-               ReferencedContainer = "container:pEpTransport.xcodeproj">
+               BuildableName = "libplanckTransport_macOS.a"
+               BlueprintName = "planckTransport_macOS"
+               ReferencedContainer = "container:planckTransport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43C24DE227A15C81000E90FF"
-               BuildableName = "pEpTransportTests.xctest"
-               BlueprintName = "pEpTransportTests"
-               ReferencedContainer = "container:pEpTransport.xcodeproj">
+               BuildableName = "planckTransportTests.xctest"
+               BlueprintName = "planckTransportTests"
+               ReferencedContainer = "container:planckTransport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43C24DE227A15C81000E90FF"
-               BuildableName = "pEpTransportTests.xctest"
-               BlueprintName = "pEpTransportTests"
-               ReferencedContainer = "container:pEpTransport.xcodeproj">
+               BuildableName = "planckTransportTests.xctest"
+               BlueprintName = "planckTransportTests"
+               ReferencedContainer = "container:planckTransport.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43B2634F272AA95000EE82BC"
-            BuildableName = "libpEpTransport_macOS.a"
-            BlueprintName = "pEpTransport_macOS"
-            ReferencedContainer = "container:pEpTransport.xcodeproj">
+            BuildableName = "libplanckTransport_macOS.a"
+            BlueprintName = "planckTransport_macOS"
+            ReferencedContainer = "container:planckTransport.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
