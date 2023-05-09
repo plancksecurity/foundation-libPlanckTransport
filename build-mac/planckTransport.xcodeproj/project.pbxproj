@@ -27,7 +27,7 @@
 		433A53D327ABC64E004069D7 /* PEPBlockBasedTransport+IncomingMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 433A53D127ABC64E004069D7 /* PEPBlockBasedTransport+IncomingMessageDelegate.m */; };
 		435C702427AD762000EC5AE4 /* libPEPObjCTypes_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C24D8627A14D00000E90FF /* libPEPObjCTypes_macOS.a */; };
 		43C24D0F27A14B1B000E90FF /* PEPBlockBasedTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */; };
-		43C24DE727A15C81000E90FF /* libpEpTransport_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */; };
+		43C24DE727A15C81000E90FF /* libplanckTransport_macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B26350272AA95000EE82BC /* libplanckTransport_macOS.a */; };
 		43C24DF427A15F03000E90FF /* TransportMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24DF327A15F03000E90FF /* TransportMock.m */; };
 		43C24EFD27A29957000E90FF /* TestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24EFC27A29957000E90FF /* TestUtils.m */; };
 		43C24F1227A3E275000E90FF /* PEPBlockBasedTransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C24F1127A3E275000E90FF /* PEPBlockBasedTransportTests.m */; };
@@ -106,15 +106,15 @@
 		433A534B27AA94E9004069D7 /* PEPBlockBasedTransport+SendToResultDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPBlockBasedTransport+SendToResultDelegate.m"; sourceTree = "<group>"; };
 		433A53D027ABC64E004069D7 /* PEPBlockBasedTransport+IncomingMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEPBlockBasedTransport+IncomingMessageDelegate.h"; sourceTree = "<group>"; };
 		433A53D127ABC64E004069D7 /* PEPBlockBasedTransport+IncomingMessageDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PEPBlockBasedTransport+IncomingMessageDelegate.m"; sourceTree = "<group>"; };
-		43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpTransport_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		43B263CF272AC13400EE82BC /* libpEpTransport_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpEpTransport_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B26350272AA95000EE82BC /* libplanckTransport_macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplanckTransport_macOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B263CF272AC13400EE82BC /* libplanckTransport_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplanckTransport_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C24CF427A14978000E90FF /* PEPTransportStatusCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PEPTransportStatusCode.h; path = ../src/PEPTransportStatusCode.h; sourceTree = "<group>"; };
 		43C24CF727A14978000E90FF /* PEPTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPTransportProtocol.h; sourceTree = "<group>"; };
 		43C24D0A27A14A55000E90FF /* PEPBlockBasedTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransportProtocol.h; sourceTree = "<group>"; };
 		43C24D0C27A14B1B000E90FF /* PEPBlockBasedTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEPBlockBasedTransport.h; sourceTree = "<group>"; };
 		43C24D0D27A14B1B000E90FF /* PEPBlockBasedTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEPBlockBasedTransport.m; sourceTree = "<group>"; };
 		43C24D7E27A14D00000E90FF /* PEPObjCTypes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEPObjCTypes.xcodeproj; path = "../../pEpObjCAdapter/Subprojects/PEPObjCTypes/build-mac/PEPObjCTypes.xcodeproj"; sourceTree = "<group>"; };
-		43C24DE327A15C81000E90FF /* pEpTransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pEpTransportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C24DE327A15C81000E90FF /* planckTransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = planckTransportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C24DF227A15F03000E90FF /* TransportMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportMock.h; sourceTree = "<group>"; };
 		43C24DF327A15F03000E90FF /* TransportMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportMock.m; sourceTree = "<group>"; };
 		43C24EFB27A29957000E90FF /* TestUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtils.h; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				435C702427AD762000EC5AE4 /* libPEPObjCTypes_macOS.a in Frameworks */,
-				43C24DE727A15C81000E90FF /* libpEpTransport_macOS.a in Frameworks */,
+				43C24DE727A15C81000E90FF /* libplanckTransport_macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,9 +174,9 @@
 		43B26351272AA95000EE82BC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */,
-				43B263CF272AC13400EE82BC /* libpEpTransport_iOS.a */,
-				43C24DE327A15C81000E90FF /* pEpTransportTests.xctest */,
+				43B26350272AA95000EE82BC /* libplanckTransport_macOS.a */,
+				43B263CF272AC13400EE82BC /* libplanckTransport_iOS.a */,
+				43C24DE327A15C81000E90FF /* planckTransportTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,9 +303,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		43B2634F272AA95000EE82BC /* pEpTransport_macOS */ = {
+		43B2634F272AA95000EE82BC /* planckTransport_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43B26354272AA95000EE82BC /* Build configuration list for PBXNativeTarget "pEpTransport_macOS" */;
+			buildConfigurationList = 43B26354272AA95000EE82BC /* Build configuration list for PBXNativeTarget "planckTransport_macOS" */;
 			buildPhases = (
 				43B2634D272AA95000EE82BC /* Sources */,
 				43B2634E272AA95000EE82BC /* Frameworks */,
@@ -317,14 +317,14 @@
 				43C24D8E27A14D2D000E90FF /* PBXTargetDependency */,
 				15BD2FC1273586CB00B1B1F5 /* PBXTargetDependency */,
 			);
-			name = pEpTransport_macOS;
+			name = planckTransport_macOS;
 			productName = pEpTransport;
-			productReference = 43B26350272AA95000EE82BC /* libpEpTransport_macOS.a */;
+			productReference = 43B26350272AA95000EE82BC /* libplanckTransport_macOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		43B263C6272AC13400EE82BC /* pEpTransport_iOS */ = {
+		43B263C6272AC13400EE82BC /* planckTransport_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43B263CC272AC13400EE82BC /* Build configuration list for PBXNativeTarget "pEpTransport_iOS" */;
+			buildConfigurationList = 43B263CC272AC13400EE82BC /* Build configuration list for PBXNativeTarget "planckTransport_iOS" */;
 			buildPhases = (
 				43B263C9272AC13400EE82BC /* Headers */,
 				43B263CA272AC13400EE82BC /* Sources */,
@@ -335,14 +335,14 @@
 			dependencies = (
 				43B263D6272AC15700EE82BC /* PBXTargetDependency */,
 			);
-			name = pEpTransport_iOS;
+			name = planckTransport_iOS;
 			productName = pEpTransport;
-			productReference = 43B263CF272AC13400EE82BC /* libpEpTransport_iOS.a */;
+			productReference = 43B263CF272AC13400EE82BC /* libplanckTransport_iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		43C24DE227A15C81000E90FF /* pEpTransportTests */ = {
+		43C24DE227A15C81000E90FF /* planckTransportTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43C24DEA27A15C81000E90FF /* Build configuration list for PBXNativeTarget "pEpTransportTests" */;
+			buildConfigurationList = 43C24DEA27A15C81000E90FF /* Build configuration list for PBXNativeTarget "planckTransportTests" */;
 			buildPhases = (
 				43C24DDF27A15C81000E90FF /* Sources */,
 				43C24DE027A15C81000E90FF /* Frameworks */,
@@ -353,9 +353,9 @@
 			dependencies = (
 				43C24DE927A15C81000E90FF /* PBXTargetDependency */,
 			);
-			name = pEpTransportTests;
+			name = planckTransportTests;
 			productName = pEpTransportTests;
-			productReference = 43C24DE327A15C81000E90FF /* pEpTransportTests.xctest */;
+			productReference = 43C24DE327A15C81000E90FF /* planckTransportTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -374,7 +374,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 43B2634B272AA95000EE82BC /* Build configuration list for PBXProject "pEpTransport" */;
+			buildConfigurationList = 43B2634B272AA95000EE82BC /* Build configuration list for PBXProject "planckTransport" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -393,10 +393,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				43B2634F272AA95000EE82BC /* pEpTransport_macOS */,
-				43B263C6272AC13400EE82BC /* pEpTransport_iOS */,
+				43B2634F272AA95000EE82BC /* planckTransport_macOS */,
+				43B263C6272AC13400EE82BC /* planckTransport_iOS */,
 				43B263D0272AC14700EE82BC /* generate_code */,
-				43C24DE227A15C81000E90FF /* pEpTransportTests */,
+				43C24DE227A15C81000E90FF /* planckTransportTests */,
 			);
 		};
 /* End PBXProject section */
@@ -478,7 +478,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -l";
-			shellScript = "export LANG=en_US.UTF-8\n\n# Under unknown circumstances, this script is excecuted even the \"Ouput File\" exists. Thus we make our hands dirty and deny to run if exists\nFILE=${SCRIPT_OUTPUT_FILE_0}\nif [[ -f $FILE ]];then\n    echo \"####################################\"\n    echo \"Skipped libpEptransport code generation. Considered done already.\"\n    echo \"####################################\"\n    exit 0\nfi\n\necho \"***************************************\"\necho \"*** Generate files: ACTION: $ACTION ***\"\necho \"***************************************\"\n\nMAKE_DIR=\"${PROJECT_DIR}/../\"\nCUSTOM_BUILD_DIR=\"${PROJECT_DIR}/build\"\n\nmkdir -p ${CUSTOM_BUILD_DIR}\n\npushd \"${MAKE_DIR}\"\n    echo \"PREFIX=${CUSTOM_BUILD_DIR}\" > local.conf\n    echo \"YML2_PATH=~/yml2\" >> local.conf\n    make src\n    make install\npopd\n";
+			shellScript = "export LANG=en_US.UTF-8\n\n# Under unknown circumstances, this script is excecuted even the \"Ouput File\" exists. Thus we make our hands dirty and deny to run if exists\nFILE=${SCRIPT_OUTPUT_FILE_0}\nif [[ -f $FILE ]];then\n    echo \"####################################\"\n    echo \"Skipped libPlanckTansport code generation. Considered done already.\"\n    echo \"File: $FILE\"\n    echo \"####################################\"\n    exit 0\nfi\n\necho \"***************************************\"\necho \"*** Generate files: ACTION: $ACTION ***\"\necho \"***************************************\"\n\nMAKE_DIR=\"${PROJECT_DIR}/../\"\nCUSTOM_BUILD_DIR=\"${PROJECT_DIR}/build\"\n\nmkdir -p ${CUSTOM_BUILD_DIR}\n\npushd \"${MAKE_DIR}\"\n    echo \"PREFIX=${CUSTOM_BUILD_DIR}\" > local.conf\n    echo \"YML2_PATH=~/yml2\" >> local.conf\n    make src\n    make install\npopd\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -538,7 +538,7 @@
 		};
 		43C24DE927A15C81000E90FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 43B2634F272AA95000EE82BC /* pEpTransport_macOS */;
+			target = 43B2634F272AA95000EE82BC /* planckTransport_macOS */;
 			targetProxy = 43C24DE827A15C81000E90FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -762,7 +762,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43B2634B272AA95000EE82BC /* Build configuration list for PBXProject "pEpTransport" */ = {
+		43B2634B272AA95000EE82BC /* Build configuration list for PBXProject "planckTransport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43B26352272AA95000EE82BC /* Debug */,
@@ -771,7 +771,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43B26354272AA95000EE82BC /* Build configuration list for PBXNativeTarget "pEpTransport_macOS" */ = {
+		43B26354272AA95000EE82BC /* Build configuration list for PBXNativeTarget "planckTransport_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43B26355272AA95000EE82BC /* Debug */,
@@ -780,7 +780,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43B263CC272AC13400EE82BC /* Build configuration list for PBXNativeTarget "pEpTransport_iOS" */ = {
+		43B263CC272AC13400EE82BC /* Build configuration list for PBXNativeTarget "planckTransport_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43B263CD272AC13400EE82BC /* Debug */,
@@ -798,7 +798,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43C24DEA27A15C81000E90FF /* Build configuration list for PBXNativeTarget "pEpTransportTests" */ = {
+		43C24DEA27A15C81000E90FF /* Build configuration list for PBXNativeTarget "planckTransportTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43C24DEB27A15C81000E90FF /* Debug */,
