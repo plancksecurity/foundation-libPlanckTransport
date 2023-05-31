@@ -22,7 +22,7 @@
     <None Include="generate_code.cmd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\pEpEngine\build-windows\libpEpasn1\libpEpasn1.vcxproj">
+    <ProjectReference Include="..\..\PlanckCoreV3\build-windows\libpEpasn1\libpEpasn1.vcxproj">
       <Project>{9a67164d-b8f8-4601-a24b-28afe774d41c}</Project>
     </ProjectReference>
   </ItemGroup>
