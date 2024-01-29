@@ -4,7 +4,9 @@ SET current_directory=%~dp0
 :: YML2 directory is ...\pEpForWindowsAdapterSolution\yml2\
 SET yml2_directory=%current_directory%..\..\..\pEpForWindowsAdapterSolution\yml2
 
+if "%YML2PROC%"== "" (
 SET YML2PROC="%yml2_directory%\yml2proc"
+)
 
 :: Generate the code
 PUSHD ..\src
