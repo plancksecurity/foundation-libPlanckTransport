@@ -40,7 +40,7 @@ jobs:
     permissions:
       contents: write
     env:
-      YML2PROC: "C:\\Program Files\\Python312\\Scripts\\yml2proc.exe"
+      YML2PROC: "/c/Program Files/Python312/Scripts/yml2proc.exe" 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -50,7 +50,9 @@ jobs:
       - name: Setup msbuild
         uses: microsoft/setup-msbuild@v1.1
       - name: Install yml2
-        run: pip install git+https://github.com/plancksecurity/foundation-yml2
+        run: |
+          pip install git+https://github.com/plancksecurity/foundation-yml2
+          dir  'C:\Program Files\Python312\Scripts'
       - name: Build
         run: msbuild build-windows\libpEpTransport.vcxproj /p:Configuration=Release
       - name: Compress
