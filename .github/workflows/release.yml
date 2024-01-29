@@ -40,7 +40,7 @@ jobs:
     permissions:
       contents: write
     env:
-      YML2PROC: 'C:\hostedtoolcache\windows\python\3.9.13\x64\Scripts\yml2proc.exe'
+      YML2PROC: 'C:\hostedtoolcache\windows\python\3.9.13\x64\Scripts\yml2proc'
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -54,7 +54,6 @@ jobs:
           pip install git+https://github.com/plancksecurity/foundation-yml2
           pip list -v
           python -m site --user-base
-          dir 'C:\hostedtoolcache\windows\python\3.9.13\x64\Scripts'
       - name: Build
         run: msbuild build-windows\libpEpTransport.vcxproj /p:Configuration=Release
       - name: Compress
