@@ -39,6 +39,8 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: write
+    env:
+      YML2PROC: yml2proc
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4

@@ -28,11 +28,6 @@
   <ItemGroup>
     <ClCompile Include="..\src\transport_status_code.c" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\planckCoreV3\build-windows\libpEpasn1\libpEpasn1.vcxproj">
-      <Project>{9a67164d-b8f8-4601-a24b-28afe774d41c}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
