@@ -39,8 +39,8 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: write
-#    env:
-#      YML2PROC: "C:\\Program Files\\Python312\\Scripts\\yml2proc.exe"
+    env:
+      YML2PROC: "C:\\Program Files\\Python312\\Scripts\\yml2proc.exe"
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
