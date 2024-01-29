@@ -52,7 +52,8 @@ jobs:
       - name: Install yml2
         run: |
           pip install git+https://github.com/plancksecurity/foundation-yml2
-          dir  'C:\Program Files\Python312\Scripts'
+          pip list -v
+          python -m site --user-base
       - name: Build
         run: msbuild build-windows\libpEpTransport.vcxproj /p:Configuration=Release
       - name: Compress
