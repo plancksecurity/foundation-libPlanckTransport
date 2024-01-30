@@ -34,6 +34,10 @@ IF NOT EXIST ..\..\pEp MKDIR ..\..\pEp
 XCOPY /y *.c ..\..\pEp\
 XCOPY /y *.h ..\..\pEp\
 
+IF NOT EXIST ..\build-windows\pEp MKDIR ..\build-windows\pEp
+XCOPY /y *.c ..\build-windows\pEp\
+XCOPY /y *.h ..\build-windows\pEp\
+
 :end
 
 POPD
