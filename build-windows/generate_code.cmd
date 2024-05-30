@@ -1,5 +1,3 @@
-SET PY=%1\vcpkg\installed\x64-windows\tools\python3\python.exe
-
 SET yml2_directory=%1\yml2
 
 SET YML2PROC="%yml2_directory%\yml2proc"
