@@ -206,6 +206,7 @@ hs_err_pid*
 
 # Windows build
 build-windows/x64/
+build-windows/ARM64/
 build-windows/Debug/
 build-windows/Release/
 build-windows/*.user
