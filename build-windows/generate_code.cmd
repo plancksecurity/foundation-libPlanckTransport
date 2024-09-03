@@ -1,7 +1,3 @@
-SET yml2_directory=%1\yml2
-
-SET YML2PROC=%PY% %PYTHON_SCRIPTS%\yml2proc
-
 :: Generate the code
 PUSHD ..\src
 IF NOT EXIST generated MKDIR generated
